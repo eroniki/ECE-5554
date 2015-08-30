@@ -13,8 +13,8 @@ z = reshape(y,[2,3]);
 % convert indice to subscripts (row and column number)
 [r, c] = ind2sub(size(z),I);
 %% PS0-1.3d
-% create vector v = [1, 8, 8, 2, 1, 3, 9, 2]
-v = [1,8,8,2,1,3,9,2];
+% create vector v = [1, 8, 8, 2, 1, 3, 9, 8]
+v = [1,8,8,2,1,3,9,8];
 % alter the value of vector x
 % the problem can be solved by two different approach
 % 1 - x = numel(v(v==1))
