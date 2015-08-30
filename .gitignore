@@ -26,6 +26,10 @@
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
+<<<<<<< HEAD
+=======
+*.synctex
+>>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
@@ -36,6 +40,12 @@
 *.alg
 *.loa
 
+<<<<<<< HEAD
+=======
+# achemso
+acs-*.bib
+
+>>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
 # amsthm
 *.thm
 
@@ -66,9 +76,23 @@
 *.glo
 *.gls
 
+<<<<<<< HEAD
 # hyperref
 *.brf
 
+=======
+# gnuplottex
+*-gnuplottex-*
+
+# hyperref
+*.brf
+
+# knitr
+*-concordance.tex
+*.tikz
+*-tikzDictionary
+
+>>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
 # listings
 *.lol
 
@@ -84,6 +108,10 @@
 *.mtc0
 
 # minted
+<<<<<<< HEAD
+=======
+_minted*
+>>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
 *.pyg
 
 # morewrites
@@ -108,6 +136,7 @@ sympy-plots-for-*.tex/
 # xindy
 *.xdy
 
+<<<<<<< HEAD
 # =========================
 # Operating System Files
 # =========================
@@ -154,3 +183,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+# WinEdt
+*.bak
+*.sav
+>>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
