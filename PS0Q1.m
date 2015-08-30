@@ -50,5 +50,7 @@ for i=1:numel(ind)
    Z(u(i),v(i),:) = [255,0,0]; 
 end
 figure(6);
-imshow(Z);
+subplot(1,2,1), imagesc(Z);
+subplot(1,2,2), imshow(Z);
+imwrite(frameSwapped, 'outputZPS0Q1.png');
 title('Red pixels represent the intensities above the mean value of A');
