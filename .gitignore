@@ -1,190 +1,46 @@
-## Core latex/pdflatex auxiliary files:
+# Created by https://www.gitignore.io
+
+### LaTeX ###
+*.acn
+*.acr
+*.alg
 *.aux
-*.lof
-*.log
-*.lot
-*.fls
-*.out
-*.toc
-
-## Intermediate documents:
-*.dvi
-*-converted-to.*
-# these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
-
-## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
 *.blg
-*-blx.aux
-*-blx.bib
-*.brf
-*.run.xml
-
-## Build tool auxiliary files:
+*.dvi
 *.fdb_latexmk
-<<<<<<< HEAD
-=======
-*.synctex
->>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
-*.synctex.gz
-*.synctex.gz(busy)
-*.pdfsync
-
-## Auxiliary and intermediate files from other packages:
-
-# algorithms
-*.alg
-*.loa
-
-<<<<<<< HEAD
-=======
-# achemso
-acs-*.bib
-
->>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
-# amsthm
-*.thm
-
-# beamer
-*.nav
-*.snm
-*.vrb
-
-#(e)ledmac/(e)ledpar
-*.end
-*.[1-9]
-*.[1-9][0-9]
-*.[1-9][0-9][0-9]
-*.[1-9]R
-*.[1-9][0-9]R
-*.[1-9][0-9][0-9]R
-*.eledsec[1-9]
-*.eledsec[1-9]R
-*.eledsec[1-9][0-9]
-*.eledsec[1-9][0-9]R
-*.eledsec[1-9][0-9][0-9]
-*.eledsec[1-9][0-9][0-9]R
-
-# glossaries
-*.acn
-*.acr
 *.glg
 *.glo
 *.gls
-
-<<<<<<< HEAD
-# hyperref
-*.brf
-
-=======
-# gnuplottex
-*-gnuplottex-*
-
-# hyperref
-*.brf
-
-# knitr
-*-concordance.tex
-*.tikz
-*-tikzDictionary
-
->>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
-# listings
-*.lol
-
-# makeidx
 *.idx
 *.ilg
 *.ind
 *.ist
-
-# minitoc
+*.lof
+*.log
+*.lot
 *.maf
 *.mtc
 *.mtc0
-
-# minted
-<<<<<<< HEAD
-=======
-_minted*
->>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
-*.pyg
-
-# morewrites
-*.mw
-
-# nomencl
+*.nav
 *.nlo
-
-# sagetex
-*.sagetex.sage
-*.sagetex.py
-*.sagetex.scmd
-
-# sympy
-*.sout
-*.sympy
-sympy-plots-for-*.tex/
-
-# todonotes
-*.tdo
-
-# xindy
+*.out
+*.pdfsync
+*.ps
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
 *.xdy
-
-<<<<<<< HEAD
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-=======
-# WinEdt
-*.bak
-*.sav
->>>>>>> c296c2f2e991259b1642b1a4dd2353cd2e88f16b
+*.tdo
+*.fff
+*.ttt
+*.txt
+*.idv
+*.tmp
+*.xref
+*.4tc
+*.4ct
+*.lg
