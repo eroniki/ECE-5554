@@ -1,9 +1,0 @@
-\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
-\doTocEntry\tocsection{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{\normalfont {\special {t4ht;8}ECE-5554 Computer Vision: Problem Set 0\special {t4ht;9}}}}{2}\relax 
-\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-2000}{QQ2-1-2}{Matlab Code}}{2}\relax 
-\doTocEntry\tocsection{}{\csname a:TocLink\endcsname{1}{x1-3000}{QQ2-1-3}{Answer Sheet}}{2}\relax 
-\doTocEntry\tocsubsection{}{\csname a:TocLink\endcsname{1}{x1-4000}{QQ2-1-4}{Short answer problems}}{2}\relax 
-\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-4021}{}{diceTrials.m}}{13}\relax 
-\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-4035}{}{PS0_1_3.m}}{13}\relax 
-\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-4070}{}{PS0Q1.m}}{15}\relax 
-\doTocEntry\tocsubsection{}{\csname a:TocLink\endcsname{1}{x1-5000}{QQ2-1-8}{Short Programming Question}}{15}\relax 
