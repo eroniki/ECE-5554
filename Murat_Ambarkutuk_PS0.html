@@ -1,0 +1,1625 @@
+Running
+head:
+PROBLEM
+SET
+0                                                                                       1
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>ECE-5554 Computer Vision: Problem Set 0</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="Murat_Ambarkutuk_PS0.tex"> 
+<meta name="date" content="2015-08-30 12:42:00"> 
+<link rel="stylesheet" type="text/css" href="Murat_Ambarkutuk_PS0.css"> 
+</head><body 
+>
+<div class="maketitle">
+
+<h2 class="titleHead">ECE-5554 Computer Vision: Problem Set 0</h2><br />
+<div class="author" >Murat Ambarkutuk<br />
+murata@vt.edu</div><br />
+Mechanical Engineering Department,<br />
+Virginia Polytechnic Institute and State University<br />
+August 30, 2015<br />
+<span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>
+                                                                                         
+
+                                                                                         
+<h3 class="sectionHead"><a 
+ id="x1-1000"></a><h2 class="titleHead">ECE-5554 Computer Vision: Problem Set 0</h2></h3>
+      </div>
+<!--l. 36--><p class="noindent" >
+<h3 class="likesectionHead"><a 
+ id="x1-2000"></a>Matlab Code</h3>
+<!--l. 38--><p class="noindent" >
+<h3 class="sectionHead"><a 
+ id="x1-3000"></a>Answer Sheet</h3>
+<!--l. 39--><p class="noindent" >
+<h4 class="subsectionHead"><a 
+ id="x1-4000"></a>Short answer problems</h4>
+<!--l. 40--><p class="noindent" >
+      <ol  class="enumerate1" >
+      <li 
+  class="enumerate" id="x1-4002x1">
+      Skipped.
+      </li>
+      <li 
+  class="enumerate" id="x1-4004x2">
+           <ol  class="enumerate2" >
+           <li 
+  class="enumerate" id="x1-4006x1">
+           Creates
+           a
+                                                                                         
+
+                                                                                         
+           row
+           vector
+           containing
+           random
+           permutations
+           of
+           numbers
+           between
+           1
+           and
+           1000.
+           </li>
+           <li 
+  class="enumerate" id="x1-4008x2">
+           Line
+           1:
+           Creates
+           a
+           matrix:
+           <center class="par-math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS00x.png" alt="    &#x230A;          &#x230B;
+
+    ||  1  2  3 ||
+    ||          ||
+a = ||  4  5  6 ||
+    &#x2308;          &#x2309;
+       7  8  9
+           " class="par-math-display" ></center>
+                                                                                         
+
+                                                                                         
+           <!--l. 51--><p class="nopar" >
+           Line
+           2
+           assigns
+           the
+           second
+           row
+           of
+           x
+           to
+           the
+           variable
+           b.
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS01x.png" alt="b = [4, 5,6]
+           " class="math-display" ></center>
+           </li>
+           <li 
+  class="enumerate" id="x1-4010x3">
+                                                                                         
+
+                                                                                         
+           Creates
+           a
+           matrix:
+           <center class="par-math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS02x.png" alt="    &#x230A;          &#x230B;
+    |  1  2  3 |
+    ||          ||
+a = ||  4  5  6 ||
+    |&#x2308;          |&#x2309;
+       7  8  9
+           " class="par-math-display" ></center>
+           <!--l. 59--><p class="nopar" >
+           Line
+           2
+           assigns
+           the
+           all
+           the
+           values
+           the
+           variable
+           b.
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS03x.png" alt="    &#x230A;          &#x230B;
+    |  1  2  3 |
+    ||          ||
+b = ||  4  5  6 ||
+    |          |
+    &#x2308;  7  8  9 &#x2309;
+           " class="math-display" ></center>
+           <!--l. 64--><p class="nopar" >
+           </li>
+           <li 
+  class="enumerate" id="x1-4012x4">
+           Line
+           1
+           creates
+           the
+           matrix
+           f
+           with
+           the
+           normally
+           distributed
+           random
+           values.
+           <!--l. 67--><p class="noindent" >Line
+           2
+           sets
+           another
+           variable
+           and
+                                                                                         
+
+                                                                                         
+           fills
+           it
+           with
+           the
+           elements
+           of
+           f
+           which
+           are
+           above
+           0.
+           </li>
+           <li 
+  class="enumerate" id="x1-4014x5">
+           Line
+           1
+           sets
+           a
+           row
+           vector
+           [1<span 
+class="lmsy-10x-x-120">&#x00D7;</span><span 
+class="rm-lmr-12">10</span>]
+           with
+           zeros
+           and
+           adds
+           0.5
+           to
+                                                                                         
+
+                                                                                         
+           each
+           element
+           of
+           it.
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS04x.png" alt="x = [0.5,0.5,0.5,0.5,0.5,0.5,0.5, 0.5,0.5,0.5]
+           " class="math-display" ></center>
+           Line
+           2
+           creates
+           another
+           row
+           vector
+           with
+           the
+           same
+           size
+           of
+           vector
+           x
+                                                                                         
+
+                                                                                         
+           [1<span 
+class="lmsy-10x-x-120">&#x00D7;</span><span 
+class="rm-lmr-12">10</span>],
+           and
+           multiplies
+           each
+           element
+           of
+           new
+           row
+           vector
+           with
+           0.5.
+           <!--l. 72--><p class="noindent" >
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS05x.png" alt="y = [0.5,0.5,0.5,0.5,0.5,0.5, 0.5,0.5,0.5,0.5]
+           " class="math-display" ></center>
+           Line
+           3
+           sums
+           vector
+           x
+                                                                                         
+
+                                                                                         
+           and
+           y
+           and
+           assigns
+           the
+           result
+           to
+           z.
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS06x.png" alt="z =  x + y
+           " class="math-display" ></center>
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS07x.png" alt="z = [1,1,1,1, 1,1,1,1,1,1]
+           " class="math-display" ></center>
+           </li>
+           <li 
+  class="enumerate" id="x1-4016x6">
+           Line
+           1
+           creates
+           a
+           row
+           vector
+           [1<span 
+class="lmsy-10x-x-120">&#x00D7;</span><span 
+class="rm-lmr-12">100</span>]
+           which
+           contains
+           the
+           sequence
+           starting
+           from
+           1
+           to
+           100
+           (inclusive).
+           <center class="math-display" >
+                                                                                         
+
+                                                                                         
+           <img 
+src="Murat_Ambarkutuk_PS08x.png" alt="a = [1,2,3,4 ...98,99,100 ]
+           " class="math-display" ></center>
+           Line
+           2
+           flips
+           the
+           vector
+           and
+           sets
+           vector
+           b
+           with
+           these
+           values.
+           <center class="math-display" >
+           <img 
+src="Murat_Ambarkutuk_PS09x.png" alt="a =  [100, 99,98,97 ...3,2,1]
+           " class="math-display" ></center></li></ol>
+                                                                                         
+
+                                                                                         
+      </li>
+      <li 
+  class="enumerate" id="x1-4018x3">The code is in PS0_1-3.m file.
+           <ol  class="enumerate2" >
+           <li 
+  class="enumerate" id="x1-4020x1">
+           <!--l. 86--><div class="lstinputlisting">
+<a 
+ id="x1-4021"></a>
+           <span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4022r1"></a><span 
+class="ec-lmr-6">1</span></span><span 
+class="ec-lmtt-12">function</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">result</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">diceTrials</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">n</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4023r2"></a><span 
+class="ec-lmr-6">2</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">if</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">n</span><span 
+class="ec-lmtt-12">&#x003E;0)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4024r3"></a><span 
+class="ec-lmr-6">3</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">result</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">uint8</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">rand</span><span 
+class="ec-lmtt-12">([1,</span><span 
+class="ec-lmtt-12">n</span><span 
+class="ec-lmtt-12">])</span><span 
+class="ec-lmtt-12">*5)</span><span 
+class="ec-lmtt-12">+1;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4025r4"></a><span 
+class="ec-lmr-6">4</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">else</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4026r5"></a><span 
+class="ec-lmr-6">5</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">result</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">You</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">may</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">wanna</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">not</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">to</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">do</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">that</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">operation</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">the</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">number</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">of</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">trials</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">must</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">be</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">greater</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">than</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">0</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4027r6"></a><span 
+class="ec-lmr-6">6</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">error</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">result</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4028r7"></a><span 
+class="ec-lmr-6">7</span></span><span 
+class="ec-lmtt-12">end</span>
+           
+           </div>
+           </li>
+           <li 
+  class="enumerate" id="x1-4030x2">
+           </li>
+           <li 
+  class="enumerate" id="x1-4032x3">
+           </li>
+           <li 
+  class="enumerate" id="x1-4034x4">
+           <!--l. 88--><div class="lstinputlisting">
+<a 
+ id="x1-4035"></a>
+           <span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4036r1"></a><span 
+class="ec-lmr-6">1</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">clear</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">workspace</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">and</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">command</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">window</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">close</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">figures</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">already</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">open</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4037r2"></a><span 
+class="ec-lmr-6">2</span></span><span 
+class="ec-lmtt-12">clear</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">close</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">clc</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4038r3"></a><span 
+class="ec-lmr-6">3</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS0</span><span 
+class="ec-lmtt-12">-1.3</span><span 
+class="ec-lmtt-12">a</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4039r4"></a><span 
+class="ec-lmr-6">4</span></span><span 
+class="ec-lmtt-12">diceResults</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">diceTrials</span><span 
+class="ec-lmtt-12">(99)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4040r5"></a><span 
+class="ec-lmr-6">5</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS0</span><span 
+class="ec-lmtt-12">-1.3</span><span 
+class="ec-lmtt-12">b</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4041r6"></a><span 
+class="ec-lmr-6">6</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">[1,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">2,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">3,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">5,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">6]&#8217;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4042r7"></a><span 
+class="ec-lmr-6">7</span></span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(1:6)</span><span 
+class="ec-lmtt-12">&#8217;;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4043r8"></a><span 
+class="ec-lmr-6">8</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">z</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">[1,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">3,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">5;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">2,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">6]</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4044r9"></a><span 
+class="ec-lmr-6">9</span></span><span 
+class="ec-lmtt-12">z</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">reshape</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">,[2,3])</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4045r10"></a><span 
+class="ec-lmr-6">10</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS0</span><span 
+class="ec-lmtt-12">-1.3</span><span 
+class="ec-lmtt-12">c</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4046r11"></a><span 
+class="ec-lmr-6">11</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">find</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">the</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">max</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">value</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">of</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">matrice</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">and</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">of</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">which</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">indice</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4047r12"></a><span 
+class="ec-lmr-6">12</span></span><span 
+class="ec-lmtt-12">[</span><span 
+class="ec-lmtt-12">x</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">I</span><span 
+class="ec-lmtt-12">]</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">max</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4048r13"></a><span 
+class="ec-lmr-6">13</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">convert</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">indice</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">to</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">subscripts</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">row</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">and</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">column</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">number</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4049r14"></a><span 
+class="ec-lmr-6">14</span></span><span 
+class="ec-lmtt-12">[</span><span 
+class="ec-lmtt-12">r</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">c</span><span 
+class="ec-lmtt-12">]</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">ind2sub</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">z</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">I</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4050r15"></a><span 
+class="ec-lmr-6">15</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS0</span><span 
+class="ec-lmtt-12">-1.3</span><span 
+class="ec-lmtt-12">d</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4051r16"></a><span 
+class="ec-lmr-6">16</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">create</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">vector</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">[1,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">8,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">8,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">2,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">1,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">3,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">9,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">2]</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4052r17"></a><span 
+class="ec-lmr-6">17</span></span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">[1,8,8,2,1,3,9,2];</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4053r18"></a><span 
+class="ec-lmr-6">18</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">alter</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">the</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">value</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">of</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">vector</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">x</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4054r19"></a><span 
+class="ec-lmr-6">19</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">the</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">problem</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">can</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">be</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">solved</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">by</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">two</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">different</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">approach</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4055r20"></a><span 
+class="ec-lmr-6">20</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">1</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">-</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">x</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">numel</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">==1)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4056r21"></a><span 
+class="ec-lmr-6">21</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">2</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">-</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">x</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">sum</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">==1)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4057r22"></a><span 
+class="ec-lmr-6">22</span></span><span 
+class="ec-lmtt-12">x</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">numel</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">==1)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span>
+           
+                                                                                         
+
+                                                                                         
+           </div>
+           </li></ol>
+      </li>
+      <li 
+  class="enumerate" id="x1-4059x4">The code is in PS0Q1.m file.
+      <!--l. 93--><p class="noindent" >
+           <ol  class="enumerate2" >
+           <li 
+  class="enumerate" id="x1-4061x1">
+           Randomly
+           generated
+           intensity
+           and
+           the
+           result
+           of
+           sort
+           process.
+           <img 
+src="PS0-4.png" alt="PIC"  
+>
+           </li>
+           <li 
+  class="enumerate" id="x1-4063x2">
+           </li>
+           <li 
+  class="enumerate" id="x1-4065x3">
+                                                                                         
+
+                                                                                         
+           </li>
+           <li 
+  class="enumerate" id="x1-4067x4">
+           </li>
+           <li 
+  class="enumerate" id="x1-4069x5">
+           <!--l. 105--><div class="lstinputlisting">
+<a 
+ id="x1-4070"></a>
+           <span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4071r1"></a><span 
+class="ec-lmr-6">1</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">clear</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">workspace</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">and</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">command</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">window</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">close</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">figures</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">already</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">open</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4072r2"></a><span 
+class="ec-lmr-6">2</span></span><span 
+class="ec-lmtt-12">clear</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">close</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">all</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">clc</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4073r3"></a><span 
+class="ec-lmr-6">3</span></span><span 
+class="ec-lmtt-12">figure</span><span 
+class="ec-lmtt-12">(1)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4074r4"></a><span 
+class="ec-lmr-6">4</span></span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">uint8</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">randi</span><span 
+class="ec-lmtt-12">(255,[100,100])</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4075r5"></a><span 
+class="ec-lmr-6">5</span></span><span 
+class="ec-lmtt-12">subplot</span><span 
+class="ec-lmtt-12">(2,2,1)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">imshow</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4076r6"></a><span 
+class="ec-lmr-6">6</span></span><span 
+class="ec-lmtt-12">title</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">Random</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Generated</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Intensity</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Profiles</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4077r7"></a><span 
+class="ec-lmr-6">7</span></span><span 
+class="ec-lmtt-12">save</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">inputAPS0Q1</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">mat</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4078r8"></a><span 
+class="ec-lmr-6">8</span></span><span 
+class="ec-lmtt-12">load</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">inputAPS0Q1</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">mat</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4079r9"></a><span 
+class="ec-lmr-6">9</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS</span><span 
+class="ec-lmtt-12">-0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4</span><span 
+class="ec-lmtt-12">a</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4080r10"></a><span 
+class="ec-lmr-6">10</span></span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">sort</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">reshape</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">,[</span><span 
+class="ec-lmtt-12">numel</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">1])</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">descend</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4081r11"></a><span 
+class="ec-lmr-6">11</span></span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">reshape</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4082r12"></a><span 
+class="ec-lmr-6">12</span></span><span 
+class="ec-lmtt-12">subplot</span><span 
+class="ec-lmtt-12">(2,2,2)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">imshow</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4083r13"></a><span 
+class="ec-lmr-6">13</span></span><span 
+class="ec-lmtt-12">title</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">Sorted</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Intensity</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Values</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4084r14"></a><span 
+class="ec-lmr-6">14</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS</span><span 
+class="ec-lmtt-12">-0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4</span><span 
+class="ec-lmtt-12">b</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4085r15"></a><span 
+class="ec-lmr-6">15</span></span><span 
+class="ec-lmtt-12">bins</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">20;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4086r16"></a><span 
+class="ec-lmr-6">16</span></span><span 
+class="ec-lmtt-12">maxA</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">max</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(:)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4087r17"></a><span 
+class="ec-lmr-6">17</span></span><span 
+class="ec-lmtt-12">minA</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">min</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(:)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4088r18"></a><span 
+class="ec-lmr-6">18</span></span><span 
+class="ec-lmtt-12">range</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">maxA</span><span 
+class="ec-lmtt-12">-</span><span 
+class="ec-lmtt-12">minA</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">/</span><span 
+class="ec-lmtt-12">bins</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4089r19"></a><span 
+class="ec-lmr-6">19</span></span><span 
+class="ec-lmtt-12">hist</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">zeros</span><span 
+class="ec-lmtt-12">(1,</span><span 
+class="ec-lmtt-12">bins</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4090r20"></a><span 
+class="ec-lmr-6">20</span></span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">zeros</span><span 
+class="ec-lmtt-12">(1,</span><span 
+class="ec-lmtt-12">bins</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4091r21"></a><span 
+class="ec-lmr-6">21</span></span><span 
+class="ec-lmtt-12">for</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">=1:20</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4092r22"></a><span 
+class="ec-lmr-6">22</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">hist</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">numel</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x003E;=(</span><span 
+class="ec-lmtt-12">minA</span><span 
+class="ec-lmtt-12">+(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">-1)</span><span 
+class="ec-lmtt-12">*</span><span 
+class="ec-lmtt-12">range</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&amp;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x003C;(</span><span 
+class="ec-lmtt-12">minA</span><span 
+class="ec-lmtt-12">+(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">*</span><span 
+class="ec-lmtt-12">range</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4093r23"></a><span 
+class="ec-lmr-6">23</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">minA</span><span 
+class="ec-lmtt-12">+(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">-1)</span><span 
+class="ec-lmtt-12">*</span><span 
+class="ec-lmtt-12">range</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4094r24"></a><span 
+class="ec-lmr-6">24</span></span><span 
+class="ec-lmtt-12">end</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4095r25"></a><span 
+class="ec-lmr-6">25</span></span><span 
+class="ec-lmtt-12">subplot</span><span 
+class="ec-lmtt-12">(2,2,3)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">bar</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">y</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">hist</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">0.8,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">r</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4096r26"></a><span 
+class="ec-lmr-6">26</span></span><span 
+class="ec-lmtt-12">axis</span><span 
+class="ec-lmtt-12">([0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">255</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">min</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">hist</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">max</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">hist</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">*1.05])</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4097r27"></a><span 
+class="ec-lmr-6">27</span></span><span 
+class="ec-lmtt-12">grid</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">on</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4098r28"></a><span 
+class="ec-lmr-6">28</span></span><span 
+class="ec-lmtt-12">title</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">Intensity</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Histogram</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">of</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">(20</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">windows</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4099r29"></a><span 
+class="ec-lmr-6">29</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS</span><span 
+class="ec-lmtt-12">-0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4</span><span 
+class="ec-lmtt-12">c</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4100r30"></a><span 
+class="ec-lmr-6">30</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">X</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">,1)</span><span 
+class="ec-lmtt-12">/2:</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">,1)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">0:</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">,2)</span><span 
+class="ec-lmtt-12">/2)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4101r31"></a><span 
+class="ec-lmr-6">31</span></span><span 
+class="ec-lmtt-12">X</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,1)</span><span 
+class="ec-lmtt-12">/2+1:</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,1)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">1:</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,2)</span><span 
+class="ec-lmtt-12">/2)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4102r32"></a><span 
+class="ec-lmr-6">32</span></span><span 
+class="ec-lmtt-12">save</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">outputXPS0Q1</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">mat</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">X</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4103r33"></a><span 
+class="ec-lmr-6">33</span></span><span 
+class="ec-lmtt-12">subplot</span><span 
+class="ec-lmtt-12">(2,2,4)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">imagesc</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">X</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4104r34"></a><span 
+class="ec-lmr-6">34</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS</span><span 
+class="ec-lmtt-12">-0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4</span><span 
+class="ec-lmtt-12">d</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4105r35"></a><span 
+class="ec-lmr-6">35</span></span><span 
+class="ec-lmtt-12">Y</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">-</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">mean</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(:)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4106r36"></a><span 
+class="ec-lmr-6">36</span></span><span 
+class="ec-lmtt-12">save</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">outputYPS0Q1</span><span 
+class="ec-lmtt-12">.</span><span 
+class="ec-lmtt-12">mat</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">Y</span><span 
+class="ec-lmtt-12">&#8217;</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4107r37"></a><span 
+class="ec-lmr-6">37</span></span><span 
+class="ec-lmtt-12">figure</span><span 
+class="ec-lmtt-12">(2)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4108r38"></a><span 
+class="ec-lmr-6">38</span></span><span 
+class="ec-lmtt-12">imagesc</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">Y</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4109r39"></a><span 
+class="ec-lmr-6">39</span></span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">%</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">PS</span><span 
+class="ec-lmtt-12">-0</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">4</span><span 
+class="ec-lmtt-12">e</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4110r40"></a><span 
+class="ec-lmr-6">40</span></span><span 
+class="ec-lmtt-12">Z</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">uint8</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">zeros</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,1)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A_sorted</span><span 
+class="ec-lmtt-12">,2)</span><span 
+class="ec-lmtt-12">,3)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4111r41"></a><span 
+class="ec-lmr-6">41</span></span><span 
+class="ec-lmtt-12">ind</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">&#x003E;</span><span 
+class="ec-lmtt-12">mean</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">(:)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4112r42"></a><span 
+class="ec-lmr-6">42</span></span><span 
+class="ec-lmtt-12">[</span><span 
+class="ec-lmtt-12">u</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">]</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">ind2sub</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">size</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">A</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">ind</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4113r43"></a><span 
+class="ec-lmr-6">43</span></span><span 
+class="ec-lmtt-12">for</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">=1:</span><span 
+class="ec-lmtt-12">numel</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">ind</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4114r44"></a><span 
+class="ec-lmr-6">44</span></span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">Z</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">u</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">,</span><span 
+class="ec-lmtt-12">v</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">i</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">,:)</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">=</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">[255,0,0];</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4115r45"></a><span 
+class="ec-lmr-6">45</span></span><span 
+class="ec-lmtt-12">end</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4116r46"></a><span 
+class="ec-lmr-6">46</span></span><span 
+class="ec-lmtt-12">figure</span><span 
+class="ec-lmtt-12">(4)</span><span 
+class="ec-lmtt-12">;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><br /><span class="label"><a 
+ id="x1-4117r47"></a><span 
+class="ec-lmr-6">47</span></span><span 
+class="ec-lmtt-12">imshow</span><span 
+class="ec-lmtt-12">(</span><span 
+class="ec-lmtt-12">Z</span><span 
+class="ec-lmtt-12">)</span><span 
+class="ec-lmtt-12">;</span>
+           
+           </div>
+           </li></ol>
+      </li></ol>
+<!--l. 110--><p class="noindent" >
+<h4 class="subsectionHead"><a 
+ id="x1-5000"></a>Short Programming Question</h4>
+<!--l. 111--><p class="noindent" >
+      <ol  class="enumerate1" >
+      <li 
+  class="enumerate" id="x1-5002x1">
+      </li>
+                                                                                         
+
+                                                                                         
+      <li 
+  class="enumerate" id="x1-5004x2">
+      </li>
+      <li 
+  class="enumerate" id="x1-5006x3">
+      </li>
+      <li 
+  class="enumerate" id="x1-5008x4">
+      </li></ol>
+                                                                                         
+
+                                                                                         
+ 
+</body></html> 
+
+                                                                                         
+
+
