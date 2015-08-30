@@ -18,7 +18,7 @@
 
 \lstset{language=Matlab,%
     %basicstyle=\color{red},
-    breaklines=true,%
+    breaklines=false,%
     morekeywords={matlab2tikz},
     keywordstyle=\color{blue},%
     morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
@@ -50,7 +50,7 @@
 					4 & 5 & 6 \\
 					7 & 8 & 9 \end{array} \right]\] 
 					Line 2 assigns the second row of x to the variable b.
-					$$ b = [4,5,6]$$
+					$$b = [4,5,6]$$
 
 				\item Creates a matrix: \\
 					\[ a= \left[ \begin{array}{ccc}
@@ -67,12 +67,14 @@
 					Line 2 sets another variable and fills it with the elements of f which are above 0.
 
 				\item Line 1 sets a row vector  [1$\times10$] with zeros and adds 0.5 to each element of it.
-					$$x= [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]$$
+					$$x = [0, 0, 0, 0, 0 ,0 , 0, 0, 0, 0] + 0.5$$
+					$$x= [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]$$
 					Line 2 creates another row vector with the same size of vector x [1$\times10$], and multiplies each element of new row vector with 0.5. \\
-					$$y= [0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]$$
+					$$y = [1, 1, 1, 1, 1 , 1, 1, 1, 1, 1] \times 0.5$$
+					$$y= [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]$$
 					Line 3 sums vector x and y and assigns the result to z.
 					$$z = x + y$$
-					$$z= [1,1,1,1,1,1,1,1,1,1]$$
+					$$z= [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]$$
 					
 				\item Line 1 creates a row vector [1$\times100$] which contains the sequence starting from 1 to 100 (inclusive).
 					$$a= [1,2,3,4 \dots 98,99,100]$$
@@ -82,26 +84,30 @@
 		
 		\item The code is in PS0\_1-3.m file.
 			\begin{enumerate}
-			
 				\item \lstinputlisting{diceTrials.m}
 				
 				\item \item \item \lstinputlisting{PS0_1_3.m}
 			\end{enumerate}
 		
-		\item The code is in PS0Q1.m file.
+		\item The code is in PS0Q1.m file. \\
+			The source matrix created and used as input file is depicted below. \\
+			\includegraphics[width=\linewidth]{plots/1-A-4/a.png}
 		
 			\begin{enumerate}
 				\item Randomly generated intensity and the result of sort process.
-					\includegraphics[width=\linewidth]{PS0-4.png}
+					\includegraphics[width=\linewidth]{plots/1-A-4/a_sorted.png}
 			
-				\item %###Insert plot###.
+				\item Intensity histogram of A is given below.
+					\includegraphics[width=\linewidth]{plots/1-A-4/b.png}
 				
-				\item %###Insert plot###. Please find the attached outputXPS0Q1.mat file.
-				
-				\item %###Insert plot###. Please find the attached outputYPS0Q1.mat file.
-				
-				\item %###Insert plot###. Please find the attached outputYPS0Q1.mat file.
-				
+				\item The bottom left quadrant of A is depicted below. Please also find the attached outputXPS0Q1.mat in the zipped folder.
+					\includegraphics[width=\linewidth]{plots/1-A-4/c.png}
+					
+				\item Please find the attached outputYPS0Q1.mat file.
+					\includegraphics[width=\linewidth]{plots/1-A-4/d.png}
+					
+				\item Please find the attached outputYPS0Q1.mat file.
+					\includegraphics[width=\linewidth]{plots/1-A-4/e.png}
 				\lstinputlisting{PS0Q1.m}
 			\end{enumerate}
 		
@@ -109,9 +115,14 @@
 
 \subsection{Short Programming Question}
 	\begin{enumerate}
-		\item
-		\item
-		\item
-		\item
+		\item \includegraphics[width=\textwidth]{plots/2/inputPS0Q2.jpg}
+		\item \includegraphics[width=\textwidth]{plots/2/swapImgPS0Q2.png}
+		\item \includegraphics[width=\textwidth]{plots/2/grayImgPS0Q2.png}
+			\begin{enumerate}	
+				\item \includegraphics[width=\textwidth]{plots/2/negativeImgPS0Q2.png}
+				\item \includegraphics[width=\textwidth]{plots/2/mirrorImgPS0Q2.png}
+				\item \includegraphics[width=\textwidth]{plots/2/addNoiseImgPS0Q2.png}
+		\end{enumerate}
+		\lstinputlisting{PS0Q1.m}
 	\end{enumerate}
 \end{document}
