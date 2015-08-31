@@ -4,10 +4,24 @@
 \vfill
 \affiliation{Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University}
 \vfill
-\note{\today \\ \LaTeX}
+\note{\today}
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage[inline]{enumitem}   
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
 
@@ -38,7 +52,7 @@
 \section{Answer Sheet}
 \subsection{Short answer problems}
 	\begin{enumerate}
-		\item Skipped.
+		\item Completed.
 		
 		\item 
 			\begin{enumerate}
@@ -58,10 +72,7 @@
 					4 & 5 & 6 \\
 					7 & 8 & 9 \end{array} \right]\] 
 					Line 2 assigns the all the values the variable b in column vector form.
-					\[ b= \left[ \begin{array}{c}
-					1 \\ 4 \\ 7 \\
-					2 \\ 5 \\ 8 \\
-					3 \\ 6 \\ 9 \end{array} \right]\] 
+					$$b= [\begin{array}{c c c c c c c c c}1, & 4, & 7, & 2, & 5, & 8, & 3, & 6, & 9 \end{array}] '$$
 
 				\item Line 1 creates the column vector $f$ [1$\times5$] with the normally distributed random values. \\
 					Line 2 sets another variable and fills it with the elements of f which are above 0.
@@ -84,17 +95,18 @@
 		
 		\item The code is in PS0\_1-3.m file.
 			\begin{enumerate}
-				\item \lstinputlisting{diceTrials.m}
-				
-				\item \item \item \lstinputlisting{PS0_1_3.m}
+				\item The function returning n trials of 6-sided dice roll is given below. (Please find the diceTrials.m file .zip file.)
+				The contents of diceTrials.m: \\
+				\lstinputlisting{diceTrials.m}
+				\item \inlineitem \inlineitem \inlineitem  \lstinputlisting{PS0_1_3.m}
 			\end{enumerate}
-		
+			
 		\item The code is in PS0Q1.m file. \\
 			The source matrix created and used as input file is depicted below. \\
 			\includegraphics[width=\linewidth]{plots/1-A-4/a.png}
 		
 			\begin{enumerate}
-				\item Randomly generated intensity and the result of sort process.
+				\item Result of sort process.
 					\includegraphics[width=\linewidth]{plots/1-A-4/a_sorted.png}
 			
 				\item Intensity histogram of A is given below.
@@ -106,23 +118,29 @@
 				\item Please find the attached outputYPS0Q1.mat file.
 					\includegraphics[width=\linewidth]{plots/1-A-4/d.png}
 					
-				\item Please find the attached outputYPS0Q1.mat file.
+				\item Since the first matrix $A$ is randomly created in $uint8$ data class $[0-255]$, pixels appear the same when the frame is displayed with imagesc() and imshow(). Hence, they both give the same output. Please find the attached outputYPS0Q1.mat file.
 					\includegraphics[width=\linewidth]{plots/1-A-4/e.png}
+				The contents of PS0Q1.m: \\
 				\lstinputlisting{PS0Q1.m}
 			\end{enumerate}
 		
 	\end{enumerate}
 
 \subsection{Short Programming Question}
+	Input image: \includegraphics[width=\textwidth]{plots/2/inputPS0Q2.jpg}
+	Results: \includegraphics[width=\textwidth]{plots/2/subplot.png}
 	\begin{enumerate}
-		\item \includegraphics[width=\textwidth]{plots/2/inputPS0Q2.jpg}
 		\item \includegraphics[width=\textwidth]{plots/2/swapImgPS0Q2.png}
 		\item \includegraphics[width=\textwidth]{plots/2/grayImgPS0Q2.png}
+		\item
 			\begin{enumerate}	
 				\item \includegraphics[width=\textwidth]{plots/2/negativeImgPS0Q2.png}
 				\item \includegraphics[width=\textwidth]{plots/2/mirrorImgPS0Q2.png}
-				\item \includegraphics[width=\textwidth]{plots/2/addNoiseImgPS0Q2.png}
-		\end{enumerate}
-		\lstinputlisting{PS0Q1.m}
+				\item \includegraphics[width=\textwidth]{plots/2/avgImgPS0Q2.png}
+				\item Because all the operations was completed with $uint8$ data class, any pixel going above 255 or below 0 automatically thresholded. \\
+					\includegraphics[width=\textwidth]{plots/2/addNoiseImgPS0Q2.png}
+			\end{enumerate}
+		The contents of PS0Q2.m: \\
+		\lstinputlisting{PS0Q2.m}
 	\end{enumerate}
 \end{document}
