@@ -1,2 +1,2 @@
-# PS0
-This repo is created for Problem Set 0 of  ECE-5554 (Computer Vision) class in Virginia Tech. 
+# ECE-5554 Problem Sets
+Fundamental source for Problem Sets assigned for ECE-5554 (Computer Vision) class in Virginia Tech. 
