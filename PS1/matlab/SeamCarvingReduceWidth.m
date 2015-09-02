@@ -14,22 +14,22 @@ figure(2);
 imshow(energyMap);
 
 % Calculate cumulative energy map
-cumulativeEnergyMap = cumulative_energy_map(energyMap, 'V');
+cumulativeEnergyMapV = cumulative_energy_map(energyMap, 'V');
 figure(3);
-imagesc(cumulativeEnergyMap);
+imagesc(cumulativeEnergyMapV);
 hold on;
-minCumulativeEnergyV = min(cumulativeEnergyMap(h,:))
+minCumulativeEnergyV = min(cumulativeEnergyMapV(h,:))
 
-optimalVerticalSeam = find_optimal_vertical_seam(cumulativeEnergyMap);
+optimalVerticalSeam = find_optimal_vertical_seam(cumulativeEnergyMapV);
+
+% horizontal stuff
+
+cumulativeEnergyMapH = cumulative_energy_map(energyMap, 'h');
+minCumulativeEnergyH = min(cumulativeEnergyMapH(:,w))
+optimalHorizontalSeam = find_optimal_horizontal_seam(cumulativeEnergyMapH);
 
 % figure(4);
-plot(optimalVerticalSeam, size(frame,2):-1:1, 'w*');
-% % horizontal stuff
-% 
-% cumulativeEnergyMapH = cumulative_energy_map(energyMap, 'h');
-% figure(4);
-% imagesc(cumulativeEnergyMapH);
-% 
-% minCumulativeEnergyH = min(cumulativeEnergyMap2(H,:))
-% 
-% optimalHorizontalSeam = find_optimal_horizontal_seam(cumulativeEnergyMap);
+plot(optimalVerticalSeam, w:-1:1, 'w*');
+plot(h:-1:1, optimalHorizontalSeam, 'k+');
+figure(4);
+imagesc(cumulativeEnergyMapH);
