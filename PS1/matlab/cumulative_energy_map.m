@@ -37,5 +37,7 @@ function [cumulativeEnergyMap] = cumulative_energy_map(energyMap, direction)
                 cumulativeEnergyMap(row,col) = energyMap(row,col)+min(cumulativeEnergyMap(index, col-1));
             end
         end
+    else 
+        error('bad argumentation / wrong direction keyword');
     end
 end
