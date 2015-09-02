@@ -1,5 +1,5 @@
 % TODO Add comments for the code and the function
-function [cumulativeEnergyMap] = cumulative_enegy_map(energyMap, direction)
+function [cumulativeEnergyMap] = cumulative_energy_map(energyMap, direction)
     if(nargin~=2)
         errorMessage = 'Missing argument';
         error(errorMessage);

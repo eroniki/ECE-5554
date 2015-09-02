@@ -17,11 +17,13 @@ imshow(energyMap);
 cumulativeEnergyMap = cumulative_energy_map(energyMap, 'V');
 figure(3);
 imagesc(cumulativeEnergyMap);
-
+hold on;
 minCumulativeEnergyV = min(cumulativeEnergyMap(h,:))
 
 optimalVerticalSeam = find_optimal_vertical_seam(cumulativeEnergyMap);
 
+% figure(4);
+plot(optimalVerticalSeam, size(frame,2):-1:1, 'w*');
 % % horizontal stuff
 % 
 % cumulativeEnergyMapH = cumulative_energy_map(energyMap, 'h');
