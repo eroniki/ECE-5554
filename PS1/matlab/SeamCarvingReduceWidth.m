@@ -17,6 +17,6 @@ newEnergyMap = energyMap;
 for k=1:100
 	[newImage, newEnergyMap] = reduceWidth(newImage,newEnergyMap);
 end
+
 imwrite(newImage, 'outputReduceWidthPrague.png');
-figure(99);
-imshow(newImage);
+figure(99), imshow(newImage);
