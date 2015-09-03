@@ -15,7 +15,8 @@ newImage = frame;
 newEnergyMap = energyMap;
 
 for k=1:100
-    [newImage, newEnergyMap] = reduceWidth(newImage,newEnergyMap);
+%     [newImage, newEnergyMap] = reduceWidth(newImage,newEnergyMap);
+    [newImage, newEnergyMap] = reduceHeight(newImage,newEnergyMap);
 end
 
 figure(99);

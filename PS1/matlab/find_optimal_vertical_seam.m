@@ -9,6 +9,6 @@ function verticalSeam = find_optimal_vertical_seam(cumulativeEnergyMap)
         higher = min(verticalSeam(row+1)+1,w);
         index = lower:higher;
         [~, verticalSeam(row)] = min(cumulativeEnergyMap(row,index));
-        verticalSeam(row) = verticalSeam(row) + lower;
+        verticalSeam(row) = verticalSeam(row) + lower - 1;
     end    
 end
