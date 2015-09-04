@@ -13,5 +13,5 @@ function displaySeam(image, seam, direction)
     elseif('h' == lower(direction(1)))
         plot(1:w, seam, 'w*');
     end    
-    hold off;
+%     hold off;
 end
