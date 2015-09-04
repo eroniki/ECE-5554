@@ -44,7 +44,10 @@
 \label{Short Answer Problems}
 \section{Short Answer Problems}
 \begin{enumerate}
-	\item
+	%%% Review
+	\item If numerous different linear filters are needed to be used, associative
+	property can be employed for merging all the filters into one and then
+	filtering can be achieved with the resulted filter.
 	\item 
 	$$\vec{I} = \begin{bmatrix} 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1\end{bmatrix}
 	, \vec{f}= \begin{bmatrix} 1 & 1 & 1\end{bmatrix}$$
@@ -57,20 +60,34 @@
 	\item
 	\item
 	\item
-	\item 
+	\item A tentative flow of solution can be used for many generic vision
+	problems:
 	\begin{enumerate}
+		\item Problem Definition
+		\begin{enumerate}
+			\item Problem definition
+			\item Equipment decision based on the problem
+			\item 
+		\end{enumerate}
 		\item Pre-processing (Preparation)
 		\begin{enumerate}
-	    	\item 
+			\item Data Reduction (Downsampling, color space change (RGB, $\to$,
+			Grayscale, defining region of interest \ldots)
+			\item Noise reduction
+			\item Feature enhancing 
 		\end{enumerate}
 		\item Processing (Analysis)
 		\begin{enumerate}
-	    	\item 
+	    	\item Keypoint detection (feature detection)
+	    	\item Keypoint clustering (to detect whether or not the keypoint is really
+	    	a feature)
+	    	\item Analysis of features
+	    	\item Reporting
 		\end{enumerate}
-		\item Post-processing (Interpretation)
-		\begin{enumerate}
-	    	\item 
-		\end{enumerate}
+%		\item Post-processing (Interpretation)
+%		\begin{enumerate}
+%	    	\item 
+%		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
 \pagebreak
@@ -79,20 +96,82 @@
 \section{Programming Problem (Seam Carving)}
 \begin{enumerate}
 	\item 
+	% Write a script called SeamCarvingReduceWidth.m(py) which does the following by using
+	% the functions defined above:
+	% (a) Loads a color input image called inputSeamCarvingPrague.jpg. Download the
+	% image from here (http://filebox.ece.vt.edu/~F15ECE5554ECE4984/resources/images/inputSeamCarvingPrague.
+	% jpg)
+	% 2(b) Reduces the width of the image by 100 pixels using the above functions.
+	% (c) Saves the resulting image as outputReduceWidthPrague.png. Submit it.
+	% Display this output in your answer sheet. Submit the script.
+	% (d) Repeat the steps for an input image called inputSeamCarvingMall.jpg.
+	% Download the image from here
+	
+	% (http://filebox.ece.vt.edu/~F15ECE5554ECE4984/resources/images/inputSeamCarvingMall.
+jpg). Save the output as outputReduceWidthMall.png. Display the output in your answer sheet.
 	\begin{enumerate}
 		% subplot would be good 
-		\item
-		\item \\
+		\item Prague (Width Resizing) \\
+		%% add title and size \ldots
 		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
-		\item
-		\item
-		\item 
+		\item Mall (Width Resizing)\\
+		%% add titlle and size \ldots, add subplots, change picture with the correct
+		% one
+		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
 	\end{enumerate}
 	\item
+	% Repeat the above steps for both the input images, but reduce the height by 100 pixels.
+	% Call the script SeamCarvingReduceHeight.m(py), and save the output images as
+	% outputReduceHeightPrague.png and outputReduceHeightMall.png respectively.
+	% Display both the outputs in your answer sheet. Submit the script which loads the image inputSeamCarvingPrague.jpg
+	\begin{enumerate}
+		% subplot would be good 
+		\item Prague (Height Resizing)\\
+		%% add title and size \ldots
+		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
+		\item Mall (Height Resizing)\\
+		%% add titlle and size \ldots, add subplots, change picture with the correct
+		% one
+		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
+	\end{enumerate}
 	\item
-	\item
-	\item
+	% 3- Display in your answer sheet: (a) the energy function output for the
+	% provided image inputSeamCarvingPrague.jpg, and (b) the two corresponding cumulative minimum
+	% energy maps for the seams in each direction (use the Matlab’s imagesc or Python’s matplotlib.pyplot.imshow).
+	% Explain why these outputs look the way they do given the original image’s
+	% content.
+	\begin{enumerate}
+		\item Energy function output (Prague)
+		\item The two corresponding cumulative energy maps for each direction \\
+		Explanation for differences according to the context:
+	\end{enumerate}
 	\item 
+	% 4- For the same image inputSeamCarvingPrague.jpg, display the original image
+	% together with (a) the first selected horizontal seam and (b) the first selected
+	% vertical seam in your answer sheet. Explain why these are the optimal seams for this image.
+	\item
+	% 5- Make some change to the way the energy function is computed (i.e., filter
+	% used, its param- eters, or incorporating some other prior knowledge). Display the result and
+	% explain the impact on the results for some example in your answer sheet. You need not submit this code.
+	\item 
+	% 6- Now, for the real results! Use your system with different kinds of images
+	% and seam combi- nations, and see what kind of interesting results it can produce. The goal is
+	% to form some perceptually pleasing outputs where the resizing better preserves content than a blind resizing would, as well as
+	% some examples where the output looks unrealistic or has artifacts.
+	% Include results for at least three images of your own choosing. Include an
+	% example or two of a "bad" outcome. Be creative in the images you choose, and in the amount of combined vertical and horizontal
+	% carvings you apply. Try to predict types of images where you might see
+	% something interesting happen.
+	% It’s ok to fiddle with the parameters (seam sequence, number of seams, etc) to
+	% look for interesting and explainable outcomes.
+	% For each result, include the following things, clearly labeled:
+	% (a) the original input image.
+	% (b) your system’s resized image,
+	% (c) the result one would get if instead a simple resampling were used (via
+	% Matlab’s imresize or Python’s scipy.misc.imresize)
+	% (d) the input and output image dimensions,
+	% (e) the sequence of removals that were used
+	% (f) a qualitative explanation of what we’re seeing in the output.
 \end{enumerate}
 \pagebreak
 
