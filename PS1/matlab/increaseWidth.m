@@ -5,8 +5,8 @@ function [newImage, newEnergyMap] = increaseWidth(image, energyMap)
         error(errorMessage);
     end
     [h, w, c] = size(image);
-    newImage = zeros(h, w-1,c, 'uint8');
-    newEnergyMap = zeros(h, w-1);
+    newImage = zeros(h, w+1,c, 'uint8');
+    newEnergyMap = zeros(h, w+1);
     % Calculate vertical cumulative energy map 
     cumulativeEnergyMap = cumulative_energy_map(energyMap, 'V');
     % Find the optimal vertical seam
@@ -24,15 +24,17 @@ function [newImage, newEnergyMap] = increaseWidth(image, energyMap)
 %	newImage = reshape(newImage, h, c-1, 3);
 %%  rookie solution
     for row=1:h
-        roiR = zeros(h,w+1,1);
-        roiG = zeros(h,w+1,1);
-        roiB = zeros(h,w+1,1);
-        roiR(optimalVerticalSeam(row)) = [];
-        roiG(optimalVerticalSeam(row)) = [];
-        roiB(optimalVerticalSeam(row)) = [];
-        newImage(row,:,1) = roiR;
-        newImage(row,:,2) = roiG;
-        newImage(row,:,3) = roiB;
+        lower = max(optimalVerticalSeam(row)-1,1);
+        higher = min(optimalVerticalSeam(row)+1, w);
+        roiR = image(row,:,1);
+        roiG = image(row,:,2);
+        roiB = image(row,:,3);
+        roiR1 = [roiR(1:optimalVerticalSeam(row)), mean(roiR(lower):roiR(higher)), roiR(optimalVerticalSeam(row)+1:end)];
+        roiG1 = [roiG(1:optimalVerticalSeam(row)), mean(roiG(lower):roiG(higher)), roiG(optimalVerticalSeam(row)+1:end)];
+        roiB1 = [roiB(1:optimalVerticalSeam(row)), mean(roiB(lower):roiB(higher)), roiB(optimalVerticalSeam(row)+1:end)];
+        newImage(row,:,1) = roiR1;
+        newImage(row,:,2) = roiG1;
+        newImage(row,:,3) = roiB1;
     end
     % re-create energy map
     newEnergyMap = energy_image(newImage);
