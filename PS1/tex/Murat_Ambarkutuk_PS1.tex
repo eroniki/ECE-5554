@@ -5,8 +5,8 @@
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
 \usepackage{amsfonts}
 \usepackage{mathtools}
-
-%\newcommand\mat[1]{\mathcal{\underline{#1}}}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -31,7 +31,7 @@
 }
 \label{Cover}
 	\begin{center}
-	\large{ECE-5554 Computer Vision: Problem Set 1}
+	\large{ECE-5554 Computer Vision: Problem Set 1} 
 	\vfill
 	Murat Ambarkutuk \\ murata@vt.edu
 	\vfill
@@ -46,18 +46,23 @@
 \begin{enumerate}
 	% 1- Give an example of how one can exploit the associative property of
 	% convolution to more efficiently filter an image.
-	\item The computational complexity of convolution operation for any arbitrary
-	kernel $\mat{F_0}_{[m\times n]}$ and image $\mat{I_0}_{[M\times N]}$:
-	$$\matcal{O}(MNmn)$$
-	Hence, applying a handful of filters will multiply
+	\item The computational complexity of convolution for any arbitrary
+	kernel ${F_0}_{[m\times n]}$ and image ${I_0}_{[M\times N]}$:
+	$$\mathcal{O}(MNmn)$$
+	Hence, applying various filters will drastically increase
 	the computational cost of filtering process.\\
-	Say, $\mat{F_0}_{[m\times n]} \ast \{\mat{F_1}_{[m\times n]} \ast
-	\mat{I_0}_{[M\times N]}\}$ will be computed with the complexity of $$2 \times
-	\matcal{O}(MNmn)$$
-	On the other hand, convolving the filters first, then applying the
-	acquired filter to image will cost: $$\matcal{O}(mnmn) + \matcal{O}(MNmn)$$
-	Furthermore, considering that in any filtering process the size of filter
-	kernell will be smaller than the image size, $$\matcal{O}(mnmn) + \matcal{O}(MNmn) < 2 \times \matcal{O}(MNmn)$$.
+	For instance, ${F_0}_{[m\times n]} \ast ({F_1}_{[m\times n]} \ast
+	{I_0}_{[M\times N]})$ will be computed with the complexity of $2 \times
+	\mathcal{O}(MNmn)$. \\
+	On the other hand, associative property of convolution can be
+	utilizied by convolving the filters first, then applying the acquired filter to
+	image:
+	$({F_0}_{[m\times n]} \ast {F_1}_{[m\times n]}) \ast
+	{I_0}_{[M\times N]}$ $$\mathcal{O}(m^2n^2) + \mathcal{O}(MNmn)$$
+	Given that in any filtering process the size of filter
+	kernel, by its nature, will be smaller than the image size, the computational
+	complexity will be reduced thanks to the assosicative property of convolution.
+	$$\mathcal{O}{(m^2n^2)} + \mathcal{O}(MNmn) \ll 2 \times \mathcal{O}(MNmn)$$
 	% 2- This is the input image: [0 0 1 1 0 0 1 1]. What is the result of dilation
 	% with a structuring element [1 1 1]?
 	\item 
@@ -66,7 +71,7 @@
 	\begin{equation} 
 	\begin{split}
 	\vec{H} & = \vec{I} \ast \vec{f} \\
-	& = \begin{bmatrix} 0 & 1 & 2 & 2 & 1 & 1 & 2 & 2 \end{bmatrix}
+	& = \begin{bmatrix} 0 & 0 & 1 & 2 & 2 & 1 & 1 & 2 & 2 & 1 \end{bmatrix}
 	\end{split}
 	\end{equation}
 	% 3- The filter f’ = [0 -1/2 0 1/2 0] gives an estimate of the first derivative
