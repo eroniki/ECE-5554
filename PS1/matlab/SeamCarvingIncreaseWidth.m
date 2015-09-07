@@ -1,6 +1,8 @@
 % Clear command window and workspace, close all figures
 close all, clear all, clc;
+profile on;
 
+p = profile('status');
 % Load the image and show the original work
 frame = imread('inputSeamCarvingPrague.jpg');
 % frame = imread('fsm.jpg');
@@ -17,7 +19,7 @@ newEnergyMapGreedy = energyMap;
 
 for k=1:100
 	[newImage, newEnergyMap] = increaseWidth(newImage,newEnergyMap);
-    [newImageGreedy, newEnergyMapGreedy] = reduceWidthGreedy(newImageGreedy,newEnergyMapGreedy);
+    [newImageGreedy, newEnergyMapGreedy] = increaseWidthGreedy(newImageGreedy,newEnergyMapGreedy);
 end
 
 imwrite(newImage, 'outputReduceWidthPrague.png');
