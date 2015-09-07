@@ -5,13 +5,14 @@ function displaySeam(image, seam, direction)
         error(errorMessage);
     end
     figure(3);
-    imshow(image);
+    canvas = image;
+    imshow(canvas);
     hold on;
     [h, w, c] = size(image);
     if('v' == lower(direction(1)))
         plot(seam, 1:h, 'w*');
     elseif('h' == lower(direction(1)))
         plot(1:w, seam, 'w*');
-    end    
-%     hold off;
+    end
+    hold off;
 end

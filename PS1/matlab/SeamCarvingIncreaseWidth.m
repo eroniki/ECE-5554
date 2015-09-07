@@ -16,14 +16,15 @@ newImage = frame;
 newImageGreedy = frame;
 newEnergyMap = energyMap;
 newEnergyMapGreedy = energyMap;
+
 for k=1:100
-    [newImage, newEnergyMap] = reduceHeight(newImage,newEnergyMap);
-    [newImageGreedy, newEnergyMapGreedy] = reduceHeightGreedy(newImageGreedy,newEnergyMapGreedy);
+	[newImage, newEnergyMap] = increaseWidth(newImage,newEnergyMap);
+    [newImageGreedy, newEnergyMapGreedy] = increaseWidthGreedy(newImageGreedy,newEnergyMapGreedy);
 end
 
-imwrite(newImage, 'outputReduceHeightPrague.png');
+imwrite(newImage, 'outputReduceWidthPrague.png');
 figure(1);
 subplot(2,2,1), imshow(frame), title('Input Image');
 subplot(2,2,2), imshowpair(newImage,newImageGreedy), title('Comparison');
 subplot(2,2,3), imshow(newImage), title('Output Image (Dynamic Programming)');
-subplot(2,2,4), imshow(newImageGreedy), title('Output Image (The Greedy Method)');
+subplot(2,2,4), imshow(newImageGreedy), title('Output Image (Dynamic Programming)');
