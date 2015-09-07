@@ -6,7 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{mathtools}
 
-\newcommand\mat[1]{\mathcal{\underline{#1}}}
+%\newcommand\mat[1]{\mathcal{\underline{#1}}}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -44,10 +44,22 @@
 \label{Short Answer Problems}
 \section{Short Answer Problems}
 \begin{enumerate}
-	%%% Review
-	\item If numerous different linear filters are needed to be used, associative
-	property can be employed for merging all the filters into one and then
-	filtering can be achieved with the resulted filter.
+	% 1- Give an example of how one can exploit the associative property of
+	% convolution to more efficiently filter an image.
+	\item The computational complexity of convolution operation for any arbitrary
+	kernel $\mat{F_0}_{[m\times n]}$ and image $\mat{I_0}_{[M\times N]}$:
+	$$\matcal{O}(MNmn)$$
+	Hence, applying a handful of filters will multiply
+	the computational cost of filtering process.\\
+	Say, $\mat{F_0}_{[m\times n]} \ast \{\mat{F_1}_{[m\times n]} \ast
+	\mat{I_0}_{[M\times N]}\}$ will be computed with the complexity of $$2 \times
+	\matcal{O}(MNmn)$$
+	On the other hand, convolving the filters first, then applying the
+	acquired filter to image will cost: $$\matcal{O}(mnmn) + \matcal{O}(MNmn)$$
+	Furthermore, considering that in any filtering process the size of filter
+	kernell will be smaller than the image size, $$\matcal{O}(mnmn) + \matcal{O}(MNmn) < 2 \times \matcal{O}(MNmn)$$.
+	% 2- This is the input image: [0 0 1 1 0 0 1 1]. What is the result of dilation
+	% with a structuring element [1 1 1]?
 	\item 
 	$$\vec{I} = \begin{bmatrix} 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1\end{bmatrix}
 	, \vec{f}= \begin{bmatrix} 1 & 1 & 1\end{bmatrix}$$
@@ -57,9 +69,31 @@
 	& = \begin{bmatrix} 0 & 1 & 2 & 2 & 1 & 1 & 2 & 2 \end{bmatrix}
 	\end{split}
 	\end{equation}
+	% 3- The filter f’ = [0 -1/2 0 1/2 0] gives an estimate of the first derivative
+	% of the image in the x direction.
+	% What is the corresponding second derivative filter f". (Hint: Assymetric
+	% filters must be flipped prior to convolution.)
+	\item $ \vec{f''} = \begin{bmatrix} 0 & 0 & 1/4 & 0 & -1/2 & 0 & 1/4 & 0 & 0
+	\end{bmatrix}$
+	% 4- Name two specific ways in which one could reduce the amount of fine, detailed edges that are detected
+	% with the Canny edge detector.
 	\item
-	\item
-	\item
+	\begin{enumerate}
+		\item Low threshold:
+		\item High threshold:	
+	\end{enumerate}
+	% 5- Describe a possible flaw in the use of additive Gaussian noise to
+	% represent image noise.
+	\item In real world applications noise occuring in the image may vary
+	depending on many variables, namely, the lightning conditions of the
+	environment in which the camera set up or the type of sensor that are being
+	used. For that reason, modeling the noise with Gaussian noise may not describe
+	the real world for each case of application. 
+	% 6- Design a method that takes video data from a camera perched above a conveyor belt at an automotive
+	% equipment manufacturer, and reports any flaws in the assembly of a part. Your
+	% response should be a list of concise, specific steps, and should incorporate
+	% several techniques covered in class thus far.
+	% Specify any important assumptions your method makes. 
 	\item A tentative flow of solution can be used for many generic vision
 	problems:
 	\begin{enumerate}
@@ -108,7 +142,8 @@
 	% Download the image from here
 	
 	% (http://filebox.ece.vt.edu/~F15ECE5554ECE4984/resources/images/inputSeamCarvingMall.
-jpg). Save the output as outputReduceWidthMall.png. Display the output in your answer sheet.
+	% jpg). Save the output as outputReduceWidthMall.png. Display the output in
+	% your answer sheet.
 	\begin{enumerate}
 		% subplot would be good 
 		\item Prague (Width Resizing) \\
