@@ -25,8 +25,10 @@ for k=1:100
 end
 
 imwrite(newImage, outputFile);
-comparison = imfuse(newImage,newImageGreedy,'falsecolor');
-imwrite(comparison, ['outputHeightComparison', suffix, '.png']);
+comparisonOriginal = imfuse(frame,newImage,'falsecolor');
+imwrite(comparisonOriginal, ['outputReduceHeightComparison', suffix, '.png']);
+comparisonOriginal = imfuse(newImage,newImageGreedy,'falsecolor');
+imwrite(comparisonOriginal, ['outputReduceHeightComparison2', suffix, '.png']);
 figure(1);
 subplot(2,2,1), imshow(frame), title('Input Image');
 subplot(2,2,2), imshowpair(newImage,newImageGreedy), title('Comparison');
