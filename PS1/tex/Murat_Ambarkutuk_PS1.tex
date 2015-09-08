@@ -83,12 +83,14 @@
 	% 4- Name two specific ways in which one could reduce the amount of fine, detailed edges that are detected
 	% with the Canny edge detector.
 	\item
+	\item % TODO Read the Canny Edge Detection algorithm
 	\begin{enumerate}
-		\item Low threshold:
+		\item Low threshold: 
 		\item High threshold:	
 	\end{enumerate}
 	% 5- Describe a possible flaw in the use of additive Gaussian noise to
 	% represent image noise.
+	% TODO Additive Gaussian Noise
 	\item In real world applications noise occuring in the image may vary
 	depending on many variables, namely, the lightning conditions of the
 	environment in which the camera set up or the type of sensor that are being
@@ -99,6 +101,7 @@
 	% response should be a list of concise, specific steps, and should incorporate
 	% several techniques covered in class thus far.
 	% Specify any important assumptions your method makes. 
+	% TODO Revise the solution flow
 	\item A tentative flow of solution can be used for many generic vision
 	problems:
 	\begin{enumerate}
@@ -123,10 +126,6 @@
 	    	\item Analysis of features
 	    	\item Reporting
 		\end{enumerate}
-%		\item Post-processing (Interpretation)
-%		\begin{enumerate}
-%	    	\item 
-%		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
 \pagebreak
@@ -149,31 +148,34 @@
 	% (http://filebox.ece.vt.edu/~F15ECE5554ECE4984/resources/images/inputSeamCarvingMall.
 	% jpg). Save the output as outputReduceWidthMall.png. Display the output in
 	% your answer sheet.
-	\begin{enumerate}
-		% subplot would be good 
+	\begin{enumerate} 
+		% 1-A 
 		\item Prague (Width Resizing) \\
-		%% add title and size \ldots
-		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
+		\begin{enumerate}
+			\item Originial Image: \\ 
+			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingPrague.jpg}
+			\item Resized Image: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthPrague.png}
+			\item Comparison: \\
+			\includegraphics[width=\linewidth]{../matlab/outputWidthComparisonPrague.png}
+		\end{enumerate}
 		\item Mall (Width Resizing)\\
+		\begin{enumerate}
+			\item Originial Image: \\ 
+			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingMall.jpg}
+			\item Resized Image: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthMall.png}
+			\item Comparison: \\
+			\includegraphics[width=\linewidth]{../matlab/outputWidthComparisonMall.png}
+		\end{enumerate}
 		%% add titlle and size \ldots, add subplots, change picture with the correct
 		% one
-		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
+		\includegraphics[width=\linewidth]{../matlab/outputWidthMall.png}
+	SeamCarvingReduceWidth.m
+	\lstinputlisting{../matlab/SeamCarvingReduceWidth.m}
 	\end{enumerate}
 	\item
-	% Repeat the above steps for both the input images, but reduce the height by 100 pixels.
-	% Call the script SeamCarvingReduceHeight.m(py), and save the output images as
-	% outputReduceHeightPrague.png and outputReduceHeightMall.png respectively.
-	% Display both the outputs in your answer sheet. Submit the script which loads the image inputSeamCarvingPrague.jpg
-	\begin{enumerate}
-		% subplot would be good 
-		\item Prague (Height Resizing)\\
-		%% add title and size \ldots
-		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
-		\item Mall (Height Resizing)\\
-		%% add titlle and size \ldots, add subplots, change picture with the correct
-		% one
-		\includegraphics[width=\linewidth]{../matlab/outputPrague.png}
-	\end{enumerate}
+
 	\item
 	% 3- Display in your answer sheet: (a) the energy function output for the
 	% provided image inputSeamCarvingPrague.jpg, and (b) the two corresponding cumulative minimum
