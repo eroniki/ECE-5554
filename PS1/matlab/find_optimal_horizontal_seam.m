@@ -5,9 +5,9 @@ function horizontalSeam = find_optimal_horizontal_seam(cumulativeEnergyMap)
     [~, horizontalSeam(w)] = min(cumulativeEnergyMap(:,w));
     for col=w-1:-1:1
         lower = max(horizontalSeam(col+1)-1,1);
-        higher = min(horizontalSeam(col+1)+1,w);
+        higher = min(horizontalSeam(col+1)+1,h);
         index = lower:higher;
-        [~, horizontalSeam(col)] = min(cumulativeEnergyMap(index, col));
-        horizontalSeam(col) = horizontalSeam(col) + lower;
+        [~, ind] = min(cumulativeEnergyMap(index, col));
+        horizontalSeam(col) = ind+lower-1;
     end    
 end

@@ -70,27 +70,43 @@
 	, \vec{f}= \begin{bmatrix} 1 & 1 & 1\end{bmatrix}$$
 	\begin{equation} 
 	\begin{split}
-	\vec{H} & = \vec{I} \ast \vec{f} \\
-	& = \begin{bmatrix} 0 & 0 & 1 & 2 & 2 & 1 & 1 & 2 & 2 & 1 \end{bmatrix}
+	\vec{H} & = \vec{I} \bigoplus \vec{f} \\
+	& = \begin{bmatrix} 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \end{bmatrix}
 	\end{split}
 	\end{equation}
 	% 3- The filter f’ = [0 -1/2 0 1/2 0] gives an estimate of the first derivative
 	% of the image in the x direction.
 	% What is the corresponding second derivative filter f". (Hint: Assymetric
 	% filters must be flipped prior to convolution.)
-	\item $ \vec{f''} = \begin{bmatrix} 0 & 0 & 1/4 & 0 & -1/2 & 0 & 1/4 & 0 & 0
-	\end{bmatrix}$
+	\item $ \vec{f''} = \begin{bmatrix}  0 & \frac{1}{2} & - \frac{1}{2} &
+	-\frac{1}{2} & \frac{1}{2} & 0 \end{bmatrix}$
 	% 4- Name two specific ways in which one could reduce the amount of fine, detailed edges that are detected
 	% with the Canny edge detector.
-	\item
 	\item % TODO Read the Canny Edge Detection algorithm
 	\begin{enumerate}
-		\item Low threshold: 
-		\item High threshold:	
+		\item Gaussian Kernel: Since Canny edge detection algorithm uses Gaussian
+		filter to reduce noise. However, too big kernel will smooth out some of the
+		detail in the input image. In that case, output image would have fewer fine
+		edges.
+		\item Wrong Thresholding: Setting too high numbers for high and low threshold
+		would reduce the amount of fine and detailed edges. These values set the
+		overall performance of the algorithm in the steps of double thresholding and
+		hysteresis edge tracking. 
+		% In the double thresholding step, any pixel whose
+		% gradient magnitude is above than higher threshold is marked as 'strong
+		% edges', while any pixel whose gradient value is within the high and low
+		% threshold range, marked 'candidate edges'. On the other hand, all the pixels
+		% whose gradient magnitude is below than low threshold are subject
+		% elemination.
+		In the double thresholding step, pixels are marked and categorized according
+		to their gradient magnitude. Setting too high threshold values would miss some
+		of the fine, detailed edges since they might have lower gradient magnitude
+		values than high threshold value. Likewise, too high threshold
+		values would have impact on performance of hysteresis edge tracking step.
 	\end{enumerate}
 	% 5- Describe a possible flaw in the use of additive Gaussian noise to
 	% represent image noise.
-	% TODO Additive Gaussian Noise
+	% TODO Additive Gaussian Noise, mean zero
 	\item In real world applications noise occuring in the image may vary
 	depending on many variables, namely, the lightning conditions of the
 	environment in which the camera set up or the type of sensor that are being
@@ -105,26 +121,38 @@
 	\item A tentative flow of solution can be used for many generic vision
 	problems:
 	\begin{enumerate}
-		\item Problem Definition
-		\begin{enumerate}
-			\item Problem definition
-			\item Equipment decision based on the problem
-			\item 
-		\end{enumerate}
 		\item Pre-processing (Preparation)
 		\begin{enumerate}
-			\item Data Reduction (Downsampling, color space change (RGB, $\to$,
-			Grayscale, defining region of interest \ldots)
-			\item Noise reduction
-			\item Feature enhancing 
+			\item Data acquisition
+			\item Data reduction (Downsampling, color space change \\
+			(e.g. RGB, $\to$, Grayscale, defining region of interest\ldots) (if needed)
+			\item Noise reduction (Morphological Operations)
 		\end{enumerate}
+		
 		\item Processing (Analysis)
 		\begin{enumerate}
-	    	\item Keypoint detection (feature detection)
-	    	\item Keypoint clustering (to detect whether or not the keypoint is really
-	    	a feature)
-	    	\item Analysis of features
-	    	\item Reporting
+	    	\item Detection
+	    	\begin{enumerate}
+	    		\item Object Detection (Either, or combinations of the steps given below)
+	    			\begin{itemize}
+	    				\item Background Substraction
+	    				\item Feature (Color, geometry, edge, depth \ldots) based (Connected
+	    				Components may be utilized with the combination of thresholding)
+	    				\item Texture based  				
+	    			\end{itemize}
+	    		\item Defect detection on the detected object
+	    			\begin{itemize}
+	    				\item Feature based
+	    					\begin{itemize}
+	    						\item Color consistency 
+	    						\item Geometrical Properties (Hough circles and/or lines can be fitted to check shape defects)
+	    						\item Depth data also may give hint on the surface imperfections
+	    					\end{itemize}
+	    				\item Texture based (Imperfections might have impact on the texture
+	    				statistics )
+	    				\item Frequency response based	    				
+	    			\end{itemize}
+	    	\end{enumerate}
 		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
@@ -133,7 +161,7 @@
 \label{Programming Problem (Seam Carving)}
 \section{Programming Problem (Seam Carving)}
 \begin{enumerate}
-	\item 
+	\item Width Reducing
 	% Write a script called SeamCarvingReduceWidth.m(py) which does the following by using
 	% the functions defined above:
 	% (a) Loads a color input image called inputSeamCarvingPrague.jpg. Download the
@@ -149,7 +177,6 @@
 	% jpg). Save the output as outputReduceWidthMall.png. Display the output in
 	% your answer sheet.
 	\begin{enumerate} 
-		% 1-A 
 		\item Prague (Width Resizing) \\
 		\begin{enumerate}
 			\item Originial Image: \\ 
@@ -157,8 +184,9 @@
 			\item Resized Image: \\
 			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthPrague.png}
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputWidthComparisonPrague.png}
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthInputvsDynamicPrague.png}
 		\end{enumerate}
+		\pagebreak
 		\item Mall (Width Resizing)\\
 		\begin{enumerate}
 			\item Originial Image: \\ 
@@ -166,17 +194,40 @@
 			\item Resized Image: \\
 			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthMall.png}
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputWidthComparisonMall.png}
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthInputvsDynamicMall.png}
 		\end{enumerate}
-		%% add titlle and size \ldots, add subplots, change picture with the correct
-		% one
-		\includegraphics[width=\linewidth]{../matlab/outputWidthMall.png}
-	SeamCarvingReduceWidth.m
-	\lstinputlisting{../matlab/SeamCarvingReduceWidth.m}
+		\pagebreak
+		\item Script: SeamCarvingReduceWidth.m
+		\lstinputlisting{../matlab/SeamCarvingReduceWidth.m}
 	\end{enumerate}
-	\item
+	\pagebreak
+	\item Height Resizing \\
+		\begin{enumerate} 
+		\item Prague (Height Resizing) \\
+		\begin{enumerate}
+			\item Originial Image: \\ 
+			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingPrague.jpg}
+			\item Resized Image: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthPrague.png}
+			\item Comparison: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceHeightInputvsDynamicPrague.png}
+		\end{enumerate}
+		\pagebreak
+		\item Mall (Height Resizing) \\
+		\begin{enumerate}
+			\item Originial Image: \\ 
+			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingMall.jpg}
+			\item Resized Image: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthMall.png}
+			\item Comparison: \\
+			\includegraphics[width=\linewidth]{../matlab/outputReduceHeightInputvsDynamicMall.png}
+		\end{enumerate}
+		\pagebreak
+		\item Script: SeamCarvingReduceHeight.m
+		\lstinputlisting{../matlab/SeamCarvingReduceHeight.m}
+	\end{enumerate}
 
-	\item
+	\item 3
 	% 3- Display in your answer sheet: (a) the energy function output for the
 	% provided image inputSeamCarvingPrague.jpg, and (b) the two corresponding cumulative minimum
 	% energy maps for the seams in each direction (use the Matlab’s imagesc or Python’s matplotlib.pyplot.imshow).
@@ -184,18 +235,21 @@
 	% content.
 	\begin{enumerate}
 		\item Energy function output (Prague)
-		\item The two corresponding cumulative energy maps for each direction \\
-		Explanation for differences according to the context:
+		\item The two corresponding cumulative energy maps for each direction: \\
+		\begin{enumerate}
+			\item Width Operations: 
+			\item Height Operations:
+		\end{enumerate}
 	\end{enumerate}
-	\item 
+	\item 4
 	% 4- For the same image inputSeamCarvingPrague.jpg, display the original image
 	% together with (a) the first selected horizontal seam and (b) the first selected
 	% vertical seam in your answer sheet. Explain why these are the optimal seams for this image.
-	\item
+	\item 5
 	% 5- Make some change to the way the energy function is computed (i.e., filter
 	% used, its param- eters, or incorporating some other prior knowledge). Display the result and
 	% explain the impact on the results for some example in your answer sheet. You need not submit this code.
-	\item 
+	\item 6
 	% 6- Now, for the real results! Use your system with different kinds of images
 	% and seam combi- nations, and see what kind of interesting results it can produce. The goal is
 	% to form some perceptually pleasing outputs where the resizing better preserves content than a blind resizing would, as well as

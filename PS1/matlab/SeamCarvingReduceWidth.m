@@ -3,7 +3,7 @@ close all, clear all, clc;
 profile on;
 
 p = profile('status');
-suffix = 'Prague';
+suffix = 'Mall';
 % Load the image and show the original work
 inputFile = ['inputSeamCarving', suffix, '.jpg'];
 outputFile= ['outputReduceWidth', suffix, '.png'];
@@ -26,12 +26,13 @@ end
 
 imwrite(newImage, outputFile);
 comparisonOriginal = imfuse(frame,newImage,'falsecolor');
-imwrite(comparisonOriginal, ['outputReduceWidthComparison', suffix, '.png']);
-comparisonOriginal = imfuse(newImage,newImageGreedy,'falsecolor');
-imwrite(comparisonOriginal, ['outputReduceWidthComparison2', suffix, '.png']);
+imwrite(comparisonOriginal, ['outputReduceWidthInputvsDynamic', suffix, '.png']);
+comparisonOutput = imfuse(newImage,newImageGreedy,'falsecolor');
+imwrite(comparisonOutput, ['outputReduceWidthComparisonOutputs', suffix, '.png']);
 figure(1);
 subplot(2,2,1), imshow(frame), title('Input Image');
 subplot(2,2,2), imshow(comparisonOriginal), title('Comparison (Input and Output)');
 subplot(2,2,3), imshow(newImage), title('Output Image (Dynamic Programming)');
 subplot(2,2,4), imshow(newImageGreedy), title('Output Image (The Greedy Method)');
 saveas(1, ['outputWidth', suffix, '.png'],'png');
+profile viewer

@@ -26,12 +26,13 @@ end
 
 imwrite(newImage, outputFile);
 comparisonOriginal = imfuse(frame,newImage,'falsecolor');
-imwrite(comparisonOriginal, ['outputIncreaseWidthComparison', suffix, '.png']);
-comparisonOriginal = imfuse(newImage,newImageGreedy,'falsecolor');
-imwrite(comparisonOriginal, ['outputIncreaseWidthComparison2', suffix, '.png']);
+imwrite(comparisonOriginal, ['outputIncreaseWidthInputvsDynamic', suffix, '.png']);
+comparisonOutput = imfuse(newImage,newImageGreedy,'falsecolor');
+imwrite(comparisonOutput, ['outputIncreaseWidthComparisonOutputs', suffix, '.png']);
 figure(1);
 subplot(2,2,1), imshow(frame), title('Input Image');
 subplot(2,2,2), imshowpair(newImage,newImageGreedy), title('Comparison');
 subplot(2,2,3), imshow(newImage), title('Output Image (Dynamic Programming)');
 subplot(2,2,4), imshow(newImageGreedy), title('Output Image (Dynamic Programming)');
 saveas(1, ['outputHeightIncrease', suffix, '.png'],'png');
+profile viewer
