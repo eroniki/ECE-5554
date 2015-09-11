@@ -3,7 +3,7 @@ close all, clear all, clc;
 profile on;
 
 p = profile('status');
-suffix = 'Mall';
+suffix = 'Prague';
 % Load the image and show the original work
 inputFile = ['inputSeamCarving', suffix, '.jpg'];
 outputFile= ['outputReduceWidth', suffix, '.png'];

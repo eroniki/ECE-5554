@@ -7,6 +7,17 @@
 \usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+
+\newcommand{\listFigure}[3]{
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{../matlab/#1}
+		\caption{#2\label{fig:#3}}
+	\end{figure}		
+}
+
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -41,6 +52,7 @@
 	\end{center}
 \pagebreak 
 \large{Answer Sheet}
+
 \label{Short Answer Problems}
 \section{Short Answer Problems}
 \begin{enumerate}
@@ -148,9 +160,7 @@
 	    						\item Geometrical Properties (Hough circles and/or lines can be fitted to check shape defects)
 	    						\item Depth data also may give hint on the surface imperfections
 	    					\end{itemize}
-	    				\item Texture based (Imperfections might have impact on the texture
-	    				statistics )
-	    				\item Frequency response based	    				
+	    				\item Texture based (Imperfections would change the texture	statistics)		
 	    			\end{itemize}
 	    	\end{enumerate}
 		\end{enumerate}
@@ -161,6 +171,7 @@
 \label{Programming Problem (Seam Carving)}
 \section{Programming Problem (Seam Carving)}
 \begin{enumerate}
+	\label{Answer 1}
 	\item Width Reducing
 	% Write a script called SeamCarvingReduceWidth.m(py) which does the following by using
 	% the functions defined above:
@@ -179,79 +190,161 @@
 	\begin{enumerate} 
 		\item Prague (Width Resizing) \\
 		\begin{enumerate}
-			\item Originial Image: \\ 
-			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingPrague.jpg}
+			\item Originial Image: \\
+			\listFigure{inputSeamCarvingPrague.jpg}{Input Image (Prague, 640 $\times$
+			480)}{inputSeamCarvingPrague}
+			\pagebreak
 			\item Resized Image: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthPrague.png}
+			\listFigure{outputReduceWidthPrague.png}{Resized Image (Prague, Width, 540 $\times$ 480)}{outputReduceWidthPrague}
+			\pagebreak
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthInputvsDynamicPrague.png}
+			\listFigure{outputReduceWidthInputvsDynamicPrague.png}{Comparison
+			Image}{outputReduceWidthInputvsDynamicPrague}
+			Legend for comparison image.
+			\begin{itemize}
+				\item Gray pixels: Common (shared) pixels on both images.
+				\item Green pixels: The pixels that output image introduces.
+				\item Magenta pixels: The pixels that output image lacks.
+			\end{itemize}
 		\end{enumerate}
+		
 		\pagebreak
 		\item Mall (Width Resizing)\\
 		\begin{enumerate}
-			\item Originial Image: \\ 
-			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingMall.jpg}
+			\item Originial Image: \\
+			\listFigure{inputSeamCarvingMall.jpg}{Input Image (Mall, 775 $\times$
+			769)}{inputSeamCarvingMall}
+			\pagebreak
 			\item Resized Image: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthMall.png}
+			\listFigure{outputReduceWidthMall.png}{Resized Image (Mall, Width, 675
+			$\times$ 769)}{outputReduceWidthMall}
+			\pagebreak
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthInputvsDynamicMall.png}
+			\listFigure{outputReduceWidthInputvsDynamicMall.png}{Comparison
+			Image}{outputReduceWidthInputvsDynamicMall}
+			Legend for comparison image.
+			\begin{itemize}
+				\item Gray pixels: Common (shared) pixels on both images.
+				\item Green pixels: The pixels that output image introduces.
+				\item Magenta pixels: The pixels that output image lacks.
+			\end{itemize}
 		\end{enumerate}
 		\pagebreak
 		\item Script: SeamCarvingReduceWidth.m
 		\lstinputlisting{../matlab/SeamCarvingReduceWidth.m}
 	\end{enumerate}
 	\pagebreak
+	
 	\item Height Resizing \\
 		\begin{enumerate} 
 		\item Prague (Height Resizing) \\
 		\begin{enumerate}
-			\item Originial Image: \\ 
-			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingPrague.jpg}
+			\item Originial Image: Please see Figure-\ref{fig:inputSeamCarvingPrague} \\
 			\item Resized Image: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthPrague.png}
+			\listFigure{outputReduceWidthPrague}{Resized Image (Prague, Height, 640
+			$\times$ 380)}{outputReduceHeightPrague}
+			\pagebreak
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceHeightInputvsDynamicPrague.png}
+			\listFigure{outputReduceHeightInputvsDynamicPrague.png}{Comparison of Input Image and Output of Dynamic Programming
+				Implementation}{outputReduceHeightInputvsDynamicPrague}
+			Legend for comparison image.
+			\begin{itemize}
+				\item Gray pixels: Common (shared) pixels on both images.
+				\item Green pixels: The pixels that output image introduces.
+				\item Magenta pixels: The pixels that output image lacks.
+			\end{itemize}
 		\end{enumerate}
 		\pagebreak
+		
 		\item Mall (Height Resizing) \\
 		\begin{enumerate}
-			\item Originial Image: \\ 
-			\includegraphics[width=\linewidth]{../matlab/inputSeamCarvingMall.jpg}
+			\item Originial Image: Please see Figure-\ref{fig:inputSeamCarvingMall} \\
 			\item Resized Image: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceWidthMall.png}
+			\listFigure{outputReduceHeightMall.png}{Resized Image (Mall, Height, 775
+			$\times$ 669)}{outputReduceHeightMall}
+			\pagebreak
 			\item Comparison: \\
-			\includegraphics[width=\linewidth]{../matlab/outputReduceHeightInputvsDynamicMall.png}
+			\listFigure{outputReduceHeightComparisonOutputsMall.png}{Comparison of Input Image and Output of Dynamic Programming
+				Implementation}{outputReduceHeightComparisonOutputsMall}
+			Legend for comparison image.
+			\begin{itemize}
+				\item Gray pixels: Common (shared) pixels on both images.
+				\item Green pixels: The pixels that output image introduces.
+				\item Magenta pixels: The pixels that output image lacks.
+			\end{itemize}
 		\end{enumerate}
-		\pagebreak
+		\pagebreak 
 		\item Script: SeamCarvingReduceHeight.m
 		\lstinputlisting{../matlab/SeamCarvingReduceHeight.m}
 	\end{enumerate}
 
-	\item 3
+	\item 
 	% 3- Display in your answer sheet: (a) the energy function output for the
 	% provided image inputSeamCarvingPrague.jpg, and (b) the two corresponding cumulative minimum
-	% energy maps for the seams in each direction (use the Matlab’s imagesc or Python’s matplotlib.pyplot.imshow).
+	% energy maps for the seams in each direction (use the Matlab’s imagesc or
+	% Python’s matplotlib.pyplot.imshow).
 	% Explain why these outputs look the way they do given the original image’s
 	% content.
-	\begin{enumerate}
-		\item Energy function output (Prague)
-		\item The two corresponding cumulative energy maps for each direction: \\
-		\begin{enumerate}
-			\item Width Operations: 
-			\item Height Operations:
-		\end{enumerate}
-	\end{enumerate}
-	\item 4
+	\listFigure{cumulatives.png}{Input Image, Energy Map and
+	Cumulative Energy Functions}{cumulatives}	
+	As seen on Figure-\ref{fig:cumulatives}, the elements of horizontal cumulative
+	energy map is increasing through west to east direction since it is the same
+	direction which the algorithm adds up minimum 8-connected element computed in the previous step. \\
+	Likewise, the elements in vertical cumulative energy map is increasing in
+	north to south direction. \\
+	Due to the fact that energy level of each pixel is not still, the final
+	distribution of accummulated energy levels vary. The horizontal cumulative
+	energy map adds up the bottom region since the ripples of the water surface
+	and the reflection caused by these ripples creates high differences among
+	neighboring pixels. Along with that, the lowest region of the same map is
+	where all the pixels related to sky were add up.
+	\pagebreak
+
+	\item
 	% 4- For the same image inputSeamCarvingPrague.jpg, display the original image
 	% together with (a) the first selected horizontal seam and (b) the first selected
 	% vertical seam in your answer sheet. Explain why these are the optimal seams for this image.
-	\item 5
+	\listFigure{seams.png}{Red Pixels: Optimal Vertical Seam, Blue
+	Pixels: Optimal Horizontal Seam}{seams}
+	As the cumulative energy maps show in Figure-\ref{fig:cumulatives}, eastern
+	part of the horizontal cumulative energy map and southern part of the vertical
+	cumulative energy map display the highest energy accumulation, where dynamic
+	programming algorithm accumulates the energy differences of neighboring pixels.
+	Starting from minima of those regions, the algorithm finds the lowest energy
+	accumulation of 8-connected neighbors. This way, the algorithm tries to find
+	the seam which connects the lowest energy pixels without leaving the
+	8-connected region. \\
+	In other words, the algorithm chooses the lowest energy
+	elements by finding from most bottom row or from most right column, for
+	vertical or horizontal resizing, respectively. The algorithm then starts proceeding
+	choosing one row above or one column left with the same procedure. \\
+	Hence, the algorithm finally results finding the seam which connecting lowest
+	energy elements without choosing too far away elements.
+	(Please see: Figure-\ref{fig:seams})
+	\item
 	% 5- Make some change to the way the energy function is computed (i.e., filter
-	% used, its param- eters, or incorporating some other prior knowledge). Display the result and
+	% used, its parameters, or incorporating some other prior knowledge). Display the result and
 	% explain the impact on the results for some example in your answer sheet. You need not submit this code.
-	\item 6
+	New energy function used is Laplacian of Gaussian;
+	\begin{lstlisting}
+	function energyMap = energy_image(im)
+	%%% New Energy Function Laplacian of Gaussian (LoG)
+	frameGray = rgb2gray(im);  
+	LoG = conv2(fspecial('laplacian'),fspecial('gaussian'));
+	energyMap = imfilter(frameGray, LoG); 
+	end		
+	\end{lstlisting}	
+	\listFigure{cumulatives-2.png}{New Cumulative Energy Map with
+	LoG}{cumulatives2}
+	As Figure-\ref{fig:cumulatives2} illustrates; applying LoG filter rather than
+	Prewitt makes algorithm less aware of the changes since, Gaussian has smoothing
+	effect. Thus, the position of first seams drastically changed. To see the
+	change please compare \ref{fig:seams} and \ref{fig:seams2}.
+    \listFigure{seams-2.png}{The first seams with LoG, Red and Blue Pixels
+    depict Optimal and Horizontal Vertical Seams, respectively.}{seams2}
+	\item Qualitative Results
 	% 6- Now, for the real results! Use your system with different kinds of images
-	% and seam combi- nations, and see what kind of interesting results it can produce. The goal is
+	% and seam combinations, and see what kind of interesting results it can produce. The goal is
 	% to form some perceptually pleasing outputs where the resizing better preserves content than a blind resizing would, as well as
 	% some examples where the output looks unrealistic or has artifacts.
 	% Include results for at least three images of your own choosing. Include an
@@ -268,6 +361,7 @@
 	% (d) the input and output image dimensions,
 	% (e) the sequence of removals that were used
 	% (f) a qualitative explanation of what we’re seeing in the output.
+	
 \end{enumerate}
 \pagebreak
 
