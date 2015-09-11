@@ -11,18 +11,18 @@ function [newImage, newEnergyMap] = reduceWidth(image, energyMap)
     cumulativeEnergyMap = cumulative_energy_map(energyMap, 'V');
     % Find the optimal vertical seam
     optimalVerticalSeam = find_optimal_vertical_seam(cumulativeEnergyMap);
-%   Show vertical cumulative energy map
+    % Show vertical cumulative energy map
 	figure(2);
     imagesc(cumulativeEnergyMap); 
 	displaySeam(image, optimalVerticalSeam, 'v');
-%   delete the seam
-%%  optimal solution, yet does not work
-%	newImage = reshape(image, [h*(w),3]);
-%   murat = [(1:h); optimalVerticalSeam];
-%   indexes = sub2ind([h,w],murat(1),murat(2));
-%	newImage(indexes) = [];
-%	newImage = reshape(newImage, h, c-1, 3);
-%%  rookie solution
+    % delete the seam
+    %%  optimal solution, yet does not work
+    %	newImage = reshape(image, [h*(w),3]);
+    %   murat = [(1:h); optimalVerticalSeam];
+    %   indexes = sub2ind([h,w],murat(1),murat(2));
+    %	newImage(indexes) = [];
+    %	newImage = reshape(newImage, h, c-1, 3);
+    %%  rookie solution
     for row=1:h
         roiR = image(row,:,1);
         roiG = image(row,:,2);
