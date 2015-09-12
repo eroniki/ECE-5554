@@ -11,9 +11,8 @@
 \usepackage{hyperref}
 \usepackage{float}
 
-\newcommand{\listFigure}[3]{
-	\begin{figure}[H]
-		\includegraphics[width=\linewidth]{../matlab/#1}
+\newcommand{\listFigure}[3]{ \begin{figure}[H]
+\includegraphics[width=\linewidth]{../matlab/#1}
 		\caption{#2\label{fig:#3}}
 	\end{figure}		
 }
@@ -21,24 +20,19 @@
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
-%% Preamble done!
-%% Begin document
+% % Preamble done! % Begin document
 \begin{document}
 \lstset{language=Matlab,%
-    %basicstyle=\color{red},
-    breaklines=true,%
-    morekeywords={matlab2tikz},
-    keywordstyle=\color{blue},%
+    % basicstyle=\color{red},
+    breaklines=true,% morekeywords={matlab2tikz}, keywordstyle=\color{blue},%
     morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
-    identifierstyle=\color{black},%
-    stringstyle=\color{mylilas},
-    commentstyle=\color{mygreen},%
-    showstringspaces=false,%without this there will be a symbol in the places where there is a space
-    numbers=left,%
-    numberstyle={\tiny \color{black}},% size of the numbers
-    numbersep=12pt, % this defines how far the numbers are from the text
+    identifierstyle=\color{black},% stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},% showstringspaces=false,%without this there
+    will be a symbol in the places where there is a space numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers numbersep=12pt, %
+    this defines how far the numbers are from the text
     emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
-    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+    % emph=[2]{word1,word2}, emphstyle=[2]{style},
 }
 \label{Cover}
 	\begin{center}
@@ -342,6 +336,7 @@
 	change please compare \ref{fig:seams} and \ref{fig:seams2}.
     \listFigure{seams-2.png}{The first seams with LoG, Red and Blue Pixels
     depict Optimal and Horizontal Vertical Seams, respectively.}{seams2}
+    
 	\item Qualitative Results
 	% 6- Now, for the real results! Use your system with different kinds of images
 	% and seam combinations, and see what kind of interesting results it can produce. The goal is
@@ -361,15 +356,137 @@
 	% (d) the input and output image dimensions,
 	% (e) the sequence of removals that were used
 	% (f) a qualitative explanation of what we’re seeing in the output.
-	
+	\begin{enumerate}
+		\item N. Korea Shot Taken From ISS (\textbf{Partially Failed!})	\href{https://www.nasa.gov/mission_pages/station/research/news/crowdsourcing_night_images}{Source}
+		\\ Because the glare on the eastern side of Earth is relatively smooth (see
+		Figure-\ref{fig:inputNorthKorea}), the algorithm carved through that area to
+		protect to content of the image while reducing the width (see
+		Figure-\ref{fig:outputNorthKoreaW}). While this behavior of the algorithm is
+		expected to some extent, 100 pixel width reduction created a artifact over that atmospheric region. \\
+		On the other hand, resizing the height of the image succeeds by eleminating
+		the dark pixels of space. After this operation, the view gains more cinematic
+		view thanks to the new aspect ratio and enables viewers to visulize the
+		vast-depth of space. (see Figure-\ref{fig:outputNorthKoreaH}) \\
+		For both outputs, the pixels belonging to North Korea are subject to erosion
+		(besides Pyongyang, the capital), since the gradient of that area is not high
+		as the neighboring regions.	\\	
+		In conclusion, Seam Carving displayed better performance while reducing the
+		height than Matlab did (see Figure-\ref{fig:outputNorthKoreaMatlab}).
+		\begin{itemize}
+			\item Input:
+			\listFigure{NorthKorea/inputNorthKorea.jpg}{Input Image, 532 $\times$
+			354}{inputNorthKorea}
+			\item Output:
+			\listFigure{NorthKorea/outputNorthKoreaW.png}{Seam Carving Result Image, 432
+			$\times$ 354}{outputNorthKoreaW} 
+			\listFigure{NorthKorea/outputIOW.png}{Input Image, Seam Carving
+			Result Image}{outputNorthKoreaIOW}
+			\listFigure{NorthKorea/outputNorthKoreaH.png}{Seam Carving Result Image, 532
+			$\times$ 254}{outputNorthKoreaH} 
+			\listFigure{NorthKorea/outputIOH.png}{Input Image, Seam Carving
+			Result Image}{outputNorthKoreaIOH}
+			\item Matlab (imresize):
+			\listFigure{NorthKorea/outputNorthKoreaMatlab.png}{imresize() Result, 432
+			$\times$ 354}{outputNorthKoreaMatlab}
+		\end{itemize}
+		
+		\item Central Park, Manhattan
+		\href{http://animalnewyork.com/2013/awesome-map/}{Source} \\ 
+		\begin{itemize}
+			\item Input:
+			\listFigure{Manhattan/inputManhattan.jpg}{Input Image, 640 $\times$
+			360}{inputManhattan}
+			\item Output:
+			\listFigure{Manhattan/outputManhattanW.png}{Seam Carving Result Image, 540
+			$\times$ 360}{outputManhattanW} 
+			\listFigure{Manhattan/outputIOW.png}{Input Image, Seam Carving
+			Result Image}{outputManhattanIOW}
+			\listFigure{Manhattan/outputManhattanH.png}{Seam Carving Result Image, 640
+			$\times$ 260}{outputManhattanH} 
+			\listFigure{Manhattan/outputIOH.png}{Input Image, Seam Carving
+			Result Image}{outputManhattanIOH}
+			\item Matlab (imresize): 
+			\listFigure{Manhattan/outputManhattanMatlab.png}{imresize() Result, 540
+			$\times$ 360}{outputManhattanMatlab} 
+		\end{itemize}
+		
+		\item Penn Station, New York City
+		\href{http://animalnewyork.com/2013/awesome-map/}{Source} \\ 
+		\begin{itemize}
+			\item Input:
+			\listFigure{PennStation/inputPennStation.jpg}{Input Image, 550 $\times$
+			449}{inputManhattan}
+			\item Output:
+			\listFigure{PennStation/outputPennStationW.png}{Seam Carving Result Image,
+			450 $\times$ 449}{outputManhattanW} 
+			\listFigure{PennStation/outputIOW.png}{Input Image, Seam Carving
+			Result Image}{outputManhattanIOW}
+			\listFigure{PennStation/outputPennStationH.png}{Seam Carving Result Image,
+			550 $\times$ 349}{outputManhattanH} 
+			\listFigure{PennStation/outputIOH.png}{Input Image, Seam Carving
+			Result Image}{outputManhattanIOH}
+			\item Matlab (imresize): 
+			\listFigure{PennStation/outputPennStationMatlab.png}{imresize() Result, 540
+			$\times$ 360}{outputPennStationMatlab}
+		\end{itemize}
+		
+		\item Burruss Hall Webcam, Virginia Tech
+		\href{https://www.vtnews.vt.edu/webcams/burruss.html}{Source} \\
+		\begin{itemize}
+			\item Input: 
+			\listFigure{BurrussHall/inputBurrussHall.jpg}{Input Image, 640 $\times$
+			480}{inputManhattan}
+			\item Output:
+			\listFigure{BurrussHall/outputBurrussHallW.png}{Seam Carving Result Image,
+			540 $\times$ 480}{outputBurrussHallW} 
+			\listFigure{BurrussHall/outputIOW.png}{Input Image, Seam Carving
+			Result Image}{outputBurrussHallIOW}
+			\listFigure{BurrussHall/outputBurrussHallH.png}{Seam Carving Result Image,
+			640 $\times$ 380}{outputBurrussHallH} 
+			\listFigure{BurrussHall/outputIOH.png}{Input Image, Seam Carving
+			Result Image}{outputBurrussHallIOH}
+			\item Matlab (imresize): 
+			\listFigure{BurrussHall/outputBurrussHallMatlab.png}{imresize() Result, 540
+			$\times$ 480}{outputBurrussHallMatlab}
+		\end{itemize}
+	\end{enumerate}
 \end{enumerate}
 \pagebreak
 
 \label{Extra Credit}
 \section{Extra Credit}
 \begin{enumerate}
-	\item
-	% \setcounter{enumi}{4}
-	\item 
+	\setcounter{enumi}{3}
+	\item \textbf{Width Increasing by Seam Carving} \\
+	The code below (Function-\ref{code:increase}) utilizes the general steps of
+	Seam Carving algorithm except adding pixels where the seam passed through by averaging the east and weast
+	neighbors of the individual pixel.
+	$$\forall\vec{I[i]} = [I[i][1:j], mean(I[i][j-1],I[i][j+1]),
+	I[i][j+1:end]]$$
+	where i is the i\textsuperscript{th} row of the image
+	and j is the optimal seam position for that row. The input image is depicted in
+	Figure-\ref{fig:inputSeamCarvingPrague}, while output can be seen in
+	Figure-\ref{fig:increaseWidth}.
+	\label{code:increase}
+	\lstinputlisting{../matlab/increaseWidthGreedy.m}
+	\listFigure{increaseWidth.png}{Width
+	Increased Image}{increaseWidth} 
+	\listFigure{outputIncreaseWidthComparisonOutputsPrague.png}{Comparison
+	between Input and Output}{outputIncreaseWidthComparisonOutputsPrague}
+	\item \textbf{The Greedy Approach} \\
+	The code below (Function-\ref{code:greedy}) facilitates the process by reducing
+	the processed data by eleminating computing the cumulative energy map. Instead
+	of computing that vast amount of data, the greedy approach starts finding
+	minimum values for each row at the first row. The algorithm then proceeds
+	finding minimum 8-connected neighbors of that individual pixel until reaches to
+	the last row.
+	Albeit faster (see Figure-\ref{fig:profile}) than the dynamic programming
+	solution, it is prone to local minimas while finding seams.
+	Figure-\ref{fig:profile} clearly shows that the latter algorithm spends four
+	times more time while creating cumulative energy maps, while the greedy
+	algorithms skips that part.
+	\listFigure{profile.png}{Matlab Profiling Results}{profile}
+	\label{code:greedy}
+	\lstinputlisting{../matlab/SeamCarvingIncreaseWidth.m}
 \end{enumerate}
 \end{document}
