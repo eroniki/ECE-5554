@@ -1,3 +1,4 @@
+% Compute and display for just the first seams
 close all, clear all, clc;
 profile on;
 
@@ -11,9 +12,8 @@ frame = imread(inputFile);
 
 [h, w, c] = size(frame);
 % Compute and acquire the energy map
-% energyMap = energy_image(frame);  
-frameGray = rgb2gray(frame);
-[energyMap, ~] = imgradient(frameGray, 'prewitt'); 
+energyMap = energy_image(frame);  
+
 
 % Calculate cumulative energy maps 
 cumulativeEnergyMapV = cumulative_energy_map(energyMap, 'V');

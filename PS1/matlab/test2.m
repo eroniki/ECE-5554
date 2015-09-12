@@ -1,3 +1,4 @@
+% Compute and display for just the first seams (energy function: LoG)
 close all, clear all, clc;
 profile on;
 

@@ -1,5 +1,5 @@
 % TODO Add comments for the code and the function
-function [newImage, newEnergyMap] = increaseWidth(image, energyMap)
+function [newImage, newEnergyMap] = increaseWidthGreedy(image, energyMap)
     if(nargin~=2)
         errorMessage = 'Missing argument';
         error(errorMessage);
