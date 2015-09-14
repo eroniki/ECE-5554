@@ -304,13 +304,13 @@
 	part of the horizontal cumulative energy map and southern part of the vertical
 	cumulative energy map display the highest energy accumulation, where dynamic
 	programming algorithm accumulates the energy differences of neighboring pixels.
-	Starting from minima of those regions, the algorithm finds the lowest energy
-	accumulation of 8-connected neighbors. This way, the algorithm tries to find
-	the seam which connects the lowest energy pixels without leaving the
+	Starting from minima the last row or column of cumulative energy map, the
+	algorithm finds the lowest energy accumulation within 8-connected neighbors.
+	This way, the algorithm tries to find the seam which connects the lowest energy pixels without leaving the
 	8-connected region. \\
 	In other words, the algorithm chooses the lowest energy
 	elements by finding from most bottom row or from most right column, for
-	vertical or horizontal resizing, respectively. The algorithm then starts proceeding
+	vertical or horizontal resizing, respectively. The algorithm then proceeds
 	choosing one row above or one column left with the same procedure. \\
 	Hence, the algorithm finally results finding the seam which connecting lowest
 	energy elements without choosing too far away elements.
@@ -362,7 +362,8 @@
 		Figure-\ref{fig:inputNorthKorea}), the algorithm carved through that area to
 		protect to content of the image while reducing the width (see
 		Figure-\ref{fig:outputNorthKoreaW}). While this behavior of the algorithm is
-		expected to some extent, 100 pixel width reduction created a artifact over that atmospheric region. \\
+		expected to be seen to some extent, 100 pixel width reduction created a
+		artifact over that atmospheric region. \\
 		On the other hand, resizing the height of the image succeeds by eleminating
 		the dark pixels of space. After this operation, the view gains more cinematic
 		view thanks to the new aspect ratio and enables viewers to visulize the
@@ -391,7 +392,23 @@
 		\end{itemize}
 		
 		\item Central Park, Manhattan
-		\href{http://animalnewyork.com/2013/awesome-map/}{Source} \\ 
+		\href{http://animalnewyork.com/2013/awesome-map/}{Source} \\
+		This image was chosen intentionally since the content has the lowest gradient
+		region, while background has the highest. Therefore it is expected to see that
+		the algorithm would try to keep background (in this case the blocks of
+		Manhattan) while deleting seams mostly regions where Central Park can be seen.
+		The result, on the other hand, confirmed the theory to some extent. Width
+		resizing operation was suprisingly accomplished
+		(Figure-\ref{fig:outputManhattanW} and Figure-\ref{fig:outputManhattanIOW}).
+		As opposed to successful utilization of width resizing, the algorithm could
+		not perform the same qualitative result in the height reducing for Central
+		Park image (Figure-\ref{fig:outputManhattanH} and
+		Figure-\ref{fig:outputManhattanIOH}). The main reason that make the algorithm
+		fail may be the aspect ratio of the input image. Since the height of source
+		image is 360 pixels, removing 100 pixels force algorithm to remove seams
+		passing through Central Park. To eleminate that kind of failure scenarios, a
+		qualitative parameter could be introduced to impede the algorithm from
+		deleting seams passing through main object.  
 		\begin{itemize}
 			\item Input:
 			\listFigure{Manhattan/inputManhattan.jpg}{Input Image, 640 $\times$
@@ -412,30 +429,54 @@
 		
 		\item Penn Station, New York City
 		\href{http://animalnewyork.com/2013/awesome-map/}{Source} \\ 
+		This image is used to analyze the performance of the algorithm where the
+		content provides many edges creating big variances in the energy image.
+		Considering that these variances will be added up in the cumulative energy map
+		to find optimal seams, the algorithm is expected to have diffuculties for
+		choosing the seam connecting the lowest energy regions. \\
+		As it can be seen in  output image depicted
+		in Figure-\ref{fig:outputPennStationW} and the comparison image depicted in
+		Figure-\ref{fig:outputPennStationIOW}, the algorithm exploited the fact that
+		the picture is old and folded. The content has many details
+		created by difference in the illumination which resulted in high contrast and
+		detailed edges in the roof regions, while the floor and walls are depicted
+		relatively smooth the picture is faded in these areas.
+		Finally, the seam carving algorithm could successively resize the input
+		image, which can be seen in the Figures-\ref{fig:outputPennStationW}
+		and \ref{fig:outputPennStationH}.
 		\begin{itemize}
 			\item Input:
 			\listFigure{PennStation/inputPennStation.jpg}{Input Image, 550 $\times$
 			449}{inputManhattan}
 			\item Output:
 			\listFigure{PennStation/outputPennStationW.png}{Seam Carving Result Image,
-			450 $\times$ 449}{outputManhattanW} 
+			450 $\times$ 449}{outputPennStationW} 
 			\listFigure{PennStation/outputIOW.png}{Input Image, Seam Carving
-			Result Image}{outputManhattanIOW}
+			Result Image}{outputPennStationIOW}
 			\listFigure{PennStation/outputPennStationH.png}{Seam Carving Result Image,
-			550 $\times$ 349}{outputManhattanH} 
+			550 $\times$ 349}{outputPennStationH} 
 			\listFigure{PennStation/outputIOH.png}{Input Image, Seam Carving
-			Result Image}{outputManhattanIOH}
+			Result Image}{outputPennStationIOH} 
 			\item Matlab (imresize): 
 			\listFigure{PennStation/outputPennStationMatlab.png}{imresize() Result, 540
 			$\times$ 360}{outputPennStationMatlab}
 		\end{itemize}
 		
 		\item Burruss Hall Webcam, Virginia Tech
-		\href{https://www.vtnews.vt.edu/webcams/burruss.html}{Source} \\
+		\href{https://www.vtnews.vt.edu/webcams/burruss.html}{Source} \\ This snapshot
+		is taken from a webcam placed on top of Burruss Hall. The main objective for
+		utilizing the seam carving algorithm is that to protect Drillfield and the
+		students on it. \\
+		For width resizing the algorithm has showed siginificant success, since there
+		is no deformation or defect can be seen on the output image
+		(Figure-\ref{fig:outputBurrussHallW}). \\
+		As for the height reduction, which can be seen in
+		Figure-\ref{fig:outputBurrussHallH}, the algoritm has processed the image as
+		expected by choosing the seams from the region where sky is depicted.
 		\begin{itemize}
 			\item Input: 
 			\listFigure{BurrussHall/inputBurrussHall.jpg}{Input Image, 640 $\times$
-			480}{inputManhattan}
+			480}{inputBurrussHall}
 			\item Output:
 			\listFigure{BurrussHall/outputBurrussHallW.png}{Seam Carving Result Image,
 			540 $\times$ 480}{outputBurrussHallW} 
@@ -473,6 +514,7 @@
 	Increased Image}{increaseWidth} 
 	\listFigure{outputIncreaseWidthComparisonOutputsPrague.png}{Comparison
 	between Input and Output}{outputIncreaseWidthComparisonOutputsPrague}
+	
 	\item \textbf{The Greedy Approach} \\
 	The code below (Function-\ref{code:greedy}) facilitates the process by reducing
 	the processed data by eleminating computing the cumulative energy map. Instead
@@ -481,11 +523,17 @@
 	finding minimum 8-connected neighbors of that individual pixel until reaches to
 	the last row.
 	Albeit faster (see Figure-\ref{fig:profile}) than the dynamic programming
-	solution, it is prone to local minimas while finding seams.
-	Figure-\ref{fig:profile} clearly shows that the latter algorithm spends four
-	times more time while creating cumulative energy maps, while the greedy
-	algorithms skips that part.
+	solution, it is prone to local minimas while finding seams. This
+	probable proneness of error has resulted in low-quality resizing cases. Such
+	cases can be seen in Figure-\ref{fig:outputWidthPrague} in the form of bent
+	tower. \\
+	Along with these qualitative results, Figure-\ref{fig:profile} clearly shows
+	that the latter algorithm spends four times more time while creating cumulative energy maps, while the greedy algorithms skips that part.
 	\listFigure{profile.png}{Matlab Profiling Results}{profile}
+	\listFigure{outputWidthMall.png}{Input Image Mall}{outputWidthMall}
+	\listFigure{outputHeightMall.png}{Input Image Mall}{outputHeightMall}
+	\listFigure{outputWidthPrague.png}{Input Image Prague}{outputWidthPrague}
+	\listFigure{outputHeightPrague.png}{Input Image Prague}{outputHeightPrague}
 	\label{code:greedy}
 	\lstinputlisting{../matlab/SeamCarvingIncreaseWidth.m}
 \end{enumerate}
