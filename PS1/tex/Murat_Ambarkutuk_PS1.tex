@@ -77,15 +77,17 @@
 	\begin{equation} 
 	\begin{split}
 	\vec{H} & = \vec{I} \bigoplus \vec{f} \\
-	& = \begin{bmatrix} 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \end{bmatrix}
+	& = \begin{bmatrix} 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1  \end{bmatrix}
 	\end{split}
 	\end{equation}
 	% 3- The filter f’ = [0 -1/2 0 1/2 0] gives an estimate of the first derivative
 	% of the image in the x direction.
 	% What is the corresponding second derivative filter f". (Hint: Assymetric
 	% filters must be flipped prior to convolution.)
-	\item $ \vec{f''} = \begin{bmatrix}  0 & \frac{1}{2} & - \frac{1}{2} &
-	-\frac{1}{2} & \frac{1}{2} & 0 \end{bmatrix}$
+	\item $\vec{f''} = \begin{bmatrix}  \frac{-1}{4} & 0 &
+	\frac{1}{2} & 0 & \frac{-1}{4}\end{bmatrix}$ (After discussing the question
+	with Yazhe Hu and Tian Yi regarding the discussion conducted on the forum,
+	I changed my answer according to Prof. Parikh's prompt.) 
 	% 4- Name two specific ways in which one could reduce the amount of fine, detailed edges that are detected
 	% with the Canny edge detector.
 	\item % TODO Read the Canny Edge Detection algorithm
