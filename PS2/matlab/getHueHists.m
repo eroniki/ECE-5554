@@ -1,6 +1,6 @@
-function [histEqual, histClustered] = getHueHists(im, k)
+function [histEqual, histClustered, HSV] = getHueHists(im, k)
     HSV.double = rgb2hsv(im);
-    HSV.uint8 = uint8(im*255);
+    HSV.uint8 = uint8(HSV.double*255);
      
 %     inputImage.HSV = rgb2hsv(inputImage.RGB);
 %     inputImage.HSVuint = uint8(inputImage.HSV*255);
