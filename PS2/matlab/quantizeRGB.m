@@ -4,6 +4,7 @@ function [outputImage, meanColors] = quantizeRGB(inputImage, nCluster)
 
     [labels, meanColors] = kmeans(dataSet,nCluster,'MaxIter', 250);
     labels = reshape(labels,h,w);
+    
     outputImage = zeros(h,w,c,'uint8');
     
     for i=1:h

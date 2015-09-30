@@ -1,4 +1,11 @@
 function [histEqual, histClustered] = getHueHists(im, k)
-    [counts,~] = imhist(im(:,:,1));
-    
+    HSV.double = rgb2hsv(im);
+    HSV.uint8 = uint8(im*255);
+     
+%     inputImage.HSV = rgb2hsv(inputImage.RGB);
+%     inputImage.HSVuint = uint8(inputImage.HSV*255);
+
+    [output, ~] = quantizeHSV(HSV.uint8, k);
+    [histClustered, ~] = imhist(output(:,:,1));
+    [histEqual, ~] = imhist(HSV.uint8(:,:,1));    
 end
