@@ -6,7 +6,7 @@ inputImage.RGB = imread('fish.jpg');
 subplot(3,1,1); imshow(inputImage.RGB); title('Input Image');
 [h, w, c] = size(inputImage.RGB);
 
-nCluster = 2;
+nCluster = 4;
 
 % 2-1-a
 [outputImage.RGB, meanColors] = quantizeRGB(inputImage.RGB, nCluster);

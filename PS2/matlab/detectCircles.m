@@ -1,34 +1,24 @@
 function [centers, ind] = detectCircles(im, radius, useGradient)
+    im = rgb2gray(im);
     [h, w, ~] = size(im);
+    [Gmag,Gdir] = imgradient(im);
+    edges = Gmag>mean(Gmag(:));
     
-    houghSpace = zeros(h,w);
-    theta.x= linspace(0,2*pi,h);
-    theta.y= linspace(0,2*pi,w);
+    [i, j] = find(edges == 1);
     
-    if(useGradient==1)
-
-        im = rgb2gray(im);
-
-        [Gmag,Gdir] = imgradient(im);
-        edges = uint8(Gmag);
-
-        edges = edges>mean(Gmag(:));
-        imshow(edges)
-    %     for i=1:h
-    %         for j=1:w
-    %             if(edges == 1)
-    %                 ind.x = radius * cos(theta) +.x;
-    %                 ind.y = radius * sin(theta) +center.y;
-    %                 houghSpace(ind.x,ind.y) = houghSpace(ind.x,ind.y) + 1;
-    %             end
-    %         end
-    %     end         
-        i=1:h;
-        j=1:w;
-
-        ind.x = radius * cos(theta.x) + i
-        ind.y = radius * sin(theta.y) + j
-        houghSpace(ind.x,ind.y) = houghSpace(ind.x,ind.y) + 1;
-        centers = houghSpace;
-	end
+    thetaResolution = 0.1;
+    angle = 0:thetaResolution:2*pi;
+    angleIndex = 1:numel(theta);
+    houghSpace = zeros(h,w,numel(theta));
+    
+    for counter=1:numel(i)
+        center.x = i(counter); center.y = j(counter);
+        if(useGradient == 1)
+            theta = 
+        end
+            
+        a = center.x -radius * cos(theta)
+                
+    end
+    
 end
