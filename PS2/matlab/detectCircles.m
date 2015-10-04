@@ -1,17 +1,20 @@
-function [centers, ind] = detectCircles(im, radius, useGradient)
+function [centers] = detectCircles(im, radius, useGradient)
     im = rgb2gray(im);
     [h, w, ~] = size(im);
-    [Gmag,Gdir] = imgradient(im);
-    edges = edge(im, 'Canny');
+    [~,Gdir] = imgradient(im);
 
     Gdir = Gdir * 0.0175 + pi;
 
-    [i, j] = find(edges == 1);
-
-    thetaResolution = 0.1;
+    thetaResolution = 0.01;
     angle = 0:thetaResolution:2*pi;
-    angleIndex = 1:numel(angle);
-    houghSpace = zeros(h,w);
+    
+    centers.edges = edge(im, 'canny');
+    centers.houghSpace = zeros(h,w,numel(radius));
+    centers.centers = zeros(h,w,numel(radius));
+    centers.votes = zeros(numel(radius), numel(im));
+    
+    [i, j] = find(centers.edges == 1);
+    
 
     for counter=1:numel(i)
         center.y = i(counter);
@@ -23,13 +26,20 @@ function [centers, ind] = detectCircles(im, radius, useGradient)
         end
 
         for rad=1:numel(radius)
-            a = center.x + radius(rad) * cos(theta);
+            a = center.x - radius(rad) * cos(theta);
             b = center.y + radius(rad) * sin(theta);
             a(a>w | a<1) = [];
             b(b>h | b<1) = [];
-            houghSpace(round(b), round(a)) = houghSpace(round(b), round(a)) + 1;
+            centers.houghSpace(round(b), round(a), rad) = centers.houghSpace(round(b), round(a), rad) + 1;
         end    
     end
-    figure; imshow(edges);
-    figure; imagesc(houghSpace);
+
+    for rad=1:numel(radius)
+%         centers.centers(:,:,rad) = imregionalmax(centers.houghSpace(:,:,rad));
+        list = centers.houghSpace(:,:,rad);
+        [centers.votes(rad,:), orderedIndices] = sort(list(:), 'descend');    
+        centers.centers(:,:,rad) = reshape(orderedIndices, h, w);
+    end    
+    
+       
 end
