@@ -1,4 +1,4 @@
-function [centers] = detectCirclesRadii(im, radius, useGradient)
+function [centers] = detectCircles(im, radii, useGradient)
     im = rgb2gray(im);
     [h, w, ~] = size(im);
     [~,Gdir] = imgradient(im);
@@ -7,11 +7,12 @@ function [centers] = detectCirclesRadii(im, radius, useGradient)
 
     thetaResolution = 0.01;
     angle = 0:thetaResolution:2*pi;
-    
-    centers.edges = edge(im, 'canny', .8);
-    centers.houghSpace = zeros(h,w,numel(radius));
-    centers.centers = zeros(h,w,numel(radius));
-    centers.votes = zeros(numel(radius), numel(im));
+
+    centers.edges = edge(im, 'canny', .8, 6);
+
+    centers.houghSpace = zeros(h,w,numel(radii));
+    centers.centers = zeros(h,w,numel(radii));
+    centers.votes = zeros(h,w,numel(radii));
     
     [i, j] = find(centers.edges == 1);
 
@@ -20,28 +21,22 @@ function [centers] = detectCirclesRadii(im, radius, useGradient)
         center.x = j(counter);
         if(useGradient == 1)
             theta = Gdir(center.y, center.x);
+            theta = [theta; theta - pi];
         else
-            theta = angle;
+            theta = angle;            
         end
-
-        for rad=1:numel(radius)
-            a = center.x - radius(rad) * cos(theta);
-            b = center.y + radius(rad) * sin(theta);
+        for radIndex=1:numel(radii)
+            a = center.x + radii(radIndex) * cos(theta);
+            b = center.y + radii(radIndex) * sin(theta);
             a(a>w | a<1) = [];
             b(b>h | b<1) = [];
-            centers.houghSpace(round(b), round(a), rad) = centers.houghSpace(round(b), round(a), rad) + 1;
-        end    
-    end
+            centers.houghSpace(round(b), round(a), radIndex) = centers.houghSpace(round(b), round(a), radIndex) + 1;
+        end            
+        for radIndex=1:numel(radii)
+            [peaks, locs] = findpeaks(centers.houghSpace(:,:,radInd));
+            maxVal = sort(peaks, 'descend');
+            maxInd = sort(locs, 'descend');
 
-    for rad=1:numel(radius)
-        list = centers.houghSpace(:,:,rad);
-        votes = centers.votes(rad,:);
-        meanVote = mean(votes);
-        votes(votes<meanVote) = [];
-        centers.votes(rad,:) = votes;
-        [centers.votes(rad,:), orderedIndices] = sort(list(:), 'descend');    
-        centers.centers(:,:,rad) = reshape(orderedIndices, h, w);
-    end    
-    
-       
+        end
+    end
 end

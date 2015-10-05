@@ -6,7 +6,7 @@ inputImage.RGB = imread('fish.jpg');
 subplot(3,1,1); imshow(inputImage.RGB); title('Input Image');
 [h, w, c] = size(inputImage.RGB);
 
-nCluster = 4;
+nCluster = 10;
 
 % 2-1-a
 [outputImage.RGB, meanColors] = quantizeRGB(inputImage.RGB, nCluster);
@@ -49,7 +49,7 @@ stem(0:255, histEqual, 'r', 'LineWidth', 3);
 stem(0:255, histClustered, 'b', 'LineWidth', 3); 
 legend('Location', 'NorthEast', ['Equally-spaced Histogram n= ', num2str(nCluster)], ['Clustered Histogram n= ', num2str(nCluster)]);
 
-saveas(1, ['../submission/Q2-IO-', 'nCluster', num2str(nCluster),'.png'],'png');
-saveas(2, ['../submission/Q2-histRGB-', 'nCluster', num2str(nCluster),'.png'],'png');
-saveas(3, ['../submission/Q2-histHSV-', 'nCluster', num2str(nCluster),'.png'],'png');
-saveas(4, ['../submission/Q2-histInputvsHSV', 'nCluster', num2str(nCluster),'.png'],'png');
+saveas(1, ['../submission/Q2-1-IO-', 'nCluster', num2str(nCluster),'.png'],'png');
+saveas(2, ['../submission/Q2-1-histRGB-', 'nCluster', num2str(nCluster),'.png'],'png');
+saveas(3, ['../submission/Q2-1-histHSV-', 'nCluster', num2str(nCluster),'.png'],'png');
+saveas(4, ['../submission/Q2-1-histInputvsHSV', 'nCluster', num2str(nCluster),'.png'],'png');
