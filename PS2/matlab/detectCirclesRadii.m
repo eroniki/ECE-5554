@@ -1,4 +1,4 @@
-function [centers] = detectCirclesRad(im, radius, useGradient)
+function [centers] = detectCirclesRadii(im, radius, useGradient)
     im = rgb2gray(im);
     [h, w, ~] = size(im);
     [~,Gdir] = imgradient(im);
