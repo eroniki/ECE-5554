@@ -2,28 +2,25 @@
 
 im = imread('jupiter.jpg');
 [h, w, ~] = size(im);
-imgray = rgb2gray(im);
 maxDim = max(h,w);
 frame = zeros(h,w, 'uint8');
 
-radius = 75;
+radius = 30;
 useGradient = 1;
+radii = 50:100;
+nCircles = 5;
 
-centers = detectCircles(im, 50:100, useGradient);
-% centers = detectCircles(im, 75, useGradient);
+centers = detectCircles(im, radius, useGradient);
 
-[i,j] = ind2sub(size(centers.centers), centers.centers);
+[y,x] = ind2sub(size(centers.centers), centers.centers(1:nCircles));
+
 figure(1); imagesc(centers.houghSpace);
 
-figure(2); imshow(im);
-figure(3); imshow(centers.edges);
+figure(2); imshow(centers.edges);
+figure(3); imshow(im);
 
-for q=1:10
-    circle.x = j(q);
-    circle.y = i(q)
-    size.h = h;
-    size.w = w;
-    geometry = circleCoordinates(circle, radius, size);
-    figure(4); hold on; imshow(geometry.frame);
-end
+centersA = [x(1:nCircles)', y(1:nCircles)']
+bidi = repmat(radius, [nCircles,1])
+viscircles(centersA, bidi);
+
 profile viewer

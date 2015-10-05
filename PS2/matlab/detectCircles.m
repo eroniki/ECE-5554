@@ -8,13 +8,12 @@ function [centers] = detectCircles(im, radius, useGradient)
     thetaResolution = 0.01;
     angle = 0:thetaResolution:2*pi;
     
-    centers.edges = edge(im, 'canny');
-    centers.houghSpace = zeros(h,w,numel(radius));
-    centers.centers = zeros(h,w,numel(radius));
-    centers.votes = zeros(numel(radius), numel(im));
+    centers.edges = edge(im, 'canny', .6);
+    centers.houghSpace = zeros(h,w,1);
+    centers.centers = zeros(h,w,1);
+    centers.votes = zeros(h,w);
     
     [i, j] = find(centers.edges == 1);
-    
 
     for counter=1:numel(i)
         center.y = i(counter);
@@ -24,22 +23,19 @@ function [centers] = detectCircles(im, radius, useGradient)
         else
             theta = angle;
         end
-
-        for rad=1:numel(radius)
-            a = center.x - radius(rad) * cos(theta);
-            b = center.y + radius(rad) * sin(theta);
-            a(a>w | a<1) = [];
-            b(b>h | b<1) = [];
-            centers.houghSpace(round(b), round(a), rad) = centers.houghSpace(round(b), round(a), rad) + 1;
-        end    
+        a = center.x - radius * cos(theta);
+        b = center.y + radius * sin(theta);
+        a(a>w | a<1) = [];
+        b(b>h | b<1) = [];
+        centers.houghSpace(round(b), round(a)) = centers.houghSpace(round(b), round(a)) + 1;
+            
     end
 
-    for rad=1:numel(radius)
-%         centers.centers(:,:,rad) = imregionalmax(centers.houghSpace(:,:,rad));
-        list = centers.houghSpace(:,:,rad);
-        [centers.votes(rad,:), orderedIndices] = sort(list(:), 'descend');    
-        centers.centers(:,:,rad) = reshape(orderedIndices, h, w);
-    end    
+	list = centers.houghSpace;
+    meanVote = mean(centers.votes(:));
+    size(centers.votes)
+    centers.votes(centers.votes<meanVote) = [];
+    [centers.votes, orderedIndices] = sort(list(:), 'descend');    
+    centers.centers = reshape(orderedIndices, h, w);       
     
-       
 end
