@@ -34,7 +34,6 @@ function [centers] = detectCirclesRadii(im, radius, useGradient)
     end
 
     for rad=1:numel(radius)
-%         centers.centers(:,:,rad) = imregionalmax(centers.houghSpace(:,:,rad));
         list = centers.houghSpace(:,:,rad);
         votes = centers.votes(rad,:);
         meanVote = mean(votes);

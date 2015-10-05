@@ -8,7 +8,7 @@ function [centers] = detectCircles(im, radius, useGradient)
     thetaResolution = 0.01;
     angle = 0:thetaResolution:2*pi;
     
-    centers.edges = edge(im, 'canny', .6);
+    centers.edges = edge(im, 'canny', .8);
     centers.houghSpace = zeros(h,w,1);
     centers.centers = zeros(h,w,1);
     centers.votes = zeros(h,w);
@@ -37,5 +37,8 @@ function [centers] = detectCircles(im, radius, useGradient)
     centers.votes(centers.votes<meanVote) = [];
     [centers.votes, orderedIndices] = sort(list(:), 'descend');    
     centers.centers = reshape(orderedIndices, h, w);       
+    
+    [y,x] = ind2sub(size(centers.centers), centers.centers);
+    centers.coordinates = [x', y'];
     
 end

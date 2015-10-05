@@ -1,11 +1,11 @@
- clc; clear all; close all; profile on;
+clc; clear all; close all; profile on;
 
 im = imread('jupiter.jpg');
 [h, w, ~] = size(im);
 maxDim = max(h,w);
 frame = zeros(h,w, 'uint8');
 
-radius = 30;
+radius = 16;
 useGradient = 1;
 radii = 50:100;
 nCircles = 5;
@@ -19,8 +19,6 @@ figure(1); imagesc(centers.houghSpace);
 figure(2); imshow(centers.edges);
 figure(3); imshow(im);
 
-centersA = [x(1:nCircles)', y(1:nCircles)']
-bidi = repmat(radius, [nCircles,1])
-viscircles(centersA, bidi);
-
+centersA = [x(1:nCircles)', y(1:nCircles)'];
+viscircles(centersA, repmat(radius, [nCircles,1]));
 profile viewer
