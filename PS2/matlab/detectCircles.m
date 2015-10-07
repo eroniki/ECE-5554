@@ -7,7 +7,8 @@ function [centers] = detectCircles(im, radius, useGradient)
 
     thetaResolution = 0.01;
     angle = 0:thetaResolution:2*pi;
-
+    cosine = cos(angle);
+    sine = sin(angle);
     centers.edges = edge(im, 'canny', .8, 6);
 
     centers.houghSpace = zeros(h,w);
@@ -25,8 +26,8 @@ function [centers] = detectCircles(im, radius, useGradient)
         else
             theta = angle;            
         end
-        a = center.x + radius * cos(theta);
-        b = center.y + radius * sin(theta);
+        a = center.x + radius * cosine;
+        b = center.y + radius * sine;
         a(a>w | a<1) = [];
         b(b>h | b<1) = [];
         centers.houghSpace(round(b), round(a)) = centers.houghSpace(round(b), round(a)) + 1;
