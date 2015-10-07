@@ -1,4 +1,4 @@
-function [centers] = detectCircles(im, radii, useGradient)
+function [centers] = detectCirclesRadii(im, radii, useGradient)
     im = rgb2gray(im);
     [h, w, ~] = size(im);
     [~,Gdir] = imgradient(im);
@@ -20,8 +20,7 @@ function [centers] = detectCircles(im, radii, useGradient)
         center.y = i(counter);
         center.x = j(counter);
         if(useGradient == 1)
-            theta = Gdir(center.y, center.x);
-            theta = [theta; theta - pi];
+            theta = [Gdir(center.y, center.x); Gdir(center.y, center.x)- pi];
         else
             theta = angle;            
         end
@@ -31,12 +30,14 @@ function [centers] = detectCircles(im, radii, useGradient)
             a(a>w | a<1) = [];
             b(b>h | b<1) = [];
             centers.houghSpace(round(b), round(a), radIndex) = centers.houghSpace(round(b), round(a), radIndex) + 1;
-        end            
-        for radIndex=1:numel(radii)
-            [peaks, locs] = findpeaks(centers.houghSpace(:,:,radInd));
-            maxVal = sort(peaks, 'descend');
-            maxInd = sort(locs, 'descend');
-
         end
+        
     end
+    for radIndex=1:numel(radii)
+        list = centers.houghSpace(:,:,radIndex);
+        [orderedVotes, orderedIndices] = sort(list(:), 'descend');   
+        centers.votes(:,:,radIndex) = reshape(orderedVotes, h,w);
+        centers.centers(:,:,radIndex) = reshape(orderedIndices, h, w);
+    end
+   
 end

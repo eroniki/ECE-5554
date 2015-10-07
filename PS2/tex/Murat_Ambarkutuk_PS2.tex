@@ -1,0 +1,370 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+
+\newcommand{\listFigure}[4]{
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{../submission/Q2-#1/#2}
+	\caption{#3\label{fig:#4}}
+\end{figure}		
+}
+
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+% % Preamble done! % Begin document
+\begin{document}
+
+\label{Cover}
+	\begin{center}
+	\large{ECE-5554 Computer Vision: Problem Set 2} 
+	\vfill
+	Murat Ambarkutuk \\ murata@vt.edu
+	\vfill
+	Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University
+	\vfill
+	\today
+	\end{center}
+\pagebreak 
+\large{Answer Sheet}
+
+\label{Short Answer Problems}
+\section{Short Answer Problems}
+\begin{enumerate}
+	% 1- Suppose we form a texture description using textons built from a filter bank of multiple anisotropic
+	% derivative of Gaussian filters at two scales and six orientations (as
+	% displayed below in Figure 1). Is the resulting representation sensitive to
+	% orientation, or is it invariant to orientation? Explain why.
+	\item Since filter bank contains rotated variants of the texture model, it is
+	expected to get orientation insensitive response. In other words, we should be
+	able to find the texture no matter its direction.
+	 %Consider Figure 2 below. Each small square denotes an edge point extracted
+	% from an image. Say we are going to use k-means to cluster these points’ positions into k=2 groups. That is, we will run
+	% k-means where the feature inputs are the (x,y) coordinates of all the small
+	% square points. What is a likely clustering assignment that would result?
+	% Briefly explain your answer.
+	\item 
+	Since kmeans algorithm utilizes Euclidian distance as
+	distinguishing criteria, it may lead unexpected clustering. If the
+	given data set clustered by a group of people, the resulting would be the
+	curves connecting the data points to circles (due to Gestalt Principles).
+	On the other hand, the resulting clusters of kmeans clustering will have two
+	half circles for each cluster, unlike the human clustering result.
+	% 3- When using the Hough Transform, we often discretize the parameter space to collect votes in an
+	% accumulator array. Alternatively, suppose we maintain a continuous vote
+	% space. Which grouping algorithm (among k-means, mean-shift, or graph-cuts)
+	% would be appropriate to recover the model parameter hypotheses from the
+	% continuous vote space? Briefly describe and explain.
+	\item
+	\underline{kmeans:} K-means algorithm is not suitable for the task, due
+	to the fact that its inputs are data points and desired cluster number and
+	outputs are the labeled set. However, for Hough transform the outcome should be
+	the place where maximum vote (area, bin or point) is located. \\
+	\underline{graph-cuts:} Graph-cut algorithm takes the feature space as input
+	and divides that feature space into 2 by trying to break the weakest bounds
+	connecting features in the feature space. \\ 
+	\underline{Mean-shift:} This algorithm takes a data set as input and converges
+	to the center of mass. This algorithm can be useful when employed to find the
+	maxima of hough space.
+	% 4- Suppose we have run the connected components algorithm on a binary image, and now have access to
+	% the multiple foreground ‘blobs’ within it. Write pseudocode showing how to
+	% group the blobs according to the similarity of their outer boundary shape,
+	% into some specified number of groups. Define clearly any variables you
+	% introduce.
+	\item
+	Functions:
+	\begin{itemize}
+		\item point findCenterOfMass(blob)\{ \\
+		--for each pixel in blob \\
+		----sumPos += position(pixel) \\
+	 	--centerOfMass = sumPos/size(blob) \\
+	 	-- return centerOfMass\\
+		\}
+		\hline
+		\item double circularity(blob)\{\\
+		--radiusMean = size(blob)\\
+		--for each pixel in boundary(blob)\\
+		----sumSquaredDistance += (centerOfMass - position(pixel)) $^ 2$\\
+		--circularity = sumSquaredDistance / size(boundry(blob))\\
+		--return circularity \\
+		\} \\
+		\hline 
+		\item clusters kMeans(circularity[ ],k)\{ \\
+		-- return kmeans = circularity[ ]\\
+		\}
+	\end{itemize}
+	Variables:
+	\begin{itemize}
+		\item sumPos: $\sum_{pixels}Position(Pixel)$
+		\item centerOfMass: Center of mass point of the blob.
+		\item sumSquaredDistance:
+		$\sum_{pixels}Position(pixel)-Position(centerOfMass)$
+		\item circularity: Radius invarient circularity feature. The feature is
+		expected to invarient of radius of the the shape, because sum of the squared
+		distance is normalized with the total number of the pixels bounding the blob. 
+	\end{itemize}
+	Algorithm: \\
+	\begin{itemize}
+		\item Find the center of mass point for each blob.
+		\item Extract radius invarient circularity feature.
+		\item Cluster the blobs according to their circularity feature.
+		\item This algorithm tries to explain blobs by assuming (fitting) circle
+		around it. The lowest score means the best fit for circular shapes.
+	\end{itemize}	
+\end{enumerate}
+\pagebreak
+
+\label{Programming}
+\section{Programming}
+	\subsection{Color Quantization Results}
+	\subsubsection{RGB Space Quantization with K-Means}
+	\listFigure{1}{fish.jpg}{Input Image}{input}
+
+	\listFigure{1}{RGB2.jpg}{RGB Color Quantization Output Image
+	(n=2)}{outputRGB-n_2}
+	\listFigure{1}{histRGB-nCluster2.png}{Histogram	(n=2),
+	Each color channel is represented by its own color}{histRGB-n_2}
+	
+	
+	\listFigure{1}{RGB4.jpg}{RGB Color Quantization Output Image
+	(n=4)}{outputRGB-n_4}
+	\listFigure{1}{histRGB-nCluster4.png}{Histogram	(n=4),
+	Each color channel is represented by its own color}{histRGB-n_4}
+	
+	\listFigure{1}{RGB10.jpg}{RGB Color Quantization Output Image
+	(n=10)}{outputRGB-n_10}  
+	\listFigure{1}{histRGB-nCluster10.png}{Histogram (n=10), Each color
+	channel is represented by its own color}{histRGB-n_10}
+
+	\subsubsection{HSV Quantization with K-Means}
+	\listFigure{1}{HSV2.jpg}{HSV Color Quantization Output Image
+	(n=2)}{outputHSV-n_2}
+	\listFigure{1}{histHSV-nCluster2.png}{Histogram	(n=2),
+	Each color channel is represented by its own color}{histHSV-n_2}
+	\listFigure{1}{histInputvsHSVnCluster2.png}{Histogram (n=2), Equally
+	spaced bins vs. Quantized Histogram}{histHSV-nCluster2}
+		
+	\listFigure{1}{HSV4.jpg}{HSV Color Quantization Output Image
+	(n=4)}{outputHSV-n_4}
+	\listFigure{1}{histHSV-nCluster4.png}{Histogram	(n=4),
+	Each color channel is represented by its own color}{histHSV-n_4}
+	\listFigure{1}{histInputvsHSVnCluster4.png}{Histogram (n=4), Equally
+	spaced bins vs. Quantized Histogram}{histHSV-nCluster4}
+	
+	\listFigure{1}{HSV10.jpg}{HSV Color Quantization Output Image
+	(n=10)}{outputHSV-n_10}  
+	\listFigure{1}{histHSV-nCluster10.png}{Histogram (n=10), Each color
+	channel is represented by its own color}{histHSV-n_10}
+	\listFigure{1}{histInputvsHSVnCluster10.png}{Histogram (n=10), Equally
+	spaced bins vs. Quantized Histogram}{histHSV-nCluster10}
+	\subsubsection{Discussion}
+	Color quantization is a technique that enables us to represent the pixels
+	with fewer bits to store images in smaller memory maps. For instance, $2^8$
+	different colors can be mapped to $n$ different colors. In this way each pixel
+	can be represented with $log_2{n}$ bits, instead of 8. \\
+
+	\label{tab:error}
+	\begin{tabular}{ | c || c | c | c |}
+	\hline			 
+	Color space 	& n=2 & n=4 & n=10\\ \hline
+	RGB Clustering: & 99.3278 & 91.7612 & 80.3925\\
+	HSV Clustering: & 27.0659 & 16.1680 & 7.9427\\
+	\hline  	
+	\end{tabular} \\	
+	
+	Although quantization saves memory space, it also
+	introduces color reproduction error since each pixel will be represented by the
+	centeroid color of the cluster which it is assigned. Table-\ref{tab:error}
+	shows mean of color reproduction error (number of runs= 15). As it can be
+	assessed from the table, the error reduces as $n \rightarrow 255$. Thus, the
+	trade-off between memory and the error should be tuned for each run by choosing
+	the right number of clusters. The artifact and the effects of $n$ can be seen
+	in figures-\{\ref{fig:outputRGB-n_2}, \ref{fig:outputHSV-n_2},
+	\ref{fig:outputRGB-n_4}, \ref{fig:outputHSV-n_4}, \ref{fig:outputRGB-n_10},
+	\ref{fig:outputHSV-n_10}\} \\
+ 
+	\label{tab:error_multirun}	
+	\begin{tabular}{ | c || c | c | c |}
+	\hline			 
+	Color space 	& Run=1 & Run=2 & Run=3\\ \hline
+	RGB Clustering: & 80.0289 & 80.5505 & 80.3925\\
+	HSV Clustering: &  5.4682 &  5.1711 &  8.8450\\
+	\hline  	
+	\end{tabular} \\
+ 
+	Along with k, the initialization has significant effect on the overall
+	performance of kmeans algorithm. The initial step of kmeans is to choose $n$
+	random points inside the data set and start assigning the data to the closest
+	cluster. For that reason, starting point both has effect on the total number of
+	iteration and the points that clusters converge. The
+	table-\ref{tab:error_multirun} below shows the different color reproduction
+	error across arbitrary runs. (n=10)	\\
+	The difference between color spaces also changes the overall performance of the
+	algorithm. For instance, as it can be seen on the
+	figures-\{\ref{fig:outputRGB-n_10}, \ref{fig:outputHSV-n_10}\}, the results of
+	quantization of HSV and RGB color spaces display great difference. Even though
+	$n$ is the same ($n=10$) for the both instances, the results greatly vary. The
+	reasons why that difference occurs is the algorithm is not used for each
+	channel in the HSV image, the scales of mappings are different. \\
+	$RGB: 16,777,216\rightarrow n^3$, while $HSV: 16,777,216\rightarrow n*65536$
+	
+	This difference leads better image quality on the HSV quantization and fewer
+	artifacts). Moreoveer, since less computation is done in the HSV quantization
+	process, it is expected to run faster than RGB clustering.
+	
+	\subsection{Circular Hough Transform}
+	\subsubsection{Implementation:}
+	\begin{itemize}
+		\item Data Reduction: The image is converted to grayscale to reduce the amount
+		of data processed.
+		\item Gradient calculation: For later use, calculate gradient image with Sobel
+		Kernel.
+		\item Matlab provides gradient direction in angles in between $[-180, 180]$
+		degrees, convert it to to radians $[0, 2\pi]$.
+		\item Calculate the vector of cosine and sine in theta range. (In case of not
+		using gradient.)
+		\item Initialize Hough space ($H_{(m*n)}$) with same dimension of the input
+		image.	(a and b resolution is 1) 
+		\item Initialize the center and vote arrays in which the most voted centers
+		and their votes will be stored.
+		\item Detect edges with Canny algorithm. I used Canny because of the fact that
+		it gurantees that edges will be 1 pixel wide and I can tune the output by
+		optimizating $\sigma$ and thresholds.
+		By doing so, I reduce the total number of data will be processed.
+		\item Edge points are stored in the vector to eleminate one for loop in the
+		Hough transform.
+		\item Calculate a and b, delete the results out of the image plane.
+		Since cosine and sine values are stored in the vector, the formulate turns
+		into vector operation. The resulting a and b are also vector. \\
+		Side not: If the useGradient flag is set, a and b are calculated with the
+		gradient value acquired from imgradient() function. To take the complementary
+		angle into account gradient angle and its complementary value is stored into a
+		vector. Then, a and b are calculated (not a full list, just two points for
+		each)
+		\item Increment cells in the hough space; when gradient angle is used, 2 cells
+		are incremented, otherwise the number of affected cells in the hough space
+		equals to cosine and sine vector length.
+		\item Sort the houghspace with correlating indices.
+		\item Sort the n-strongest circle centers.
+	\end{itemize}
+	
+	\subsubsection{Results}
+% 	\listFigure{2}{Q2-2-circles-radius-10-Grad-0--n-3-egg.png}{The
+% 	most strongest 3 circles with radii 10. (useGradient=0)}{outputC3G0R10}
+% 	\listFigure{2}{Q2-2-houghSpace-radius-10-Grad-0--n-3-egg.png}{The
+% 	Hough space for radius 10. (useGradient=0)}{houghC3G0R10}
+% 	\listFigure{2}{Q2-2-edges-radius-10-Grad-0--n-3-egg.png}{The
+% 	 Edge image resulting to the hough space above}{houghC3G0R10}
+% 	
+% 	\listFigure{2}{Q2-2-circles-radius-10-Grad-1--n-3-egg.png}{The
+% 	most strongest 3 circles with radii 10. (useGradient=1)}{outputC3G1R10}
+% 	\listFigure{2}{Q2-2-houghSpace-radius-10-Grad-1--n-3-egg.png}{The
+% 	most strongest 3 circles with radii 10. (useGradient=1)}{houghC3G1R10}
+% 	\listFigure{2}{Q2-2-edges-radius-10-Grad-1--n-3-egg.png}{The
+% 	 Edge image resulting to the hough space above}{houghC3G0R10}
+% 	
+	\listFigure{2}{Q2-2-circles-radius-70-Grad-0--n-1-egg.png}{The
+	most strongest circle with radius 70. (useGradient=0)}{outputC1G0R70}
+	\listFigure{2}{Q2-2-houghSpace-radius-70-Grad-0--n-1-egg.png}{The
+	hough space with radius 70. (useGradient=0)}{houghC1G0R70}
+	\listFigure{2}{Q2-2-edges-radius-70-Grad-0--n-1-egg.png}{The
+	 Edge image resulting to the hough space above}{houghC3G0R10}
+	
+	\listFigure{2}{Q2-2-circles-radius-70-Grad-1--n-1-egg.png}{The
+	most strongest circle with radius 70. (useGradient=1)}{outputC1G1R70}
+	\listFigure{2}{Q2-2-houghSpace-radius-70-Grad-1--n-1-egg.png}{The
+	hough space with radius 70. (useGradient=1)}{houghC1G1R70}
+	\listFigure{2}{Q2-2-edges-radius-70-Grad-1--n-1-egg.png}{The
+	 Edge image resulting to the hough space above}{houghC3G0R10}
+	 
+	\listFigure{2}{Q2-2-circles-radius-30-Grad-0--n-1-jupiter.png}{The
+	most strongest circle with radius 30. (useGradient=0)}{outputC1G0R70}
+	\listFigure{2}{Q2-2-houghSpace-radius-30-Grad-0--n-1-jupiter.png}{The
+	hough space with radius 30. (useGradient=0)}{houghC1G0R70}
+	\listFigure{2}{Q2-2-edges-radius-30-Grad-0--n-1-jupiter.png}{The
+	 Edge image resulting to the hough space above}{houghC3G0R10}
+	 
+	 	 
+	\listFigure{2}{Q2-2-circles-radius-30-Grad-1--n-1-jupiter.png}{The
+	most strongest circle with radius 30. (useGradient=1)}{outputC1G0R70}
+	\listFigure{2}{Q2-2-houghSpace-radius-30-Grad-0--n-1-jupiter.png}{The
+	hough space with radius 30. (useGradient=1)}{houghC1G0R70}
+	\listFigure{2}{Q2-2-edges-radius-30-Grad-1--n-1-jupiter.png}{The
+	 Edge image resulting to the hough space above}{houghC3G0R10}
+	 
+	 \listFigure{2}{Q2-2-circles-radius-50-Grad-0--n-1-jupiter.png}{The
+	most strongest circle with radius 50. (useGradient=0)}{outputC1G0R70}
+	\listFigure{2}{Q2-2-houghSpace-radius-50-Grad-0--n-1-jupiter.png}{The
+	hough space with radius 50. (useGradient=0)}{sampleHough}
+	\listFigure{2}{Q2-2-edges-radius-50-Grad-0--n-1-jupiter.png}{The
+	 Edge image resulting to the hough space above}{houghC3G0R10}
+	 
+	 	 
+	\listFigure{2}{Q2-2-circles-radius-50-Grad-1--n-1-jupiter.png}{The
+	most strongest circle with radius 50. (useGradient=1)}{outputdiscuss}
+	\listFigure{2}{Q2-2-houghSpace-radius-50-Grad-0--n-1-jupiter.png}{The
+	hough space with radius 50. (useGradient=1)}{houghC1G0R70}
+	\listFigure{2}{Q2-2-edges-radius-50-Grad-1--n-1-jupiter.png}{The
+	 Edge image resulting to the hough space above}{edgediscuss}
+	 
+	\subsubsection{Discussion}
+	\listFigure{2}{Q2-2-houghSpace-radius-50-Grad-0--n-1-jupiter.png}{The
+	hough space with radius 50. (useGradient=0)}{sampleHough1}
+	\underline{Hough Space}: The success of hough transform heavily depends on
+	successfully constructing the hough space. On the other hand, as
+	figure-\ref{fig:sampleHough1} depicts, the hough space closely correlates to
+	edge image. Thus, the overall success of the transform requires precise edge
+	detection steps. \\
+	Given that, tuning the edge detector is one of the most important part of the
+	transform. Otherwise, the noise in the image may lead algorithm to fit circles
+	to inaccurate results. \\
+	Another point is worth to mention is that, hough transfor is robust for missing
+	and misleading information thanks to the accumulated voting system. For
+	instance, despite figure-\ref{fig:edgediscuss} has missing and misleading
+	(inaccurate edges due to the lightning conditions and shades), the circle
+	fitting has been successively done, as it can be seen on
+	figure-\ref{fig:outputdiscuss}. \\
+	Figure-\ref{fig:sampleHough} shows the accumulated votes for radius of 50 pixel
+	circles with figure-\ref{fig:edgediscuss}. To successfully fit a circle with
+	the given radius, each edge point votes all the possible circles to which it is
+	belong with given radius. As voting process continues, it can be inferable that
+	the the peaks of hough space relates to the circle centers. Thus, the bright
+	areas in the figure-\ref{fig:sampleHough} relates to the circle centers with 50 pixel radii. \\
+	\underline{The Impact of Bin Size:} The bin size is the another parameter which
+	has deep impact on the overall performance of the fit. Reducing the bin size would lead
+	to have less precise results for the centers points, albeit fast. \\
+	\underline{Post-processing Experimentation:} The result image was extremely
+	noisy due to the edge detection algorithm I used. For that reason, before
+	starting tuning edge detection algorithm, I implemented a morphological edge
+	detection process which makes sure that all the edges are 1 pixel wide and no
+	clutters inside the circles. \\
+	Attached \textit{morphologicalEdges.m} file
+	contains series of operations accounts and tries to eleminate the noise inside
+	the planet bottom-right in the image.
+	\section{Optional}
+	For radii 16,30 and 50 the marked circles, the edge image and the hough spaces
+	(respectively) can be seen in the figure below. Attached \textit{houghRadii.m
+	and detectCirclesRadii.m} are the source files for multi-radii Circular Hough
+	Transform.
+	\listFigure{2}{Q2-2-Extra-circles-radius-multiple-Grad-0--n-3-jupiter.png}{Multiple radii circles is fit with Circular Hough Transform}{circleMulti}
+	 
+	\listFigure{2}{Q2-2-Extra-edges-radius-multiple-Grad-0--n-3-jupiter.png}{The
+	Edge Image}{edgeMulti}
+	
+	\listFigure{2}{Q2-2-Extra-houghSpace-radius-16-Grad-0--n-3-jupiter.png}{The
+	Hough Space (r=16)}{houghMulti16}
+
+	\listFigure{2}{Q2-2-Extra-houghSpace-radius-30-Grad-0--n-3-jupiter.png}{The
+	Hough Space (r=30)}{houghMulti30}
+
+	\listFigure{2}{Q2-2-Extra-houghSpace-radius-50-Grad-0--n-3-jupiter.png}{The
+	Hough Space (r=50)}{houghMulti50}	
+\end{document}	
