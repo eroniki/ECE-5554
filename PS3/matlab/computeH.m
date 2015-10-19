@@ -10,6 +10,7 @@ t2 = [t2; ones(1,nPoints)];
 for i=1:nPoints
     L(i*2-1:2*i,:) = [t1(:,i)', zeros(1,3),-1*t2(1,i)*t1(:,i)'; zeros(1,3), t1(:,i)', -1*t2(2,i)*t1(:,i)'];
 end
+assignin('base','L',L);
 % Find eigenvectors and matrix containing eigenvalue on primary diagonal
 % elements.
 [V, D] = eig(L'*L);
