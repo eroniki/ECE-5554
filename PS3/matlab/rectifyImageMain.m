@@ -42,10 +42,10 @@ rectifiedIm = rectifyImage(image.input, points.input.homogeneous,H);
 %% Visualizations and Figures
 % Show the images
 figure(1); imshow(image.input);hold on;
-plot(points.input.raw(1,:), points.input.raw(2,:),'r+','MarkerSize',5);
+plot(points.input.raw(1,:), points.input.raw(2,:),'r+','MarkerSize',10);
 title('Input Image (Red points represent the chosen points)');
 figure(2); imshow(rectifiedIm); 
 title('Output Image (Goodwin Hall)');
-% saveas(1, ['../submission/rectifyGoodwinInput.png'],'png');
-% saveas(2, ['../submission/rectifyGoodwinOutput.png'],'png');
+saveas(1, ['../submission/rectifyInput.png'],'png');
+saveas(2, ['../submission/rectifyOutput.png'],'png');
 % profile viewer

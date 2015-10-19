@@ -36,9 +36,15 @@ points.warped = normalizeHomogeneous(points.warped);
 [warpedIm, mergeIm] = warpIntoFrame(image.input, image.ref, H);
 %% Visualizations and Figures
 % Show the images
-figure(1); imshow(image.input);
-figure(2); imshow(image.ref);
+figure(1); imshow(image.input); hold on;
+plot(points.input.raw(1,:), points.input.raw(2,:), 'r+','MarkerSize',10);
+figure(2); imshow(image.ref); hold on;
+plot(points.ref.raw(1,:), points.ref.raw(2,:), 'r+','MarkerSize',10);
 figure(3); imshow(warpedIm);
-figure(4); imshow(mergeIm);
-% saveas(1, ['outputWidth', suffix, '.png'],'png');
+figure(4); imshow(mergeIm); hold on;
+plot(points.warped(1,:), points.warped(2,:), 'w+','MarkerSize',10);
+saveas(1, ['../submission/input-frame.png'],'png');
+saveas(2, ['../submission/base-frame.png'],'png');
+saveas(3, ['../submission/warpIm-frame.png'],'png');
+saveas(4, ['../submission/mergeIm-frame.png'],'png');
 % profile viewer

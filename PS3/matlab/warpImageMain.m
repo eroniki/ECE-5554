@@ -5,7 +5,7 @@ clc; close all; clear all; profile on;
 % Load data set
 input = {'../submission/crop1.jpg', '../submission/wdc1.jpg','../submission/snapshot1.jpg'};
 ref = {'../submission/crop2.jpg', '../submission/wdc2.jpg','../submission/snapshot2.jpg'};
-k=2;
+k=3;
 image.input = imread(input{k});
 image.ref = imread(ref{k});
 
@@ -51,9 +51,19 @@ points.warped = normalizeHomogeneous(points.warped);
 [warpedIm, mergeIm] = warpImage(image.input, image.ref, H);
 %% Visualizations and Figures
 % Show the images
-figure(1); imshow(image.input);
-figure(2); imshow(image.ref);
-figure(3); imshow(warpedIm);
-figure(4); imshow(mergeIm);
-% saveas(1, ['outputWidth', suffix, '.png'],'png');
+figure(1); imshow(image.input); hold on;
+plot(points.input.raw(1,:), points.input.raw(2,:), 'r+','MarkerSize',10);
+figure(2); imshow(image.ref); hold on;
+plot(points.ref.raw(1,:), points.ref.raw(2,:), 'r+','MarkerSize',10);
+figure(3); imshow(warpedIm);  hold on;
+plot(points.warped(1,:)+offsetX, points.warped(2,:)+offsetY, 'b+','MarkerSize',10);
+figure(4); imshow(mergeIm); hold on;
+plot(points.warped(1,:)+offsetX, points.warped(2,:)+offsetY, 'b+','MarkerSize',10);
+title('Warped + Merged Images (Blue crosses represent the chosen points');
+saveas(1, ['../submission/input-k-',num2str(k),'.png'],'png');
+saveas(2, ['../submission/base-k-',num2str(k),'.png'],'png');
+saveas(3, ['../submission/warpIm-k-',num2str(k),'.png'],'png');
+saveas(4, ['../submission/mergeIm-k-',num2str(k),'.png'],'png');
+% imwrite(outputImage.RGB, ['../submission/Q2-1/RGB', num2str(nCluster),'.jpg']);
+% imwrite(hsv2rgb(double(outputImage.HSV)/255.0), ['../submission/Q2-1/HSV', num2str(nCluster),'.jpg']);
 % profile viewer
