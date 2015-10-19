@@ -1,6 +1,7 @@
 function [warpIm, mergeIm] = warpIntoFrame(inputIm, refIm, H)
 % warpIntoFrame(): Warp inputIm with respect to H to refIm.
 % Murat Ambarkutuk, PS3
+
 [hInput,wInput,~] = size(inputIm); 
 [hRef,wRef,~] = size(refIm); 
 
@@ -16,16 +17,17 @@ x.max = max(cornersWarped(1,:))
 y.min = min(cornersWarped(2,:));
 y.max = max(cornersWarped(2,:))
 
-width = round(x.max - x.min);
-height = round(y.max - y.min);
+width = ceil(x.max-x.min);
+height = ceil(y.max-y.min);
 
 warpIm = zeros(height*width,3,'uint8');
 
 Hinv = inv(H);
 
-xx = x.min:x.max;
-yy = y.min:y.max;
-
+xx = (x.min):(x.max);
+yy = (y.min):(y.max);
+assignin('base', 'xx', size(xx));
+assignin('base', 'yy', size(yy));
 [X,Y] = meshgrid(xx,yy);
 
 pointsProjected = [X(:)'; Y(:)'; ones(1,numel(X))];
@@ -39,8 +41,8 @@ y__ = pointsSource(2,:);
 xr = round(x__);
 yr = round(y__);
 g = xr>=1 & yr>=1 & xr<wInput & yr<hInput;
-
-canvasWarped = reshape(refIm, hRef*wRef,3);
+assignin('base', 'xr', size(xr));
+assignin('base', 'g', size(g));
 
 for i=1:width*height
     if(g(i)==1) 

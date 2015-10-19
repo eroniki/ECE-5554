@@ -5,7 +5,7 @@ clc; close all; clear all; profile on;
 % Load data set
 input = {'../submission/crop1.jpg', '../submission/wdc1.jpg','../submission/snapshot1.jpg'};
 ref = {'../submission/crop2.jpg', '../submission/wdc2.jpg','../submission/snapshot2.jpg'};
-k=3;
+k=2;
 image.input = imread(input{k});
 image.ref = imread(ref{k});
 

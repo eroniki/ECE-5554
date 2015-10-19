@@ -17,19 +17,17 @@ x.max = max(cornersWarped(1,:))
 y.min = min(cornersWarped(2,:));
 y.max = max(cornersWarped(2,:))
 
-width = round(x.max - x.min);
-height = round(y.max - y.min);
-
-canvasHeight = hRef + height;
-canvasWidth = wRef + width;
+width = ceil(x.max - x.min);
+height = ceil(y.max - y.min);
 
 warpIm = zeros(height*width,3,'uint8');
-mergeIm = zeros(canvasHeight,canvasWidth,3,'uint8');
 
 Hinv = inv(H);
 
-xx = 1:width;
-yy = 1:height;
+xx = x.min:x.max;
+yy = y.min:y.max;
+assignin('base', 'xx', size(xx));
+assignin('base', 'yy', size(yy));
 [X,Y] = meshgrid(xx,yy);
 
 pointsProjected = [X(:)'; Y(:)'; ones(1,numel(X))];
@@ -43,39 +41,34 @@ y__ = pointsSource(2,:);
 xr = round(x__);
 yr = round(y__);
 g = xr>=1 & yr>=1 & xr<wInput & yr<hInput;
+assignin('base', 'xr', size(xr));
+assignin('base', 'g', size(g));
 
 for i=1:width*height
     if(g(i)==1) 
-%         [x(i), y(i)]
-%         rangeY = max(floor(y(i)),1):min(ceil(y(i)),hRef)
-%         rangeX = max(floor(x(i)),1):min(ceil(x(i)),wRef)
-%         meanPixel = mean(mean(inputIm(rangeY,rangeX,:)))
-%         warpIm(i,:) = meanPixel;
         warpIm(i,:) = inputIm(yr(i), xr(i), :);
+        
     end
 end
 
 warpIm = reshape(warpIm,height,width,3);
 % 
-% offsetX=1;
-% offsetY=1;
-% 
-% if(y.min<1)
-%     offsetY = ceil(abs(y.min));
-% end
-% 
-% if(x.min<1)
-%     offsetX = ceil(abs(x.min));
-% end
-% 
-% canvas = zeros(hRef+offsetY-1, wRef+offsetX-1,3);
-% assignin('base', 'canvasSize', size(canvas));
-% assignin('base', 'offsetX', offsetX);
-% assignin('base', 'offsetY', offsetY);
-% assignin('base', 'canvasPort', size(canvas(offsetY:end,offsetX:end,:)));
-% canvas(offsetY:end,offsetX:end,:) = refIm;
+offsetX=1;
+offsetY=1;
 
-mergeIm = imfuse(refIm,warpIm,'blend');
-
+if(y.min<1)
+    offsetY = round(abs(y.min));
 end
 
+if(x.min<1)
+    offsetX = round(abs(x.min));
+end
+% 
+canvas = zeros(hRef+offsetY-1, wRef+offsetX-1,3, 'uint8');
+assignin('base', 'canvasSize', size(canvas));
+assignin('base', 'offsetX', offsetX);
+assignin('base', 'offsetY', offsetY);
+assignin('base', 'canvasPort', size(canvas(offsetY:end,offsetX:end,:)));
+canvas(offsetY:end,offsetX:end,:) = refIm;
+mergeIm = imfuse(warpIm,canvas*1.8,'blend');
+end
