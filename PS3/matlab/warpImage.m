@@ -64,6 +64,7 @@ if(x.min<1)
     offsetX = round(abs(x.min));
 end
 % 
+
 canvas = zeros(hRef+offsetY-1, wRef+offsetX-1,3, 'uint8');
 assignin('base', 'canvasSize', size(canvas));
 assignin('base', 'offsetX', offsetX);
