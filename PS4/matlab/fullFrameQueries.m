@@ -3,8 +3,9 @@ clc; close all; clear all;
 framesdir = 'frames';
 siftdir = 'sift';
 nClusters = 1500;
-nFrames = 3000;
+nFrames = 2000;
 frameOfInterest = [56,974,1844];
+nCandidate = 5;
 %% Initialize FeatureSpace
 featureSpace = createFeatureSpace(framesdir, siftdir, nFrames);
 %% Cluster descriptors into words
@@ -42,11 +43,13 @@ for i=1:length(frameOfInterest)
     idx = isnan(score(i,:));
     score(i,idx) = 0;
     [val(i,:), id(i,:)] = sort(score(i,:), 'descend');  
-    val(i,1:5)
-    id(i,1:5)
+    
+    val(i,1:nCandidate+1)
+    id(i,1:nCandidate+1)
     figure;
-    for candidate=1:5
+    for candidate=1:nCandidate+1
         imCandidate = imread(char(featureSpace.imname{id(i,candidate)}));
-        subplot(1,5,candidate); imshow(imCandidate);
+        subplot(1,6,candidate); imshow(imCandidate);
+        imwrite(imCandidate,['../submission/fullFrame',num2str(i),'-Sample-',num2str(candidate),'.png']);
     end
 end

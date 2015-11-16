@@ -10,6 +10,7 @@ PS4/matlab/frames/*
 PS4/matlab/PS4CodeMatlab/*
 PS4/matlab/sift/*
 PS4/matlab/vocabulary/*
+PS4/matlab/vocabulary_FIRST/*
 # Windows default autosave extension
 *.asv
 

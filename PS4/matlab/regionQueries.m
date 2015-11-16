@@ -2,9 +2,10 @@ clc; close all; clear all;
 %% Set Variables
 framesdir = 'frames';
 siftdir = 'sift';
-nClusters = 150;
-frameOfInterest = [2592:2595,2598:2620];
-nFrames = length(frameOfInterest);
+nClusters = 300;
+frameOfInterest = [2592:2595];
+nFrames = 500;
+nCandidate = 5;
 %% Initialize FeatureSpace
 fnames = dir([siftdir '/*.mat']);
 
@@ -20,7 +21,7 @@ for i=1:nFrames
     fprintf('reading frame %d of %d\n', i, length(fnames));
     
     % load that file
-    fname = [siftdir, '/friends_000000', num2str(frameOfInterest(i)), '.jpeg.mat'];
+    fname = [siftdir, '/friends_000000', num2str(2579+i), '.jpeg.mat'];
     load(fname, 'imname', 'descriptors', 'positions', 'scales', 'orients');
     numfeats = size(descriptors,1);
     
@@ -32,12 +33,19 @@ for i=1:nFrames
     randinds = randperm(numfeats);
     nFeatures = min([N,numfeats]);
     
+%     featureSpace.featureMap = [featureSpace.featureMap; descriptors(randinds(1:min([N,numfeats])),:)];
+%     featureSpace.feature(i).features = descriptors(randinds(1:min([N,numfeats])),:);
+%     featureSpace.feature(i).positions = positions(randinds(1:min([N,numfeats])),:);
+%     featureSpace.feature(i).scales = scales(randinds(1:min([N,numfeats])));
+%     featureSpace.feature(i).orientations = orients(randinds(1:min([N,numfeats])));
+%     featureSpace.feature(i).nFeatures = nFeatures;
     featureSpace.featureMap = [featureSpace.featureMap; descriptors];
     featureSpace.feature(i).features = descriptors;
     featureSpace.feature(i).positions = positions;
     featureSpace.feature(i).scales = scales;
     featureSpace.feature(i).orientations = orients;
-    featureSpace.feature(i).nFeatures = nFeatures;
+    featureSpace.feature(i).nFeatures = numfeats;
+    
     featureSpace.feature(i).imname = cellstr(imname);
     clear descriptors positions scales orients im    
 end
@@ -49,6 +57,7 @@ fprintf('start bagging\n');
 frameHist = zeros(nFrames,nClusters);
 membershipCopy = membership;
 memberShip = cell(1,nFrames);
+
 for i=1:nFrames
     memberShip{i} = membershipCopy(1:featureSpace.feature(i).nFeatures);
     idx = sort(membershipCopy(1:featureSpace.feature(i).nFeatures));
@@ -59,45 +68,48 @@ for i=1:nFrames
     clear idx
 end
 %% Select Region
-im = imread(char(featureSpace.feature(1).imname));
-oninds = selectRegion(im, featureSpace.feature(1).positions(1:featureSpace.feature(1).nFeatures,:));
-wordList = membership(oninds);
-displaySIFTPatches(featureSpace.feature(1).positions(oninds,:), featureSpace.feature(1).scales(oninds), featureSpace.feature(1).orientations(oninds), im); 
-
-for i=2:nFrames
+wordList = zeros(1,nClusters);
+for frame=13:13+length(frameOfInterest)-1
     figure;
-    im = imread(char(featureSpace.feature(i).imname));
-    imshow(im);
-    for j=1:length(wordList)
-        idx = memberShip{i} == wordList(j);
-        hold on;
-        displaySIFTPatches(featureSpace.feature(i).positions(idx,:), featureSpace.feature(i).scales(idx), featureSpace.feature(i).orientations(idx), im); 
+    im = imread(char(featureSpace.feature(frame).imname));
+    featureSpace.feature(frame).imname
+    oninds = selectRegion(im, featureSpace.feature(frame).positions(1:featureSpace.feature(frame).nFeatures,:));
+%     wordList(membership(oninds)) = wordList(membership(oninds))+1;
+    for j=1:nClusters
+        wordList(j) = wordList(j) + sum(membership(oninds) == j);
     end
+    displaySIFTPatches(featureSpace.feature(frame).positions(oninds,:), featureSpace.feature(frame).scales(oninds), featureSpace.feature(frame).orientations(oninds), im); 
+    imwrite(im,['../submission/regionQueries-FOI-',num2str(frame),'.png']);
+end
+%%
+normMatrice = zeros(nFrames,1);
+nominator = zeros(1,nFrames);
+denominator = zeros(1,nFrames);
+score = zeros(1,nFrames);
+
+for i=1:nFrames
+    normMatrice(i) = norm(frameHist(i,:));
 end
 
-% normMatrice = zeros(nFrames,1);
-% nominator = zeros(length(frameOfInterest),nFrames);
-% denominator = zeros(length(frameOfInterest),nFrames);
-% score = zeros(length(frameOfInterest),nFrames);
+%%
+denominator = norm(wordList)*normMatrice';
+nominator = wordList*frameHist';
+score = nominator./denominator;
+%%
+% score = zeros(1,nFrames);
 % for i=1:nFrames
-%     normMatrice(i) = norm(frameHist(i,:));
+%    score(i) = sum(wordList.*frameHist(i,:)) / (norm(wordList)*norm(frameHist(i,:)));   
 % end
-% for i=1:nFrames
-%     denominator(i,:) = normMatrice(i)*normMatrice';
-%     nominator(i,:) = frameHist(i,:)*frameHist';
-% end
-% %%
-% for i=1:length(frameOfInterest)
-%     score(i,:) = nominator(i,:)./denominator(i,:);
-%     idx = isnan(score(i,:));
-%     score(i,idx) = 0;
-%     [val(i,:), id(i,:)] = sort(score(i,:), 'descend');  
-%     val(i,:)
-%     id(i,:)
-% %     figure;
-% %     for candidate=1:5
-% %         imCandidate = imread(char(featureSpace.imname{id(i,candidate)}));
-% %         subplot(1,5,candidate); imshow(imCandidate);
-% %     end
-% end
-% 
+%%
+idx = isnan(score);
+score(idx) = 0;
+[val, id] = sort(score, 'descend');  
+val(1:nCandidate)
+id(1:nCandidate)
+figure;
+for candidate=1:nCandidate
+    imCandidate = imread(char(featureSpace.feature(id(candidate)).imname));
+    subplot(1,nCandidate,candidate); imshow(imCandidate);
+    imwrite(imCandidate,['../submission/regionQueries-Sample-',num2str(candidate),'.png']);
+end
+

@@ -3,8 +3,8 @@ clc; close all; clear all;
 framesdir = 'frames';
 siftdir = 'sift';
 nClusters = 750;
-nPatches = 50;
-nFrames = 1000;
+nPatches = 20;
+nFrames = 500;
 mkdir('vocabulary');
 %% Initialize FeatureSpace
 featureSpace = createFeatureSpace(framesdir, siftdir, nFrames);
@@ -20,7 +20,9 @@ for i=1:nFrames
     memberShip{i} = membershipCopy(1:featureSpace.frameID(i));
     idx = sort(membershipCopy(1:featureSpace.frameID(i)));
     membershipCopy(1:featureSpace.frameID(i)) = [];
-    frameHist(i, idx) = frameHist(i, idx) + 1;
+    for j=1:nClusters
+        frameHist(i, j) = frameHist(i, j) + sum(idx == j);
+    end
     clear idx
 end
 clear membershipCopy
