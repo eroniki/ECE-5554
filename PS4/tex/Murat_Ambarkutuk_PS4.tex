@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\newcommand{\listFigure}[3]{ \begin{figure}[H]
+\includegraphics[width=\linewidth]{../submission/#1}
+		\caption{#2\label{fig:#3}}
+	\end{figure}		
+}
+
+\newcommand{\listsubFigure}[4]{
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#1}
+	\end{subfigure}		
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#2}
+	\end{subfigure}		
+	\caption{#3\label{fig:#4}}
+\end{figure}
+}
+ 
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+% % Preamble done! % Begin document
+\begin{document}
+\label{Cover}
+	\begin{center}
+	\large{ECE-5554 Computer Vision: Problem Set 3} 
+	\vfill
+	Murat Ambarkutuk \\ murata@vt.edu
+	\vfill
+	Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University
+	\vfill
+	\today
+	\end{center}
+\pagebreak 
+\large{Answer Sheet}
+\label{Short Answer}
+\section{Short Answer}
+\begin{enumerate}
+	\item LOG
+	\item RANSAC 
+	\item Stereo Matching
+	\item SIFT 
+	\item If Generalized Hough Transform would be utilized with SIFT descriptors,
+	the dimensions of the the Hough space would be 
+\end{enumerate}
+
+\label{Programming Problem (Bag of Words)}
+\section{Programming Problem (Bag of Words)}
+\begin{enumerate}
+	\item \textbf{Raw Descriptor Matching}
+	\item \textbf{Visualizing the Vocabulary}
+	\item \textbf{Full Frame Queries}
+	\item \textbf{Region Queries}
+\end{enumerate}
+
+\end{document}
