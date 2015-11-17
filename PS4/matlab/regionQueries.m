@@ -3,9 +3,9 @@ clc; close all; clear all;
 framesdir = 'frames';
 siftdir = 'sift';
 nClusters = 300;
-frameOfInterest = [2592:2595];
+frameOfInterest = [232:235];
 nFrames = 500;
-nCandidate = 5;
+nCandidate = 10;
 %% Initialize FeatureSpace
 fnames = dir([siftdir '/*.mat']);
 
@@ -21,7 +21,7 @@ for i=1:nFrames
     fprintf('reading frame %d of %d\n', i, length(fnames));
     
     % load that file
-    fname = [siftdir, '/friends_000000', num2str(2579+i), '.jpeg.mat'];
+    fname = [siftdir, '/friends_0000000', num2str(100+i), '.jpeg.mat'];
     load(fname, 'imname', 'descriptors', 'positions', 'scales', 'orients');
     numfeats = size(descriptors,1);
     
@@ -69,7 +69,7 @@ for i=1:nFrames
 end
 %% Select Region
 wordList = zeros(1,nClusters);
-for frame=13:13+length(frameOfInterest)-1
+for frame=132:132+length(frameOfInterest)-1
     figure;
     im = imread(char(featureSpace.feature(frame).imname));
     featureSpace.feature(frame).imname
@@ -79,7 +79,7 @@ for frame=13:13+length(frameOfInterest)-1
         wordList(j) = wordList(j) + sum(membership(oninds) == j);
     end
     displaySIFTPatches(featureSpace.feature(frame).positions(oninds,:), featureSpace.feature(frame).scales(oninds), featureSpace.feature(frame).orientations(oninds), im); 
-    imwrite(im,['../submission/regionQueries-FOI-',num2str(frame),'.png']);
+  %  imwrite(im,['../submission/regionQueries-FOI-',num2str(frame),'.png']);
 end
 %%
 normMatrice = zeros(nFrames,1);
@@ -110,6 +110,6 @@ figure;
 for candidate=1:nCandidate
     imCandidate = imread(char(featureSpace.feature(id(candidate)).imname));
     subplot(1,nCandidate,candidate); imshow(imCandidate);
-    imwrite(imCandidate,['../submission/regionQueries-Sample-',num2str(candidate),'.png']);
+%    imwrite(imCandidate,['../submission/regionQueries-Sample-',num2str(candidate),'.png']);
 end
 

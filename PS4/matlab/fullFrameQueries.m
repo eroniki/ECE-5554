@@ -2,9 +2,9 @@ clc; close all; clear all;
 %% Set Variables
 framesdir = 'frames';
 siftdir = 'sift';
-nClusters = 1500;
-nFrames = 2000;
-frameOfInterest = [56,974,1844];
+nClusters = 2000;
+nFrames = 1000;
+frameOfInterest = [24,12,223];
 nCandidate = 5;
 %% Initialize FeatureSpace
 featureSpace = createFeatureSpace(framesdir, siftdir, nFrames);
@@ -39,13 +39,18 @@ denominator = normMatrice(frameOfInterest)*normMatrice';
 nominator = frameHist(frameOfInterest,:)*frameHist';
 %%
 for i=1:length(frameOfInterest)
+    % Finally calculate the scores for each row.
     score(i,:) = nominator(i,:)./denominator(i,:);
+    % Find NaN elements, resulting from 0-feature frames.
     idx = isnan(score(i,:));
+    % Change NaN's with 0
     score(i,idx) = 0;
+    % Sort by the scores
     [val(i,:), id(i,:)] = sort(score(i,:), 'descend');  
-    
+    % List most scored nCandidate words, of which print (id and val)
     val(i,1:nCandidate+1)
     id(i,1:nCandidate+1)
+    % Visualization of best matches
     figure;
     for candidate=1:nCandidate+1
         imCandidate = imread(char(featureSpace.imname{id(i,candidate)}));
