@@ -1,0 +1,135 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\newcommand{\listFigure}[3]{ \begin{figure}[H]
+\includegraphics[width=\linewidth]{../submission/#1}
+		\caption{#2\label{fig:#3}}
+	\end{figure}		
+}
+
+\newcommand{\listsubFigure}[4]{
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#1}
+	\end{subfigure}		
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#2}
+	\end{subfigure}		
+	\caption{#3\label{fig:#4}}
+\end{figure}
+}
+ 
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+% % Preamble done! % Begin document
+\begin{document}
+\label{Cover}
+	\begin{center}
+	\large{ECE-5554 Computer Vision: Problem Set 3} 
+	\vfill
+	Murat Ambarkutuk \\ murata@vt.edu
+	\vfill
+	Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University
+	\vfill
+	\today
+	\end{center}
+\pagebreak 
+\large{Answer Sheet}
+
+\label{Programming Problem (Image Mosaicking)}
+\section{Programming Problem (Image Mosaicking)}
+\subsection{Pair 1: Crops}
+\begin{itemize}
+	\item Inputs:
+	\listFigure{input-k-1.png}{Input Image: Crops}{cropsinput-1}
+	\listFigure{base-k-1.png}{Base Image: Crops}{cropsinput-2}
+	\item Outputs:
+	\listFigure{warpIm-k-1.png}{Warped Image Crops}{cropswarp}
+	\listFigure{mergeIm-k-1.png}{Merged Image Crops}{cropsmerge}
+	\item Homography Matrix (obtained with the given input points):
+	$$ \mathcal{H}: \begin{bmatrix}
+    0.0012  & -0.0042 &  0.9896 \\
+    0.0006  &  0.0028 & -0.1434 \\
+   -0.0000  &  0.0000 &  0.0026 \\
+	\end{bmatrix}$$
+\end{itemize}
+\subsection{Pair 2: Washington D.C.}
+\begin{itemize}
+\item Inputs:
+	\listFigure{input-k-2.png}{Input Image: Washington D.C.}{wdcinput-1}
+	\listFigure{base-k-2.png}{Base Image: Washington D.C.}{wdcinput-2}
+	\item Outputs:
+	\listFigure{warpIm-k-2.png}{Warped Image: Washington D.C.}{wdcwarp}
+	\listFigure{mergeIm-k-2.png}{Merged Image: Washington D.C.}{wdcmerge}
+	\item Homography Matrix (obtained with the given input points):
+	$$ \mathcal{H}: \begin{bmatrix}
+	0.0019 &  0.0002 & -0.9800 \\
+   -0.0008 &  0.0010 & -0.1988 \\
+    0.0000 & -0.0000 & -0.0012 \\
+	\end{bmatrix}$$
+\end{itemize} 
+
+\subsection{Pair 3: CMS Lab.}
+\begin{itemize}
+\item Inputs: 
+	\listFigure{input-k-3.png}{Input Image: CMS Lab}{cmsinput-1}
+	\listFigure{base-k-3.png}{Base Image: CMS Lab}{cmsinput-2}
+	\item Outputs:
+	\listFigure{warpIm-k-3.png}{Warped Image: CMS Lab}{cmswarp}
+	\listFigure{mergeIm-k-3.png}{Merged Image: CMS Lab}{cmsmerge}
+	\item Homography Matrix (obtained with the given input points):
+	$$ \mathcal{H}: \begin{bmatrix}
+   -0.0047 &  0.0003 &  0.9992 \\
+   -0.0001 & -0.0046 &  0.0398 \\
+    0.0000 & -0.0000 & -0.0048 \\
+	\end{bmatrix}$$
+\end{itemize}
+
+\subsection{Pair 4: Warping into Frame}
+\begin{itemize}
+\item Inputs:
+	\listFigure{input-frame.png}{Input Image: CVPR Logo for 2016}{frame-1}
+	\listFigure{base-frame.png}{Base Image: Empty Billboard}{frame-2}
+	\item Outputs:
+	\listFigure{warpIm-frame.png}{Warped Image: CVPR Logo}{framewarp}
+	\listFigure{mergeIm-frame.png}{Merged Image: Virtual CVPR
+	Billboard}{framemerge}
+	\item Homography Matrix (obtained with the given input points):
+	$$ \mathcal{H}: \begin{bmatrix}
+   -0.0045 &   0.0004 &  -0.8065 \\
+   -0.0011 &  -0.0044 &  -0.5912 \\
+   -0.0000 &   0.0000 &  -0.0075 \\
+	\end{bmatrix}$$
+\end{itemize}
+\label{Extra Credit}
+\section{Extra Credit}
+\subsection{Rectification}
+\begin{itemize}
+\item Inputs:
+	\listFigure{rectifyInput.png}{Input Image: Aerial Shot of Goodwin
+	Hall}{rectifyInput}
+	\item Outputs:
+	\listFigure{rectifyOutput.png}{Output Image: Obtained Planar View of
+	Goodwin Hall}{rectifyOutput}
+	\item Homography Matrix (obtained with the given input points):
+	$$ \mathcal{H}: \begin{bmatrix}
+    0.0023 &  -0.0001 &  -0.9980 \\
+   -0.0002 &   0.0019 &  -0.0637 \\
+    0.0000 &  -0.0000 &   0.0006 \\
+	\end{bmatrix}$$ 
+\end{itemize}
+\end{document}

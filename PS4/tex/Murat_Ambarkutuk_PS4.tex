@@ -1,0 +1,146 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\newcommand{\listFigure}[3]{ \begin{figure}[H]
+\includegraphics[width=\linewidth]{../submission/#1}
+		\caption{#2\label{fig:#3}}
+	\end{figure}		
+}
+
+
+\newcommand{\listsubFigure}[4]{
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#1}
+	\end{subfigure}		
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#2}
+	\end{subfigure}		
+	\caption{#3\label{fig:#4}}
+\end{figure}
+}
+ 
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+% % Preamble done! % Begin document
+\begin{document}
+\label{Cover}
+	\begin{center}
+	\large{ECE-5554 Computer Vision: Problem Set 3} 
+	\vfill
+	Murat Ambarkutuk \\ murata@vt.edu
+	\vfill
+	Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University
+	\vfill
+	\today
+	\end{center}
+\pagebreak 
+\large{Answer Sheet}
+\label{Short Answer}
+\section{Short Answer}
+\begin{enumerate}
+	\item Scale-space is used for determining the scale of the of the
+	interest points. \\ 
+	In the case of using any local maxima in scale-space may not define the
+	interest point for each run. The scale of the interest point may end up having
+	different values. Therefore, we will have less distinctive but
+	more repeatable features. \\
+	On the other hand, the performance and the output of thresholding pipeline, by
+	its nature, depends on the threshold value. If the threshold value is too high,
+	local maxima may not pass and the result will be an empty set for the interest
+	point. For that reason, using thresholding will be more distinctive (since all
+	the candidates on different frames will be similar.) but less repetitive.
+	\item An inlier for RANSAC algorithm when solving for epipolar lines is a
+	line minimizes the epipolar constraint. ($x^T\mathbf{F}x = 0$) However, with
+	uncalibrated view, not all the epipolar line will meet at the same point.
+	Therefore, for each point, the distance between the line and the
+	corresponding point will determine the outliers.
+	\item While dense stereo matching, there are some points that should
+	be considered to prevent the algorithm from failing. The first point is to
+	check texture in the both images. If the scanlines end up being in the
+	textureless areas, it is difficult to corresponde one image to another.
+	Also, the second points that should be considered is the material types of the
+	objects in the scene. If the objects are non-lambertian (appereance-wise light
+	source dependency), it may become difficult to correlate two windows.
+	 
+	\item SIFT descriptors are 128 dimensional vectors, or a point in a
+	128-dimensional feature space. Each dimension represents one of the 8
+	gradient direction in 4 by 4 neighbouring subregion.
+	\item If Generalized Hough Transform would be utilized with SIFT descriptors,
+	the dimensions of the the Hough space would be 4. For each descriptor, the
+	position of the descriptor \textit{(x and y)}, scale and orientation of the
+	model will be searched should be considered to find the best model.
+\end{enumerate}
+
+\label{Programming Problem (Bag of Words)}
+\section{Programming Problem (Bag of Words)}
+\begin{enumerate}
+	\item \textbf{Raw Descriptor Matching}
+	\listFigure{rawDecriptorMatching_Chosen.png}{The Area Chosen, and the SIFT
+	descriptors within in}{rawDecriptorMatching_Chosen}
+	\listFigure{rawDecriptorMatching_Found.png}{The matched descriptors on the
+	second image}{rawDecriptorMatching_Found}
+	\item \textbf{Visualizing the Vocabulary}
+	Please see the attach vocabulary folder to see all the corpus. 
+	\textbf{Word 84}
+		\listFigure{vocabulary1.png}{20 Patches for Word 84}{fullFrameInput-1}
+		\listFigure{vocabulary2.png}{20 Patches for Word 604}{fullFrameInput-1}
+		\listFigure{vocabulary3.png}{20 Patches for Word 745}{fullFrameInput-1}
+	\item \textbf{Full Frame Queries}
+		\\ \textbf{Set -1:}
+		\listFigure{fullFrame1-Sample-1.png}{Input Image-1}{fullFrameInput-1}
+		\listFigure{fullFrame1-Sample-2.png}{Retrieved Image-1}{fullFrame1Output-1}
+		\listFigure{fullFrame1-Sample-3.png}{Retrieved Image-2}{fullFrame1Output-2}
+		\listFigure{fullFrame1-Sample-4.png}{Retrieved Image-3}{fullFrame1Output-3}		
+		\listFigure{fullFrame1-Sample-5.png}{Retrieved Image-4}{fullFrame1Output-4}
+		\listFigure{fullFrame1-Sample-6.png}{Retrieved Image-5}{fullFrame1Output-5}		 
+		\newpage
+		\textbf{Set -2:}
+		\listFigure{fullFrame2-Sample-1.png}{Input Image-2}{fullFrameInput-2}
+		\listFigure{fullFrame2-Sample-2.png}{Retrieved Image-1}{fullFrame2Output-1}
+		\listFigure{fullFrame2-Sample-3.png}{Retrieved Image-2}{fullFrame2Output-2}
+		\listFigure{fullFrame2-Sample-4.png}{Retrieved Image-3}{fullFrame2Output-3}	
+		\listFigure{fullFrame2-Sample-5.png}{Retrieved Image-4}{fullFrame2Output-4}
+		\listFigure{fullFrame2-Sample-6.png}{Retrieved Image-5}{fullFrame2Output-5}	
+		\newpage
+		\textbf{Set -3:} 
+		\listFigure{fullFrame3-Sample-1.png}{Input Image-3}{fullFrameInput-3}
+		\listFigure{fullFrame3-Sample-2.png}{Retrieved Image-1}{fullFrame3Output-1}
+		\listFigure{fullFrame3-Sample-3.png}{Retrieved Image-2}{fullFrame3Output-2}
+		\listFigure{fullFrame3-Sample-4.png}{Retrieved Image-3}{fullFrame3Output-3}	
+		\listFigure{fullFrame3-Sample-5.png}{Retrieved Image-4}{fullFrame3Output-4}
+		\listFigure{fullFrame3-Sample-6.png}{Retrieved Image-5}{fullFrame3Output-5}
+		%\textbf{Discussion:}\\ 
+		
+		\newpage
+	\item \textbf{Region Queries}
+	In the query images, the area containing the turkey and the fez was selected.
+	Along with the query images, the output images can be seen below.
+	\listFigure{regionQueries-FOI-5.png}{Query Image-1}{RegionQueryInput-1}
+	\listFigure{regionQueries-FOI-13.png}{Query Image-2}{RegionQueryInput-2}
+	\listFigure{regionQueries-FOI-14.png}{Query Image-3}{RegionQueryInput-3}
+	\listFigure{regionQueries-FOI-15.png}{Query Image-4}{RegionQueryInput-4}
+	\listFigure{regionQueries-FOI-16.png}{Output Image-1}{RegionQueryInput-5}
+	\listFigure{regionQueries-Sample-1.png}{Output Image-2}{RegionQueryOutput-5}
+	\listFigure{regionQueries-Sample-2.png}{Output Image-3}{RegionQueryOutput-5}
+	\listFigure{regionQueries-Sample-3.png}{Output Image-4}{RegionQueryOutput-5}
+	\listFigure{regionQueries-Sample-4.png}{Output Image-5}{RegionQueryOutput-5} 
+	%\textbf{Discussion:} 
+	Set-1 
+\end{enumerate}
+
+\end{document}
