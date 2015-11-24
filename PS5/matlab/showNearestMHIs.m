@@ -5,11 +5,11 @@ sequences = {'-p1-1', '-p1-2', '-p2-1', '-p2-2'};
 basedir = '../database/';
 allMHIs = zeros(480,640,20);
 huVectors = zeros(20,7);
-counter = 1;
 trainLabels = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5];
 nActions = length(actions);
 nSequences = length(sequences);
 testAction = randi(nActions*nSequences);
+counter = 1;
 nNeighbour = 4;
 %% Loop-over sequences to create MHIs
 for i=1:nActions
@@ -17,8 +17,8 @@ for i=1:nActions
         subdir = [basedir, actions{i}, '/', actions{i}, sequences{j}, '/'];
         H = computeMHI(subdir);
         allMHIs(:, :, counter) = H;
-        figure(counter); imagesc(H); title(['Action: ', actions{i}, ' Sequence: ', sequences{j}]);
-        saveas(counter, ['MHI-', actions{i}, sequences{j}, '.png'],'png');
+        figure(getFigureID()); imagesc(H); title(['Action: ', actions{i}, ' Sequence: ', sequences{j}]);
+        saveas(getFigureID()-1, ['MHI-', actions{i}, sequences{j}, '.png'],'png');
         counter = counter+1;
     end
 end
