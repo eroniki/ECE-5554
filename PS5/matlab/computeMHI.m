@@ -4,7 +4,7 @@ function H = computeMHI(address)
     nFrames = length(depthfiles);
 %   Thresholds moving pixels and the lenght of the sequence will be used.
     tau = nFrames;
-    threshold = 600;    
+    threshold = 1000;    
     previousFrame = imread([address, depthfiles(1).name]);    
     D = zeros(nFrames, 480, 640, 'uint8');
     H = zeros(nFrames, 480, 640, 'uint8');
