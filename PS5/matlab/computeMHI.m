@@ -1,7 +1,7 @@
 function H = computeMHI(address)
 %   Get the depth file locations
     depthfiles = dir([address, '/*.pgm']);
-    nFrames = length(depthfiles)
+    nFrames = length(depthfiles);
 %   Thresholds moving pixels and the lenght of the sequence will be used.
     tau = nFrames;
     threshold = 600;    
