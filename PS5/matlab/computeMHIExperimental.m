@@ -1,18 +1,21 @@
-function H = computeMHI(address)
+function H = computeMHIExperimental(address)
 %   Get the depth file locations
     depthfiles = dir([address, '/*.pgm']);
     nFrames = length(depthfiles);
 %   Thresholds moving pixels and the lenght of the sequence will be used.
     tau = nFrames;
-    threshold = 1500;    
-    previousFrame = imread([address, depthfiles(1).name]);    
+    threshold = 40000;    
+    previousFrame = imread([address, depthfiles(1).name]);
+    previousFrame = previousFrame < threshold;
     D = zeros(nFrames, 480, 640, 'uint8');
     H = zeros(nFrames, 480, 640, 'uint8');
 
     for i=2:nFrames        
         depth = imread([address, depthfiles(i).name]);
-        diff = abs(previousFrame-depth);
-        indices = diff>=threshold;
+        depth = depth > threshold;
+        assignin('base','depth', depth);
+        diff = min(previousFrame, depth);
+        indices = ~diff;
         assignin('base','indices', indices);
 %   Binary image sequence indicating motion locations (moving pixels)
         D(i, indices) = 255;
