@@ -15,7 +15,7 @@
 \usepackage[letterpaper, portrait, margin=1in]{geometry}
 
 \newcommand{\listFigure}[3]{ \begin{figure}[H]
-\includegraphics[width=\linewidth]{#1}
+\includegraphics[width=\linewidth]{../submission/#1}
 		\caption{#2\label{fig:#3}} 
 	\end{figure}		
 }
@@ -82,7 +82,9 @@ will be carried to further future. Conversely, as it decreases, the effects of
 the action will fade away faster from the motion history images. Since each 
 portion of the actions matter same for the recognition, $\tau$ is set the total
 number of frames in the sequence. Three example motion history images is listed
-below. (Figures-\ref{fig:MHI-botharms-p1-1}, \ref{fig:MHI-rightkick-p1-2}, \ref{fig:MHI-punch-p1-2.png})
+below. (Figures-\ref{fig:MHI-botharms-p1-1}, \ref{fig:MHI-rightkick-p1-2},
+\ref{fig:MHI-punch-p1-2.png}) Also please refer ``allMHIs.mat'' file to see
+full results.
 
 \listFigure{MHI-botharms-p1-1.png}{Motion History Image:1, Image Sequence:
 Both Arms Up, Sequence:
@@ -102,25 +104,70 @@ matrix as a feature space. Please refer ``huVectors.mat'' file to see results.
 \subsection{Activity Prediction}
 Activity prediction is achieved with \textit{k}NN classifier. As distance
 metric normalized euclidian distance is employed.
-Figure-\ref{},\ref{},\ref{},\ref{} best matches for punch MHI and
-Figure-\ref{},\ref{},\ref{},\ref{} best matches for crouch MHI.
-
+Figure-\ref{fig:matched-13-15punch-p2-1-k-3} and
+Figure-\ref{fig:matched-2-3botharms-p2-1-k-3} show the best matches for punch
+MHI and crouch MHI, respectively.
+Table-\ref{tab:confusion} shows the overall performance of the
+\textit{Leave-one-out Cross Correlation} process.
+\newpage
 \textbf{Confusion Matrix}
-\begin{center}
+\begin{center}\label{tab:confusion}
 	\begin{tabular}{ |c | c | c | c | c | c| }
 	\hline
-	  & Class-1 & Class-2 & Class-3 & Class-4 & Class-5 \\ \hline
-	  Class-1 & X & Y & Z & U & W \\ \hline
-	  Class-2 & X & Y & Z & U & W \\ \hline
-	  Class-3 & X & Y & Z & U & W \\ \hline
-	  Class-4 & X & Y & Z & U & W \\ \hline
-	  Class-5 & X & Y & Z & U & W \\
+	  & Both Arms Up & Crouch & Left Arm Up & Punch & Right Kick \\ \hline
+	  Both Arms Up & 3 & 0 & 1 & 0 & 0 \\ \hline
+	  Crouch & 0 & 1 & 3 & 0 & 0 \\ \hline
+	  Left Arm Up & 0 & 1 & 3 & 0 & 0 \\ \hline
+	  Punch & 0 & 0 & 0 & 4 & 0 \\ \hline
+	  Right Kick & 0 & 1 & 0 & 0 & 3 \\
 	\hline
 	\end{tabular}
+	\captionof{table}{Confusion Matrix}
+\end{center}
+\listFigure{matched-13-15punch-p2-1-k-3.png}{Top
+left is the query MHI (Punch), the rest is the best
+resulted matches}{matched-13-15punch-p2-1-k-3}
+\listFigure{matched-2-3botharms-p2-1-k-3.png}{Top
+left is the query MHI (Both Arms Up), the rest is the best
+resulted matches}{matched-2-3botharms-p2-1-k-3}
+\section{Extra Point}
+\subsection{Depth Segmentation}
+Since the given data set is a depth map, the pixels correlates with the
+pyhsical distances of the objects to the camera. That cue is exploited by using
+depth segmentation before the $D(x,y,t)$ constructed by thresholding the depth
+maps. 
+$$I_{segmented} = I(x,y,t) > \tau$$
+The following figure (Figure-\ref{fig:depthSegmentation}) the results of the
+depth segmentation with threshold $\tau=40000$ value.
+
+\listFigure{depthSegmentation.png}{Example result
+of depth segmentation process}{depthSegmentation} 
+
+After thresholding, $min()$ function performed to consecutive frames to
+calculate $D(x,y,t)$. The figure below (Figure-\ref{fig:MHIDepth}) is an example
+resulting MHI frame. Also, Table-\ref{tab:confusiondepth} shows the resulting
+confusion matrix. Please note that depth segmentation process has increased the
+overall performance of the algorithm by correcting the failure case in
+the ``Crouch'' segments. On the other hand, it also should be considered that in
+``Punch'' segment, depth segmentation has showed 1 misclassification where the
+proposed technique can show the best performance.
+
+\listFigure{MHIDepth}{Example MHI Frame Resulted After Depth
+Segmentation}{MHIDepth}
+
+\begin{center}\label{tab:confusiondepth}
+	\begin{tabular}{ |c | c | c | c | c | c| }
+	\hline
+	  & Both Arms Up & Crouch & Left Arm Up & Punch & Right Kick \\ \hline
+	  Both Arms Up & 4 & 0 & 0 & 0 & 0 \\ \hline
+	  Crouch & 0 & 3 & 0 & 1 & 0 \\ \hline
+	  Left Arm Up & 0 & 0 & 4 & 0 & 0 \\ \hline
+	  Punch & 0 & 0 & 1 & 3 & 0 \\ \hline
+	  Right Kick & 0 & 0 & 0 & 0 & 4 \\
+	\hline
+	\end{tabular}
+	\captionof{table}{Confusion Matrix}
 \end{center}
 
 
-\section{Extra Point}
-\subsection{Depth Segmentation}
-\subsection{Cosine Distance Metric}
 \end{document}
