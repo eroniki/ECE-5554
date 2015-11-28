@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\newcommand{\listFigure}[3]{ \begin{figure}[H]
+\includegraphics[width=\linewidth]{../submission/#1}
+		\caption{#2\label{fig:#3}} 
+	\end{figure}		
+}
+
+
+\newcommand{\listsubFigure}[4]{
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#1}
+	\end{subfigure}		
+	\begin{subfigure}[b]{width=0.4\textwidth}
+		\includegraphics[width=\textwidth]{../submission/#2}
+	\end{subfigure}		
+	\caption{#3\label{fig:#4}}
+\end{figure}
+}
+ 
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+% % Preamble done! % Begin document
+\begin{document}
+\label{Cover}
+	\begin{center}
+	\large{ECE-5554 Computer Vision: Problem Set 3} 
+	\vfill
+	Murat Ambarkutuk \\ murata@vt.edu
+	\vfill
+	Mechanical Engineering Department,\\ Virginia Polytechnic Institute and State University
+	\vfill
+	\today
+	\end{center}
+\pagebreak 
+\large{Answer Sheet}
+\label{Short Answer}
+
+\label{Programming Problem (Activity Recognition)}
+\section{Programming Problem (Activity Recognition)}
+\subsection{Motion History Images (MHI)}
+To successfully recognize activitis on image sequences, first background
+subtraction should be performed.
+In the data set given the camera is fixed and the scene is stationary, so one
+can assume that pixels have different values at different time steps depicts a
+new object or a person. That assumption enables one to extract foreground pixels
+from that of background by simply subtracting consecutive frames. 
+$$D(x,y,t) = I(x,y,t) - I(x,y,t-1)$$
+However intuitive, just subtracting may introduce some noise as foreground due
+to the nature of imaging systems. Thus, a threshold was employed on $D(x,y,t)$
+to disregard minor changes resulting from the imaging system. 
+$$D(x,y,t) = (I(x,y,t)-I(x,y,t-1))> \tau$$
+where $D(x,y,t)$ is a binary image sequence depicting the moving pixels in the
+consecutive frames. The threshold value $\tau$ is chosen by testing different
+values and it is 1500 in the following examples images. \\
+After acquiring $D(x,y,t)$, motion history image, $H_t(x,y,t)$, can be
+constructed the formulation stated below.
+$$H_t(x,y,t) =
+\begin{dcases}
+    \tau, & \text{if } D(x,y,t)=1\\
+    max(0,H_t(x,y,t-1)),              & \text{otherwise}
+\end{dcases}
+$$
+where $\tau$ can be referred as ``memory term''. As $\tau$ increases, the action
+will be carried to further future. Conversely, as it decreases, the effects of
+the action will fade away faster from the motion history images. Since each 
+portion of the actions matter same for the recognition, $\tau$ is set the total
+number of frames in the sequence. Three example motion history images is listed
+below. (Figures-\ref{fig:MHI-botharms-p1-1}, \ref{fig:MHI-rightkick-p1-2},
+\ref{fig:MHI-punch-p1-2.png}) Also please refer ``allMHIs.mat'' file to see
+full results.
+
+\listFigure{MHI-botharms-p1-1.png}{Motion History Image:1, Image Sequence:
+Both Arms Up, Sequence:
+1}{MHI-botharms-p1-1} 
+
+\listFigure{MHI-rightkick-p1-2.png}{Motion History Image:2, Image Sequence:
+Right Kick, Sequence:
+2}{MHI-rightkick-p1-2} 
+
+\listFigure{MHI-punch-p1-2.png}{Motion History Image:3, Image Sequence:
+Punch, Sequence:
+2}{MHI-punch-p1-2.png} 
+\subsection{Hu Moments}
+In each MHI frame depicting the all the major changes in the frame, 7 Hu moments
+calculated to utilize as features. Then, each moment was compiled into one
+matrix as a feature space. Please refer ``huVectors.mat'' file to see results.
+\subsection{Activity Prediction}
+Activity prediction is achieved with \textit{k}NN classifier. As distance
+metric normalized euclidian distance is employed.
+Figure-\ref{fig:matched-13-15punch-p2-1-k-3} and
+Figure-\ref{fig:matched-2-3botharms-p2-1-k-3} show the best matches for punch
+MHI and crouch MHI, respectively.
+Table-\ref{tab:confusion} shows the overall performance of the
+\textit{Leave-one-out Cross Correlation} process.
+\newpage
+\textbf{Confusion Matrix}
+\begin{center}\label{tab:confusion}
+	\begin{tabular}{ |c | c | c | c | c | c| }
+	\hline
+	  & Both Arms Up & Crouch & Left Arm Up & Punch & Right Kick \\ \hline
+	  Both Arms Up & 3 & 0 & 1 & 0 & 0 \\ \hline
+	  Crouch & 0 & 1 & 3 & 0 & 0 \\ \hline
+	  Left Arm Up & 0 & 1 & 3 & 0 & 0 \\ \hline
+	  Punch & 0 & 0 & 0 & 4 & 0 \\ \hline
+	  Right Kick & 0 & 1 & 0 & 0 & 3 \\
+	\hline
+	\end{tabular}
+	\captionof{table}{Confusion Matrix}
+\end{center}
+\listFigure{matched-13-15punch-p2-1-k-3.png}{Top
+left is the query MHI (Punch), the rest is the best
+resulted matches}{matched-13-15punch-p2-1-k-3}
+\listFigure{matched-2-3botharms-p2-1-k-3.png}{Top
+left is the query MHI (Both Arms Up), the rest is the best
+resulted matches}{matched-2-3botharms-p2-1-k-3}
+\section{Extra Point}
+\subsection{Depth Segmentation}
+Since the given data set is a depth map, the pixels correlates with the
+pyhsical distances of the objects to the camera. That cue is exploited by using
+depth segmentation before the $D(x,y,t)$ constructed by thresholding the depth
+maps. 
+$$I_{segmented} = I(x,y,t) > \tau$$
+The following figure (Figure-\ref{fig:depthSegmentation}) the results of the
+depth segmentation with threshold $\tau=40000$ value.
+
+\listFigure{depthSegmentation.png}{Example result
+of depth segmentation process}{depthSegmentation} 
+
+After thresholding, $min()$ function performed to consecutive frames to
+calculate $D(x,y,t)$. The figure below (Figure-\ref{fig:MHIDepth}) is an example
+resulting MHI frame. Also, Table-\ref{tab:confusiondepth} shows the resulting
+confusion matrix. Please note that depth segmentation process has increased the
+overall performance of the algorithm by correcting the failure case in
+the ``Crouch'' segments. On the other hand, it also should be considered that in
+``Punch'' segment, depth segmentation has showed 1 misclassification where the
+proposed technique can show the best performance.
+
+\listFigure{MHIDepth}{Example MHI Frame Resulted After Depth
+Segmentation}{MHIDepth}
+
+\begin{center}\label{tab:confusiondepth}
+	\begin{tabular}{ |c | c | c | c | c | c| }
+	\hline
+	  & Both Arms Up & Crouch & Left Arm Up & Punch & Right Kick \\ \hline
+	  Both Arms Up & 4 & 0 & 0 & 0 & 0 \\ \hline
+	  Crouch & 0 & 3 & 0 & 1 & 0 \\ \hline
+	  Left Arm Up & 0 & 0 & 4 & 0 & 0 \\ \hline
+	  Punch & 0 & 0 & 1 & 3 & 0 \\ \hline
+	  Right Kick & 0 & 0 & 0 & 0 & 4 \\
+	\hline
+	\end{tabular}
+	\captionof{table}{Confusion Matrix}
+\end{center}
+
+
+\end{document}
