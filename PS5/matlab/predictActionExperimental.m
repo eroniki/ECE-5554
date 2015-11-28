@@ -1,24 +1,23 @@
-function predictedLabel = predictActionExperimental(testMoments, trainMoments, trainLabels)
+function predictedLabel = predictAction(testMoments, trainMoments, trainLabels)
     predictedLabel = -1;
     [h,~] = size(trainMoments);
     distances = zeros(h,1);
-    % Calculate distances
-    variance = var(trainMoments);
-
+%     sequenceMatched = 1:h;
+    % Calculate variances for normalized euclidian distance
+    variance = nanvar(trainMoments);
     for i=1:h
-%         similarity = (sum(trainMoments(i,:).*testMoments)...
-%             -(numel(testMoments)*mean(testMoments)*trainMoments(i,:)))/...
-%             (std(trainMoments(i,:))*std(testMoments));
-%         %         sumX = sum(similarity)
-
-        distances(i) = norm(trainMoments(i,:)-testMoments)
+        % calculate distances
+        distances(i) = sqrt(sum(((trainMoments(i,:)-testMoments).^2)./variance));
     end
-    [Y, I] = sort(distances,'descend');
-
-
-    predictedLabel = trainLabels(I(2));
+    distances
+    [Y, I] = sort(distances);
+%     offset = evalin('base','i')
+%     I(I>=offset) = I(I>=offset) +1
+%     Confusion Matrix for Murat.
+%     predictedLabel = trainLabels(I(2));
+    predictedLabel = mode(trainLabels(I(1:4)))
     assignin('base','label', I);
     assignin('base','distances', Y);
-    assignin('base','sequenceMatched', trainLabels(I));
+%     assignin('base','sequenceMatched', sequenceMatched(I));
 end
 
