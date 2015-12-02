@@ -12,6 +12,7 @@ function predictedLabel = predictAction(testMoments, trainMoments, trainLabels)
     [Y, I] = sort(distances);
 %     Confusion Matrix for Murat.
 %     predictedLabel = trainLabels(I(2));
+
     predictedLabel = mode(trainLabels(I(1:4)));
     assignin('base','label', I);
     assignin('base','distances', Y);

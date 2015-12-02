@@ -9,7 +9,7 @@ huVectors = zeros(20,7);
 nActions = length(actions);
 nSequences = length(sequences);
 % testAction = randi(nActions*nSequences);
-testAction=2;
+testAction=13;
 counter = 1;
 nNeighbour = 4;
 %% Loop-over sequences to create MHIs

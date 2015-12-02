@@ -4,24 +4,28 @@ function H = computeMHIExperimental(address)
     nFrames = length(depthfiles);
 %   Thresholds moving pixels and the lenght of the sequence will be used.
     tau = nFrames;
-    threshold = 50000;    
+    threshold = 40000;    
     previousFrame = imread([address, depthfiles(1).name]);
-    previousFrame = previousFrame > threshold;
+    previousFrame = previousFrame < threshold;
     D = zeros(nFrames, 480, 640, 'uint8');
-    H = zeros(nFrames, 480, 640, 'uint8');
-
+    H = zeros(nFrames, 480, 640, 'double');
     for i=2:nFrames        
         depth = imread([address, depthfiles(i).name]);
-        depth = depth > threshold;
-        assignin('base','depth', depth);
-        diff = min(previousFrame, depth);
-        indices = ~diff;
+%         imagesc(depth);
+%         pause;
+        depthBW = depth < threshold;
+%         figure;
+%         imshow(depthBW);
+        assignin('base','depth', depthBW);
+        diff = xor(previousFrame, depthBW);
+%         diff = depthBW - previousFrame;
+        indices = diff;
         assignin('base','indices', indices);
 %   Binary image sequence indicating motion locations (moving pixels)
         D(i, indices) = 255;
         H(i, indices) = tau;
-        H(i, ~indices) = H(i-1, ~indices)-1;
-        previousFrame = depth;
+        H(i, ~indices) = max(H(i-1, ~indices)-1,0);
+        previousFrame = depthBW;
 %%  Visualization for debug purposes
 %         figure(1); imagesc(reshape(D(i,:),480,640));
 %         figure(2); imagesc(reshape(H(i,:),480,640));
