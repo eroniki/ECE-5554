@@ -10,7 +10,6 @@ nActions = length(actions);
 nSequences = length(sequences);
 nNeighbour = 4;
 counter = 1;
-confusionMatrix = zeros(nActions,nActions);
 
 %% Loop-over sequences to create MHIs
 for i=1:nActions
@@ -30,6 +29,7 @@ for i=1:nActions*nSequences
 end    
 
 %% Nearest Neighbour Classifier - Leave-one-out Cross Validation
+confusionMatrix = zeros(nActions,nActions);
 for i=1:nActions*nSequences
     [sequenceID, actionID] = ind2sub([nSequences, nActions],i);
     huVectorsCopy = huVectors;
